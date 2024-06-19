@@ -1,0 +1,47 @@
+NbVariables = 3;
+NbLocations = 5;
+
+const double T=20;
+const int N=5;
+const double eps=-10e-100;
+
+VariablesList = {time,x1,OK} ;
+LocationsList = {l0, l1, l2, l3, l4};
+
+AVG(Last(OK));
+%AVG(Max(x1));
+%AVG(Min(x1));
+%AVG(Integral(x1));
+%AVG(Last(time));
+
+InitialLocations={l0};
+
+FinalLocations={l3,l4}; 
+
+Locations={
+(l0, Free=1, (time:1));
+(l1, (Access1=1), (time:1,x1:1));
+(l2, (Access2=1), (time:1,x1:-1));
+(l3, TRUE, (time:1));
+(l4, TRUE, (time:1));
+};
+
+Edges={
+((l0,l0),ALL,  time <= T,#); 					
+((l0,l1),ALL,  time <= T,#); 					
+((l0,l2),ALL,  time <= T,#); 					
+((l0,l3),#,  time = T & x1 >= 0, {OK=1});    			
+((l0,l4),#,  time = T & x1 <=eps, {OK=0});          		
+
+((l1,l1),ALL,  time <= T,#); 					
+((l1,l0),ALL,  time <= T,#); 					
+((l1,l3),#,    time = T & x1 >= 0, {OK=1}); 			
+((l1,l4),#,    time = T & x1 <= eps, {OK=0});  		
+
+((l2,l2),ALL,  time <= T,#); 					
+((l2,l0),ALL,  time <= T,#); 					
+((l2,l3),#,    time = T & x1 >= 0, {OK=1}); 			
+((l2,l4),#,    time = T & x1 <= eps, {OK=0}); 			
+};
+
+

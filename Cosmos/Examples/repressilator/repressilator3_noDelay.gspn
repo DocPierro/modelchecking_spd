@@ -1,0 +1,100 @@
+const double DECrate = 0.01;
+const int initRNAp = 50;
+
+NbPlaces= 10;
+NbTransitions= 15;
+
+
+PlacesList ={ RNAp,  p1,  p2,  p3,  Pro1, Pro2, Pro3, Pro2p1, Pro3p2, Pro1p3 };
+
+TransitionsList ={ T23, T9, T21, T15, T14, T16, T13, T5, T17, T8, T24, T22, T6, T7, T1 };
+
+Marking ={
+	(RNAp , initRNAp);
+	(p1 , 0);
+	(p2 , 0);
+	(p3 , 0);
+	(Pro1 , 1);
+	(Pro2 , 1);
+	(Pro3 , 1);
+	(Pro2p1 , 0);
+	(Pro3p2 , 0);
+	(Pro1p3 , 0);
+};
+
+Transitions ={
+	(T1, EXPONENTIAL(0.01*RNAp*Pro1), 1, 1,  SINGLE);
+	(T5, EXPONENTIAL(1*p1*Pro2), 1, 1,  SINGLE);
+	(T6, EXPONENTIAL(0.08*Pro2p1), 1, 1,  SINGLE);
+	(T7, EXPONENTIAL(DECrate*p1), 1, 1,  SINGLE);
+	(T8, EXPONENTIAL(0.01*Pro2p1), 1, 1,  SINGLE);
+	(T9, EXPONENTIAL(0.01*Pro2*RNAp), 1, 1,  SINGLE);
+	(T13, EXPONENTIAL(DECrate*p2), 1, 1,  SINGLE);
+	(T14, EXPONENTIAL(0.01*Pro3p2), 1, 1,  SINGLE);
+	(T15, EXPONENTIAL(0.08*Pro3p2), 1, 1,  SINGLE);
+	(T16, EXPONENTIAL(1*p2*Pro3), 1, 1,  SINGLE);
+	(T17, EXPONENTIAL(0.01*Pro3*RNAp), 1, 1,  SINGLE);
+	(T21, EXPONENTIAL(DECrate*p3), 1, 1,  SINGLE);
+	(T22, EXPONENTIAL(0.08*Pro1p3), 1, 1,  SINGLE);
+	(T23, EXPONENTIAL(1*p3*Pro1), 1, 1,  SINGLE);
+	(T24, EXPONENTIAL(0.01*Pro1p3), 1, 1,  SINGLE);
+
+%	(T14, EXPONENTIAL(0.01), 1, 1,  SINGLE);
+%	(T15, EXPONENTIAL(0.08), 1, 1,  SINGLE);
+%	(T16, EXPONENTIAL(1), 1, 1,  SINGLE);
+%	(T17, EXPONENTIAL(0.01), 1, 1,  SINGLE);
+%	(T21, EXPONENTIAL(0.01), 1, 1,  SINGLE);
+%	(T22, EXPONENTIAL(0.08), 1, 1,  SINGLE);
+%	(T23, EXPONENTIAL(1), 1, 1,  SINGLE);
+%	(T24, EXPONENTIAL(0.01), 1, 1,  SINGLE);
+
+};
+
+InArcs={
+	(p3, T23, 1);
+	(Pro1, T23, 1);
+	(RNAp, T9, 1);
+	(Pro2, T9, 1);
+	(p3, T21, 1);
+	(Pro3p2, T15, 1);
+	(Pro3p2, T14, 1);
+	(p2, T16, 1);
+	(Pro3, T16, 1);
+	(p2, T13, 1);
+	(p1, T5, 1);
+	(Pro2, T5, 1);
+	(Pro3, T17, 1);
+	(RNAp, T17, 1);
+	(Pro2p1, T8, 1);
+	(Pro1p3, T24, 1);
+	(Pro1p3, T22, 1);
+	(Pro2p1, T6, 1);
+	(p1, T7, 1);
+	(RNAp, T1, 1);
+	(Pro1, T1, 1);
+};
+
+OutArcs={
+	(T23, Pro1p3, 1);
+	(T9, p2, 1);
+	(T9, RNAp, 1);
+	(T9, Pro2, 1);
+	(T15, p2, 1);
+	(T15, Pro3, 1);
+	(T14, Pro3, 1);
+	(T16, Pro3p2, 1);
+	(T5, Pro2p1, 1);
+	(T17, RNAp, 1);
+	(T17, p3, 1);
+	(T17, Pro3, 1);
+	(T8, Pro2, 1);
+	(T24, Pro1, 1);
+	(T22, p3, 1);
+	(T22, Pro1, 1);
+	(T6, Pro2, 1);
+	(T6, p1, 1);
+	(T1, p1, 1);
+	(T1, RNAp, 1);
+	(T1, Pro1, 1);
+};
+

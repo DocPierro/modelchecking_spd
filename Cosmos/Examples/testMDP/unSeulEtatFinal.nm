@@ -1,0 +1,35 @@
+mdp
+
+const int QMAX = 3;
+
+label "mini" = (q=0 ); 
+label "maxi" = (q=QMAX ); 
+
+module Mod1
+
+	sr : [0..2] init 0;
+	
+	[attendre] 	sr=0  & q<QMAX  -> 1.0 : (sr'=0) ;
+	[servir] 	sr=0  & q<QMAX  -> 0.75: (sr'=1)+ 0.25 : (sr'=0);
+	[tick]          sr=0  & q<QMAX  -> 1.0 : true;
+ 
+	[tick] 		sr=1  & q<QMAX  -> 0.5: (sr'=0) + 0.5: (sr'=1); 
+
+	[tick] 		(sr=0| sr=1  ) & q = QMAX -> 1.0 :(sr'=2);  
+	[tick]		sr=2-> true; 
+
+
+
+endmodule
+
+ 
+module Mod2
+
+	q : [0..QMAX] init 1;
+	[tick] sr=1 & q=0 -> (q' = q);
+	[tick] sr=1 & q>0 & q<QMAX   -> (q' = q-1);
+
+	[tick] sr=0  & (q>0 |q=0) &  q<QMAX  -> 0.5: (q'=q) + 0.5: (q'=q+1);
+	[tick] (sr=0| sr=1 |sr=2 ) &  q=QMAX  -> (q'=q);
+endmodule
+

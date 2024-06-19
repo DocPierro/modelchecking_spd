@@ -1,0 +1,29 @@
+% expected number of clients in the system
+% N= A/(1-A) where A=lambda/mu
+
+NbVariables = 2;
+NbLocations = 2;
+
+const double T=1000; % time bound
+
+VariablesList = {time,N} ;
+LocationsList = {l0, l1};
+
+AVG(Last(N));
+  
+InitialLocations={l0};
+
+FinalLocations={l1};
+
+Locations={
+(l0, TRUE, (time:1, N:Queue));
+(l1, TRUE);};
+
+Edges={
+((l0,l0),ALL,  time<=T,#);
+((l0,l1),#,    time=T ,{N=N/T});
+};
+
+
+
+

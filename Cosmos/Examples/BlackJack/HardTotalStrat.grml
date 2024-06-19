@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/HASL-formula.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="declaration">
+    <attribute name="constants">
+      <attribute name="intConsts">
+      </attribute>
+      <attribute name="realConsts">
+      </attribute>
+    </attribute>
+    <attribute name="variables">
+      <attribute name="reals">
+      </attribute>
+      <attribute name="discretes">
+        <attribute name="discrete">
+          <attribute name="name">
+            BANK
+          </attribute>
+        </attribute>
+        <attribute name="discrete">
+          <attribute name="name">
+            result
+          </attribute>
+        </attribute>
+        <attribute name="discrete">
+          <attribute name="name">
+            hiddenBANK
+          </attribute>
+        </attribute>
+        <attribute name="discrete">
+          <attribute name="name">
+            player
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="colors">
+      </attribute>
+    </attribute>
+  </attribute>
+  <attribute name="HASLFormula">
+    <attribute name="AVG">
+      <attribute name="YHF">
+        <attribute name="last">
+          <attribute name="expr"><attribute name="name">
+            result
+          </attribute></attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="state" x="642" y="202">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      playerStand
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="4" nodeType="state" x="316" y="113">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      d1
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="5" nodeType="state" x="201" y="113">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      mid
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="6" nodeType="state" x="778" y="113">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      playerBusted
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Final
+    </attribute>
+  </node>
+  <node id="7" nodeType="state" x="471" y="334">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      BankBusted
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Final
+    </attribute>
+  </node>
+  <node id="8" nodeType="state" x="471" y="113">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      d2
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="9" nodeType="state" x="471" y="202">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      d4
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="10" nodeType="state" x="642" y="113">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      d3
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="11" nodeType="state" x="144" y="202">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      d6
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Final
+    </attribute>
+  </node>
+  <node id="12" nodeType="state" x="268" y="202">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      d5
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="13" nodeType="state" x="93" y="113">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      in
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Initial
+    </attribute>
+  </node>
+  <arc id="14" arcType="transition" source="10" target="9">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          BANK
+        </attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="+">
+          <attribute name="expr"><attribute name="name">
+            BANK
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            hiddenBANK
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="and">
+        <attribute name="boolExpr"><attribute name="greaterEqual">
+          <attribute name="expr"><attribute name="name">
+            player
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="numValue">
+            18
+          </attribute></attribute>
+        </attribute></attribute>
+        <attribute name="boolExpr"><attribute name="lessEqual">
+          <attribute name="expr"><attribute name="name">
+            player
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="numValue">
+            21
+          </attribute></attribute>
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+  <arc id="15" arcType="transition" source="10" target="6">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          result
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          -1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="greaterEqual">
+        <attribute name="expr"><attribute name="name">
+          player
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="numValue">
+          22
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+  <arc id="17" arcType="transition" source="9" target="3">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="lessEqual">
+        <attribute name="expr"><attribute name="name">
+          BANK
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="numValue">
+          16
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+  <arc id="16" arcType="transition" source="3" target="9">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          BANK
+        </attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="+">
+          <attribute name="expr"><attribute name="name">
+            BANK
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            LastDraw
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="19" arcType="transition" source="9" target="12">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="and">
+        <attribute name="boolExpr"><attribute name="greaterEqual">
+          <attribute name="expr"><attribute name="name">
+            BANK
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="numValue">
+            17
+          </attribute></attribute>
+        </attribute></attribute>
+        <attribute name="boolExpr"><attribute name="lessEqual">
+          <attribute name="expr"><attribute name="name">
+            BANK
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="numValue">
+            21
+          </attribute></attribute>
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+  <arc id="18" arcType="transition" source="9" target="7">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          result
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="greaterEqual">
+        <attribute name="expr"><attribute name="name">
+          BANK
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="numValue">
+          22
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="21" arcType="transition" source="12" target="11">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="equal">
+        <attribute name="expr"><attribute name="name">
+          BANK
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          player
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+  <arc id="20" arcType="transition" source="12" target="11">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          result
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="lessEqual">
+        <attribute name="expr"><attribute name="name">
+          BANK
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="+">
+          <attribute name="expr"><attribute name="name">
+            player
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="numValue">
+            -1
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+  <arc id="23" arcType="transition" source="12" target="11">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          result
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          -1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="greaterEqual">
+        <attribute name="expr"><attribute name="name">
+          BANK
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="+">
+          <attribute name="expr"><attribute name="name">
+            player
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="numValue">
+            1
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+  <arc id="22" arcType="transition" source="5" target="4">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          player
+        </attribute>
+        <attribute name="expr"><attribute name="name">
+          LastDraw
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="25" arcType="transition" source="13" target="5">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          BANK
+        </attribute>
+        <attribute name="expr"><attribute name="name">
+          LastDraw
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="24" arcType="transition" source="4" target="8">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          hiddenBANK
+        </attribute>
+        <attribute name="expr"><attribute name="name">
+          LastDraw
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="27" arcType="transition" source="8" target="10">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          player
+        </attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="+">
+          <attribute name="expr"><attribute name="name">
+            player
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            LastDraw
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="26" arcType="transition" source="10" target="8">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="lessEqual">
+        <attribute name="expr"><attribute name="name">
+          player
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="numValue">
+          17
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+</model>

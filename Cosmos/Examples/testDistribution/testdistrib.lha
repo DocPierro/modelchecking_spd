@@ -1,0 +1,17 @@
+NbVariables = 1;
+NbLocations = 2;
+VariablesList = { vc0};
+LocationsList = {l0,l1};
+
+MeanVal=AVG(Last(vc0));
+VarVal=VAR(Last(vc0));
+
+InitialLocations = { l0 };
+FinalLocations = {l1};
+Locations = {
+(l0,TRUE,(vc0:1.));
+(l1,TRUE);
+};
+Edges = {
+((l0,l1),ALL,#,#);
+};

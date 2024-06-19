@@ -1,0 +1,22 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: ElapsedTime_out
+%   * Description: Runtime; number of samples vs elapsed time
+%   * Date: 14/05/2015 at 11:23
+% 
+%   * Column1: 	sampleSize: 	Number of samples
+%   * Column2: 	elaspedTime: 	Elapsed Time in minutes
+%
+% ----------------------------------------------------------------------------
+
+6.000000000E0	1.208209861667E1	
+7.000000000E0	1.421701638333E1	
+8.000000000E0	1.642731591667E1	
+9.000000000E0	1.853242206667E1	
+1.000000000E1	2.077312706667E1	
+1.100000000E1	2.293430231667E1	
+1.200000000E1	3.157570908333E1	
+1.300000000E1	3.315691705E1	
+1.400000000E1	3.567881228333E1	
+1.500000000E1	3.733928288333E1	

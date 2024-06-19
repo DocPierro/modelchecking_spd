@@ -1,0 +1,19 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: ModelComplexity_out
+%   * Description: Model Complexity; number of samples vs # number of parameters
+%   * Date: 05/05/2015 at 15:46
+% 
+%   * Column1: 	sampleSize: 	Number of samples
+%   * Column2: 	complexity: 	Model complexity (number of paramters)
+%
+% ----------------------------------------------------------------------------
+
+4.000000000E0	4.000000000E0	
+5.000000000E0	5.000000000E0	
+6.000000000E0	6.000000000E0	
+7.000000000E0	7.000000000E0	
+8.000000000E0	8.000000000E0	
+9.000000000E0	9.000000000E0	
+1.000000000E1	1.000000000E1	

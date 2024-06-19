@@ -1,0 +1,30 @@
+const double mu   = 0.230000;
+const double rho = 0.385000;
+const int r = 5;
+NbPlaces = 3;
+NbTransitions = 3;
+PlacesList = { RE_Queue1 ,RE_Queue2 , AQueue2 } ;
+TransitionsList = { mu,rho1 ,rho2  };
+
+Marking= {
+(RE_Queue1 ,1);
+(RE_Queue2 ,0);(AQueue2 ,r);
+};
+
+Transitions={
+(mu , EXPONENTIAL(mu),1,1,SINGLE);
+(rho1 , EXPONENTIAL(rho),1,1,SINGLE);
+(rho2 , EXPONENTIAL(rho),1,1,SINGLE);
+};
+
+InArcs={
+(RE_Queue1    ,rho1,1);
+(AQueue2,rho1,1);
+(RE_Queue2,rho2,1);
+};
+
+OutArcs={
+(mu ,RE_Queue1 ,1);
+(rho1, RE_Queue2,1);
+(rho2,AQueue2,1);
+};

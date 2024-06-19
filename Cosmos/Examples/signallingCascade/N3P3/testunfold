@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+	<node id="0" nodeType="place">
+		<attribute name="name">ERK</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="1" nodeType="place">
+		<attribute name="name">ERKPP_Phase3</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="2" nodeType="place">
+		<attribute name="name">RasGTP</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="3" nodeType="place">
+		<attribute name="name">ERK_MEKPF</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="4" nodeType="place">
+		<attribute name="name">Raf</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="5" nodeType="place">
+		<attribute name="name">Raf_RasGTP</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="6" nodeType="place">
+		<attribute name="name">ERKPP</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="7" nodeType="place">
+		<attribute name="name">RafP</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="8" nodeType="place">
+		<attribute name="name">RafP_Phase1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="9" nodeType="place">
+		<attribute name="name">Phase1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="10" nodeType="place">
+		<attribute name="name">ERKP</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="11" nodeType="place">
+		<attribute name="name">Phase3</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="12" nodeType="place">
+		<attribute name="name">ERKP_Phase3</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="13" nodeType="place">
+		<attribute name="name">ERKP_MEKPP</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="14" nodeType="place">
+		<attribute name="name">MEK</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="15" nodeType="place">
+		<attribute name="name">MEK_RafP</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="16" nodeType="place">
+		<attribute name="name">MEKP_Phase2</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="17" nodeType="place">
+		<attribute name="name">MEKP</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="18" nodeType="place">
+		<attribute name="name">Phase2</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="19" nodeType="place">
+		<attribute name="name">MEKPP_Phase2</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="20" nodeType="place">
+		<attribute name="name">MEKPP</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="21" nodeType="place">
+		<attribute name="name">MEKP_RafP</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="22" nodeType="place">
+		<attribute name="name">Puit</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="23" nodeType="transition">
+		<attribute name="name">r29</attribute>
+	</node>
+	<node id="24" nodeType="transition">
+		<attribute name="name">r30</attribute>
+	</node>
+	<node id="25" nodeType="transition">
+		<attribute name="name">r24</attribute>
+	</node>
+	<node id="26" nodeType="transition">
+		<attribute name="name">r22</attribute>
+	</node>
+	<node id="27" nodeType="transition">
+		<attribute name="name">r1</attribute>
+	</node>
+	<node id="28" nodeType="transition">
+		<attribute name="name">r2</attribute>
+	</node>
+	<node id="29" nodeType="transition">
+		<attribute name="name">r3</attribute>
+	</node>
+	<node id="30" nodeType="transition">
+		<attribute name="name">r25</attribute>
+	</node>
+	<node id="31" nodeType="transition">
+		<attribute name="name">r28</attribute>
+	</node>
+	<node id="32" nodeType="transition">
+		<attribute name="name">r5</attribute>
+	</node>
+	<node id="33" nodeType="transition">
+		<attribute name="name">r6</attribute>
+	</node>
+	<node id="34" nodeType="transition">
+		<attribute name="name">r4</attribute>
+	</node>
+	<node id="35" nodeType="transition">
+		<attribute name="name">r23</attribute>
+	</node>
+	<node id="36" nodeType="transition">
+		<attribute name="name">r20</attribute>
+	</node>
+	<node id="37" nodeType="transition">
+		<attribute name="name">r19</attribute>
+	</node>
+	<node id="38" nodeType="transition">
+		<attribute name="name">r27</attribute>
+	</node>
+	<node id="39" nodeType="transition">
+		<attribute name="name">r21</attribute>
+	</node>
+	<node id="40" nodeType="transition">
+		<attribute name="name">r26</attribute>
+	</node>
+	<node id="41" nodeType="transition">
+		<attribute name="name">r17</attribute>
+	</node>
+	<node id="42" nodeType="transition">
+		<attribute name="name">r18</attribute>
+	</node>
+	<node id="43" nodeType="transition">
+		<attribute name="name">r8</attribute>
+	</node>
+	<node id="44" nodeType="transition">
+		<attribute name="name">r7</attribute>
+	</node>
+	<node id="45" nodeType="transition">
+		<attribute name="name">r9</attribute>
+	</node>
+	<node id="46" nodeType="transition">
+		<attribute name="name">r16</attribute>
+	</node>
+	<node id="47" nodeType="transition">
+		<attribute name="name">r10</attribute>
+	</node>
+	<node id="48" nodeType="transition">
+		<attribute name="name">r12</attribute>
+	</node>
+	<node id="49" nodeType="transition">
+		<attribute name="name">r11</attribute>
+	</node>
+	<node id="50" nodeType="transition">
+		<attribute name="name">r15</attribute>
+	</node>
+	<node id="51" nodeType="transition">
+		<attribute name="name">r14</attribute>
+	</node>
+	<node id="52" nodeType="transition">
+		<attribute name="name">r13</attribute>
+	</node>
+	<node id="53" nodeType="transition">
+		<attribute name="name">Puittrans</attribute>
+	</node>
+arc ERK r29
+arc ERKPP_Phase3 r29
+arc RasGTP r29
+arc ERK_MEKPF r29
+arc Raf r29
+arc Raf_RasGTP r29
+arc ERKPP r29
+arc RafP r29
+arc RafP_Phase1 r29
+arc Phase1 r29
+arc ERKP r29
+arc Phase3 r29
+arc ERKP_Phase3 r29
+arc ERKP_MEKPP r29
+arc MEK r29
+arc MEK_RafP r29
+arc MEKP_Phase2 r29
+arc MEKP r29
+arc Phase2 r29
+arc MEKPP_Phase2 r29
+arc MEKPP r29
+arc MEKP_RafP r29
+arc Puit r29
+arc ERK r30
+arc ERKPP_Phase3 r30
+arc RasGTP r30
+arc ERK_MEKPF r30
+arc Raf r30
+arc Raf_RasGTP r30
+arc ERKPP r30
+arc RafP r30
+arc RafP_Phase1 r30
+arc Phase1 r30
+arc ERKP r30
+arc Phase3 r30
+arc ERKP_Phase3 r30
+arc ERKP_MEKPP r30
+arc MEK r30
+arc MEK_RafP r30
+arc MEKP_Phase2 r30
+arc MEKP r30
+arc Phase2 r30
+arc MEKPP_Phase2 r30
+arc MEKPP r30
+arc MEKP_RafP r30
+arc Puit r30
+arc ERK r24
+arc ERKPP_Phase3 r24
+arc RasGTP r24
+arc ERK_MEKPF r24
+arc Raf r24
+arc Raf_RasGTP r24
+arc ERKPP r24
+arc RafP r24
+arc RafP_Phase1 r24
+arc Phase1 r24
+arc ERKP r24
+arc Phase3 r24
+arc ERKP_Phase3 r24
+arc ERKP_MEKPP r24
+arc MEK r24
+arc MEK_RafP r24
+arc MEKP_Phase2 r24
+arc MEKP r24
+arc Phase2 r24
+arc MEKPP_Phase2 r24
+arc MEKPP r24
+arc MEKP_RafP r24
+arc Puit r24
+arc ERK r22
+arc ERKPP_Phase3 r22
+arc RasGTP r22
+arc ERK_MEKPF r22
+arc Raf r22
+arc Raf_RasGTP r22
+arc ERKPP r22
+arc RafP r22
+arc RafP_Phase1 r22
+arc Phase1 r22
+arc ERKP r22
+arc Phase3 r22
+arc ERKP_Phase3 r22
+arc ERKP_MEKPP r22
+arc MEK r22
+arc MEK_RafP r22
+arc MEKP_Phase2 r22
+arc MEKP r22
+arc Phase2 r22
+arc MEKPP_Phase2 r22
+arc MEKPP r22
+arc MEKP_RafP r22
+arc Puit r22
+arc ERK r1
+arc ERKPP_Phase3 r1
+arc RasGTP r1
+arc ERK_MEKPF r1
+arc Raf r1
+arc Raf_RasGTP r1
+arc ERKPP r1
+arc RafP r1
+arc RafP_Phase1 r1
+arc Phase1 r1
+arc ERKP r1
+arc Phase3 r1
+arc ERKP_Phase3 r1
+arc ERKP_MEKPP r1
+arc MEK r1
+arc MEK_RafP r1
+arc MEKP_Phase2 r1
+arc MEKP r1
+arc Phase2 r1
+arc MEKPP_Phase2 r1
+arc MEKPP r1
+arc MEKP_RafP r1
+arc Puit r1
+arc ERK r2
+arc ERKPP_Phase3 r2
+arc RasGTP r2
+arc ERK_MEKPF r2
+arc Raf r2
+arc Raf_RasGTP r2
+arc ERKPP r2
+arc RafP r2
+arc RafP_Phase1 r2
+arc Phase1 r2
+arc ERKP r2
+arc Phase3 r2
+arc ERKP_Phase3 r2
+arc ERKP_MEKPP r2
+arc MEK r2
+arc MEK_RafP r2
+arc MEKP_Phase2 r2
+arc MEKP r2
+arc Phase2 r2
+arc MEKPP_Phase2 r2
+arc MEKPP r2
+arc MEKP_RafP r2
+arc Puit r2
+arc ERK r3
+arc ERKPP_Phase3 r3
+arc RasGTP r3
+arc ERK_MEKPF r3
+arc Raf r3
+arc Raf_RasGTP r3
+arc ERKPP r3
+arc RafP r3
+arc RafP_Phase1 r3
+arc Phase1 r3
+arc ERKP r3
+arc Phase3 r3
+arc ERKP_Phase3 r3
+arc ERKP_MEKPP r3
+arc MEK r3
+arc MEK_RafP r3
+arc MEKP_Phase2 r3
+arc MEKP r3
+arc Phase2 r3
+arc MEKPP_Phase2 r3
+arc MEKPP r3
+arc MEKP_RafP r3
+arc Puit r3
+arc ERK r25
+arc ERKPP_Phase3 r25
+arc RasGTP r25
+arc ERK_MEKPF r25
+arc Raf r25
+arc Raf_RasGTP r25
+arc ERKPP r25
+arc RafP r25
+arc RafP_Phase1 r25
+arc Phase1 r25
+arc ERKP r25
+arc Phase3 r25
+arc ERKP_Phase3 r25
+arc ERKP_MEKPP r25
+arc MEK r25
+arc MEK_RafP r25
+arc MEKP_Phase2 r25
+arc MEKP r25
+arc Phase2 r25
+arc MEKPP_Phase2 r25
+arc MEKPP r25
+arc MEKP_RafP r25
+arc Puit r25
+arc ERK r28
+arc ERKPP_Phase3 r28
+arc RasGTP r28
+arc ERK_MEKPF r28
+arc Raf r28
+arc Raf_RasGTP r28
+arc ERKPP r28
+arc RafP r28
+arc RafP_Phase1 r28
+arc Phase1 r28
+arc ERKP r28
+arc Phase3 r28
+arc ERKP_Phase3 r28
+arc ERKP_MEKPP r28
+arc MEK r28
+arc MEK_RafP r28
+arc MEKP_Phase2 r28
+arc MEKP r28
+arc Phase2 r28
+arc MEKPP_Phase2 r28
+arc MEKPP r28
+arc MEKP_RafP r28
+arc Puit r28
+arc ERK r5
+arc ERKPP_Phase3 r5
+arc RasGTP r5
+arc ERK_MEKPF r5
+arc Raf r5
+arc Raf_RasGTP r5
+arc ERKPP r5
+arc RafP r5
+arc RafP_Phase1 r5
+arc Phase1 r5
+arc ERKP r5
+arc Phase3 r5
+arc ERKP_Phase3 r5
+arc ERKP_MEKPP r5
+arc MEK r5
+arc MEK_RafP r5
+arc MEKP_Phase2 r5
+arc MEKP r5
+arc Phase2 r5
+arc MEKPP_Phase2 r5
+arc MEKPP r5
+arc MEKP_RafP r5
+arc Puit r5
+arc ERK r6
+arc ERKPP_Phase3 r6
+arc RasGTP r6
+arc ERK_MEKPF r6
+arc Raf r6
+arc Raf_RasGTP r6
+arc ERKPP r6
+arc RafP r6
+arc RafP_Phase1 r6
+arc Phase1 r6
+arc ERKP r6
+arc Phase3 r6
+arc ERKP_Phase3 r6
+arc ERKP_MEKPP r6
+arc MEK r6
+arc MEK_RafP r6
+arc MEKP_Phase2 r6
+arc MEKP r6
+arc Phase2 r6
+arc MEKPP_Phase2 r6
+arc MEKPP r6
+arc MEKP_RafP r6
+arc Puit r6
+arc ERK r4
+arc ERKPP_Phase3 r4
+arc RasGTP r4
+arc ERK_MEKPF r4
+arc Raf r4
+arc Raf_RasGTP r4
+arc ERKPP r4
+arc RafP r4
+arc RafP_Phase1 r4
+arc Phase1 r4
+arc ERKP r4
+arc Phase3 r4
+arc ERKP_Phase3 r4
+arc ERKP_MEKPP r4
+arc MEK r4
+arc MEK_RafP r4
+arc MEKP_Phase2 r4
+arc MEKP r4
+arc Phase2 r4
+arc MEKPP_Phase2 r4
+arc MEKPP r4
+arc MEKP_RafP r4
+arc Puit r4
+arc ERK r23
+arc ERKPP_Phase3 r23
+arc RasGTP r23
+arc ERK_MEKPF r23
+arc Raf r23
+arc Raf_RasGTP r23
+arc ERKPP r23
+arc RafP r23
+arc RafP_Phase1 r23
+arc Phase1 r23
+arc ERKP r23
+arc Phase3 r23
+arc ERKP_Phase3 r23
+arc ERKP_MEKPP r23
+arc MEK r23
+arc MEK_RafP r23
+arc MEKP_Phase2 r23
+arc MEKP r23
+arc Phase2 r23
+arc MEKPP_Phase2 r23
+arc MEKPP r23
+arc MEKP_RafP r23
+arc Puit r23
+arc ERK r20
+arc ERKPP_Phase3 r20
+arc RasGTP r20
+arc ERK_MEKPF r20
+arc Raf r20
+arc Raf_RasGTP r20
+arc ERKPP r20
+arc RafP r20
+arc RafP_Phase1 r20
+arc Phase1 r20
+arc ERKP r20
+arc Phase3 r20
+arc ERKP_Phase3 r20
+arc ERKP_MEKPP r20
+arc MEK r20
+arc MEK_RafP r20
+arc MEKP_Phase2 r20
+arc MEKP r20
+arc Phase2 r20
+arc MEKPP_Phase2 r20
+arc MEKPP r20
+arc MEKP_RafP r20
+arc Puit r20
+arc ERK r19
+arc ERKPP_Phase3 r19
+arc RasGTP r19
+arc ERK_MEKPF r19
+arc Raf r19
+arc Raf_RasGTP r19
+arc ERKPP r19
+arc RafP r19
+arc RafP_Phase1 r19
+arc Phase1 r19
+arc ERKP r19
+arc Phase3 r19
+arc ERKP_Phase3 r19
+arc ERKP_MEKPP r19
+arc MEK r19
+arc MEK_RafP r19
+arc MEKP_Phase2 r19
+arc MEKP r19
+arc Phase2 r19
+arc MEKPP_Phase2 r19
+arc MEKPP r19
+arc MEKP_RafP r19
+arc Puit r19
+arc ERK r27
+arc ERKPP_Phase3 r27
+arc RasGTP r27
+arc ERK_MEKPF r27
+arc Raf r27
+arc Raf_RasGTP r27
+arc ERKPP r27
+arc RafP r27
+arc RafP_Phase1 r27
+arc Phase1 r27
+arc ERKP r27
+arc Phase3 r27
+arc ERKP_Phase3 r27
+arc ERKP_MEKPP r27
+arc MEK r27
+arc MEK_RafP r27
+arc MEKP_Phase2 r27
+arc MEKP r27
+arc Phase2 r27
+arc MEKPP_Phase2 r27
+arc MEKPP r27
+arc MEKP_RafP r27
+arc Puit r27
+arc ERK r21
+arc ERKPP_Phase3 r21
+arc RasGTP r21
+arc ERK_MEKPF r21
+arc Raf r21
+arc Raf_RasGTP r21
+arc ERKPP r21
+arc RafP r21
+arc RafP_Phase1 r21
+arc Phase1 r21
+arc ERKP r21
+arc Phase3 r21
+arc ERKP_Phase3 r21
+arc ERKP_MEKPP r21
+arc MEK r21
+arc MEK_RafP r21
+arc MEKP_Phase2 r21
+arc MEKP r21
+arc Phase2 r21
+arc MEKPP_Phase2 r21
+arc MEKPP r21
+arc MEKP_RafP r21
+arc Puit r21
+arc ERK r26
+arc ERKPP_Phase3 r26
+arc RasGTP r26
+arc ERK_MEKPF r26
+arc Raf r26
+arc Raf_RasGTP r26
+arc ERKPP r26
+arc RafP r26
+arc RafP_Phase1 r26
+arc Phase1 r26
+arc ERKP r26
+arc Phase3 r26
+arc ERKP_Phase3 r26
+arc ERKP_MEKPP r26
+arc MEK r26
+arc MEK_RafP r26
+arc MEKP_Phase2 r26
+arc MEKP r26
+arc Phase2 r26
+arc MEKPP_Phase2 r26
+arc MEKPP r26
+arc MEKP_RafP r26
+arc Puit r26
+arc ERK r17
+arc ERKPP_Phase3 r17
+arc RasGTP r17
+arc ERK_MEKPF r17
+arc Raf r17
+arc Raf_RasGTP r17
+arc ERKPP r17
+arc RafP r17
+arc RafP_Phase1 r17
+arc Phase1 r17
+arc ERKP r17
+arc Phase3 r17
+arc ERKP_Phase3 r17
+arc ERKP_MEKPP r17
+arc MEK r17
+arc MEK_RafP r17
+arc MEKP_Phase2 r17
+arc MEKP r17
+arc Phase2 r17
+arc MEKPP_Phase2 r17
+arc MEKPP r17
+arc MEKP_RafP r17
+arc Puit r17
+arc ERK r18
+arc ERKPP_Phase3 r18
+arc RasGTP r18
+arc ERK_MEKPF r18
+arc Raf r18
+arc Raf_RasGTP r18
+arc ERKPP r18
+arc RafP r18
+arc RafP_Phase1 r18
+arc Phase1 r18
+arc ERKP r18
+arc Phase3 r18
+arc ERKP_Phase3 r18
+arc ERKP_MEKPP r18
+arc MEK r18
+arc MEK_RafP r18
+arc MEKP_Phase2 r18
+arc MEKP r18
+arc Phase2 r18
+arc MEKPP_Phase2 r18
+arc MEKPP r18
+arc MEKP_RafP r18
+arc Puit r18
+arc ERK r8
+arc ERKPP_Phase3 r8
+arc RasGTP r8
+arc ERK_MEKPF r8
+arc Raf r8
+arc Raf_RasGTP r8
+arc ERKPP r8
+arc RafP r8
+arc RafP_Phase1 r8
+arc Phase1 r8
+arc ERKP r8
+arc Phase3 r8
+arc ERKP_Phase3 r8
+arc ERKP_MEKPP r8
+arc MEK r8
+arc MEK_RafP r8
+arc MEKP_Phase2 r8
+arc MEKP r8
+arc Phase2 r8
+arc MEKPP_Phase2 r8
+arc MEKPP r8
+arc MEKP_RafP r8
+arc Puit r8
+arc ERK r7
+arc ERKPP_Phase3 r7
+arc RasGTP r7
+arc ERK_MEKPF r7
+arc Raf r7
+arc Raf_RasGTP r7
+arc ERKPP r7
+arc RafP r7
+arc RafP_Phase1 r7
+arc Phase1 r7
+arc ERKP r7
+arc Phase3 r7
+arc ERKP_Phase3 r7
+arc ERKP_MEKPP r7
+arc MEK r7
+arc MEK_RafP r7
+arc MEKP_Phase2 r7
+arc MEKP r7
+arc Phase2 r7
+arc MEKPP_Phase2 r7
+arc MEKPP r7
+arc MEKP_RafP r7
+arc Puit r7
+arc ERK r9
+arc ERKPP_Phase3 r9
+arc RasGTP r9
+arc ERK_MEKPF r9
+arc Raf r9
+arc Raf_RasGTP r9
+arc ERKPP r9
+arc RafP r9
+arc RafP_Phase1 r9
+arc Phase1 r9
+arc ERKP r9
+arc Phase3 r9
+arc ERKP_Phase3 r9
+arc ERKP_MEKPP r9
+arc MEK r9
+arc MEK_RafP r9
+arc MEKP_Phase2 r9
+arc MEKP r9
+arc Phase2 r9
+arc MEKPP_Phase2 r9
+arc MEKPP r9
+arc MEKP_RafP r9
+arc Puit r9
+arc ERK r16
+arc ERKPP_Phase3 r16
+arc RasGTP r16
+arc ERK_MEKPF r16
+arc Raf r16
+arc Raf_RasGTP r16
+arc ERKPP r16
+arc RafP r16
+arc RafP_Phase1 r16
+arc Phase1 r16
+arc ERKP r16
+arc Phase3 r16
+arc ERKP_Phase3 r16
+arc ERKP_MEKPP r16
+arc MEK r16
+arc MEK_RafP r16
+arc MEKP_Phase2 r16
+arc MEKP r16
+arc Phase2 r16
+arc MEKPP_Phase2 r16
+arc MEKPP r16
+arc MEKP_RafP r16
+arc Puit r16
+arc ERK r10
+arc ERKPP_Phase3 r10
+arc RasGTP r10
+arc ERK_MEKPF r10
+arc Raf r10
+arc Raf_RasGTP r10
+arc ERKPP r10
+arc RafP r10
+arc RafP_Phase1 r10
+arc Phase1 r10
+arc ERKP r10
+arc Phase3 r10
+arc ERKP_Phase3 r10
+arc ERKP_MEKPP r10
+arc MEK r10
+arc MEK_RafP r10
+arc MEKP_Phase2 r10
+arc MEKP r10
+arc Phase2 r10
+arc MEKPP_Phase2 r10
+arc MEKPP r10
+arc MEKP_RafP r10
+arc Puit r10
+arc ERK r12
+arc ERKPP_Phase3 r12
+arc RasGTP r12
+arc ERK_MEKPF r12
+arc Raf r12
+arc Raf_RasGTP r12
+arc ERKPP r12
+arc RafP r12
+arc RafP_Phase1 r12
+arc Phase1 r12
+arc ERKP r12
+arc Phase3 r12
+arc ERKP_Phase3 r12
+arc ERKP_MEKPP r12
+arc MEK r12
+arc MEK_RafP r12
+arc MEKP_Phase2 r12
+arc MEKP r12
+arc Phase2 r12
+arc MEKPP_Phase2 r12
+arc MEKPP r12
+arc MEKP_RafP r12
+arc Puit r12
+arc ERK r11
+arc ERKPP_Phase3 r11
+arc RasGTP r11
+arc ERK_MEKPF r11
+arc Raf r11
+arc Raf_RasGTP r11
+arc ERKPP r11
+arc RafP r11
+arc RafP_Phase1 r11
+arc Phase1 r11
+arc ERKP r11
+arc Phase3 r11
+arc ERKP_Phase3 r11
+arc ERKP_MEKPP r11
+arc MEK r11
+arc MEK_RafP r11
+arc MEKP_Phase2 r11
+arc MEKP r11
+arc Phase2 r11
+arc MEKPP_Phase2 r11
+arc MEKPP r11
+arc MEKP_RafP r11
+arc Puit r11
+arc ERK r15
+arc ERKPP_Phase3 r15
+arc RasGTP r15
+arc ERK_MEKPF r15
+arc Raf r15
+arc Raf_RasGTP r15
+arc ERKPP r15
+arc RafP r15
+arc RafP_Phase1 r15
+arc Phase1 r15
+arc ERKP r15
+arc Phase3 r15
+arc ERKP_Phase3 r15
+arc ERKP_MEKPP r15
+arc MEK r15
+arc MEK_RafP r15
+arc MEKP_Phase2 r15
+arc MEKP r15
+arc Phase2 r15
+arc MEKPP_Phase2 r15
+arc MEKPP r15
+arc MEKP_RafP r15
+arc Puit r15
+arc ERK r14
+arc ERKPP_Phase3 r14
+arc RasGTP r14
+arc ERK_MEKPF r14
+arc Raf r14
+arc Raf_RasGTP r14
+arc ERKPP r14
+arc RafP r14
+arc RafP_Phase1 r14
+arc Phase1 r14
+arc ERKP r14
+arc Phase3 r14
+arc ERKP_Phase3 r14
+arc ERKP_MEKPP r14
+arc MEK r14
+arc MEK_RafP r14
+arc MEKP_Phase2 r14
+arc MEKP r14
+arc Phase2 r14
+arc MEKPP_Phase2 r14
+arc MEKPP r14
+arc MEKP_RafP r14
+arc Puit r14
+arc ERK r13
+arc ERKPP_Phase3 r13
+arc RasGTP r13
+arc ERK_MEKPF r13
+arc Raf r13
+arc Raf_RasGTP r13
+arc ERKPP r13
+arc RafP r13
+arc RafP_Phase1 r13
+arc Phase1 r13
+arc ERKP r13
+arc Phase3 r13
+arc ERKP_Phase3 r13
+arc ERKP_MEKPP r13
+arc MEK r13
+arc MEK_RafP r13
+arc MEKP_Phase2 r13
+arc MEKP r13
+arc Phase2 r13
+arc MEKPP_Phase2 r13
+arc MEKPP r13
+arc MEKP_RafP r13
+arc Puit r13
+arc ERK Puittrans
+arc ERKPP_Phase3 Puittrans
+arc RasGTP Puittrans
+arc ERK_MEKPF Puittrans
+arc Raf Puittrans
+arc Raf_RasGTP Puittrans
+arc ERKPP Puittrans
+arc RafP Puittrans
+arc RafP_Phase1 Puittrans
+arc Phase1 Puittrans
+arc ERKP Puittrans
+arc Phase3 Puittrans
+arc ERKP_Phase3 Puittrans
+arc ERKP_MEKPP Puittrans
+arc MEK Puittrans
+arc MEK_RafP Puittrans
+arc MEKP_Phase2 Puittrans
+arc MEKP Puittrans
+arc Phase2 Puittrans
+arc MEKPP_Phase2 Puittrans
+arc MEKPP Puittrans
+arc MEKP_RafP Puittrans
+arc Puit Puittrans
+</model>

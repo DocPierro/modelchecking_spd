@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<model xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='http://coloane.lip6.fr/resources/schemas/model.xsd' formalism='CosmosLHA' xposition='0' yposition='0'>
+<attributes>
+<attribute name='HASL Formula' xposition='0' yposition='0'>AVG(last(x));
+CDF(last(y),1.0,0.0,500.0);</attribute>
+<attribute name='declarations' xposition='2' yposition='29'>var x;
+var y;
+real T=100;</attribute>
+</attributes>
+<nodes>
+<node nodetype='state' id ='3' xposition='192' yposition='121' scale='100' interface='false' alt='0' foreground='#000000' background='#ffffff'>
+<attributes>
+<attribute name='invariant' xposition='212' yposition='101'>TRUE</attribute>
+<attribute name='name' xposition='212' yposition='101'>init</attribute>
+<attribute name='flow' xposition='212' yposition='101'>x'=1</attribute>
+<attribute name='type' xposition='212' yposition='101'>Initial</attribute>
+</attributes>
+</node>
+<node nodetype='state' id ='4' xposition='471' yposition='100' scale='100' interface='false' alt='0' foreground='#000000' background='#ffffff'>
+<attributes>
+<attribute name='invariant' xposition='491' yposition='80'>TRUE</attribute>
+<attribute name='name' xposition='491' yposition='80'>final</attribute>
+<attribute name='type' xposition='491' yposition='80'>Final</attribute>
+</attributes>
+</node>
+<node nodetype='state' id ='9' xposition='471' yposition='156' scale='100' interface='false' alt='0' foreground='#000000' background='#ffffff'>
+<attributes>
+<attribute name='invariant' xposition='491' yposition='136'>TRUE</attribute>
+<attribute name='name' xposition='491' yposition='136'>finover</attribute>
+<attribute name='type' xposition='491' yposition='136'>Final</attribute>
+</attributes>
+</node>
+</nodes>
+<arcs>
+<arc arctype='transition' id='5' startid='3' endid='4' color='#000000' curved='true'>
+<attributes>
+<attribute name='update' xposition='284' yposition='123'>x=1</attribute>
+<attribute name='guard' xposition='331' yposition='101'>[y&lt;=T]</attribute>
+<attribute name='label' xposition='331' yposition='88'>deadlock</attribute>
+</attributes>
+</arc>
+<arc arctype='transition' id='6' startid='3' endid='3' color='#000000' curved='true'>
+<pi xposition='179' yposition='101'/>
+<pi xposition='219' yposition='101'/>
+<attributes>
+<attribute name='update' xposition='192' yposition='121'>y=x;</attribute>
+<attribute name='guard' xposition='192' yposition='121'>TRUE</attribute>
+<attribute name='label' xposition='158' yposition='144'>ALL\{deadlock}</attribute>
+</attributes>
+</arc>
+<arc arctype='transition' id='10' startid='3' endid='9' color='#000000' curved='true'>
+<attributes>
+<attribute name='update' xposition='331' yposition='138'>x=0</attribute>
+<attribute name='guard' xposition='331' yposition='157'>[y&gt;=T]</attribute>
+<attribute name='label' xposition='325' yposition='170'>deadlock</attribute>
+</attributes>
+</arc>
+</arcs>
+<stickys>
+</stickys>
+</model>

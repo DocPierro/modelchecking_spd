@@ -1,0 +1,42 @@
+mdp
+
+const double lambda = 0.3;
+const double rho =0.35;
+const double idle =0.35;
+
+const int queue_size =7;
+const int nb_queue = 2;
+
+const int qid1 =1;
+const int qid2 =2;
+
+label "maxi" = nq1=queue_size | nq2=queue_size;
+label "mini" = nq1=0 & nq2=0; 
+formula order = max(nq1,nq2)*(queue_size*nb_queue) + nq1+nq2; 
+
+module Serveur
+	state : [1 .. nb_queue] init 1;
+	turn : [0..nb_queue] init 0;
+	[choose1] turn = 0 & state=1 -> 1/nb_queue: (turn' =1) + 1/nb_queue: (turn' =2); 
+	[choose1] turn = 0 & state=2 -> 1/nb_queue: (state'=1) & (turn' =1) + 1/nb_queue: (state'=2) & (turn' =2);
+	[choose2] turn = 0 & state=2 -> 1/nb_queue: (turn' =1) + 1/nb_queue: (turn' =2);
+	[choose2] turn = 0 & state=1 -> 1/nb_queue: (state'=2) & (turn' =1) + 1/nb_queue: (state'=2) & (turn' =2);
+	[event1] turn=1 -> (turn' = 0);
+	[event2] turn=2 -> (turn' = 0);
+endmodule
+
+module Queue1 
+	nq1 : [0..queue_size] init 1;
+	[event1] nq1 < queue_size & nq1>0 & state=qid1 -> lambda/(rho+lambda+idle) : (nq1'=nq1+1)
+				     + rho/(rho+lambda+idle) : (nq1'=nq1-1)
+				     + idle/(rho+lambda+idle) : true;
+	[event1] nq1=0 | (state!=qid1 & nq1<queue_size & nq1>0)  -> lambda/(rho+lambda+idle) : (nq1'=nq1+1)
+				     + (rho+idle)/(rho+lambda+idle) : true;
+	[event1] nq1 = queue_size & state=qid1  -> rho/(rho+lambda+idle) : (nq1'=nq1-1)
+				     + (lambda+idle)/(rho+lambda+idle) : true;     
+	[event1] nq1 = queue_size & state!=qid1  -> 1.0 : true;     
+endmodule
+
+module Queue2  = Queue1[nq1=nq2, event1=event2, qid1=qid2] endmodule
+
+	

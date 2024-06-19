@@ -1,0 +1,22 @@
+NbVariables=6;
+NbLocations=3;
+
+VariablesList={t,x,y,z,f,g};
+LocationsList={l0,l1,l2};
+
+collb=PROB;
+
+InitialLocations = {l0};
+FinalLocations = {l1};
+
+Locations={
+  (l0, TRUE, (t:1) );
+  (l1, TRUE );
+  (l2, TRUE );
+};
+
+Edges={
+  ((l0,l0), ALL\{collision,end}, t<=100000, # );
+  ((l0,l1), {collision}, t<=100000, {x=1,y=VitSelf,z=VitOther,f=CollX,g=CollY});
+  ((l0,l2), {end}, #, {x=0});
+};

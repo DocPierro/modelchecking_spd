@@ -1,0 +1,20 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: Speedup
+%   * Description: Speedup over Serial evaluation
+%   * Date: 05/05/2015 at 15:14
+% 
+%   * Column1: 	speedup: 	Estimated speedup over serial evaluation
+%
+% ----------------------------------------------------------------------------
+
+9.710998747507E-1	
+9.564650737396E-1	
+9.679950635059E-1	
+9.740818639017E-1	
+9.510988361341E-1	
+9.460248470612E-1	
+9.436200123289E-1	
+9.409015454146E-1	
+9.392091356115E-1	

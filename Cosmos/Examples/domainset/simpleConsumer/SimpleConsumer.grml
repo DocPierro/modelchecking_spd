@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/swn.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="declaration">
+    <attribute name="classDeclaration">
+      <attribute name="name">
+        Dice
+      </attribute>
+      <attribute name="classType">
+        <attribute name="classIntInterval">
+          <attribute name="lowerBound">
+            1
+          </attribute>
+          <attribute name="higherBound">
+            6
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="circular">
+        false
+      </attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">d</attribute>
+      <attribute name="type">Dice</attribute>
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="place" x="346" y="360">
+    <attribute name="marking">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="function">
+              <attribute name="all">
+                <attribute name="type">
+                  Dice
+                </attribute>
+              </attribute>
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Dice
+      </attribute>
+    </attribute>
+    <attribute name="name" x="366" y="340">
+      RolledDices
+    </attribute>
+  </node>
+  <node id="4" nodeType="transition" x="341" y="243">
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="name" x="361" y="223">
+      RollDice
+    </attribute>
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <arc id="5" arcType="arc" source="3" target="4">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              d
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+</model>

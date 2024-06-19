@@ -1,0 +1,4 @@
+Cosmos pta.grml -i --output-dot test.pdf
+
+Cosmos pta.grml -r --const "p=0.6,pa=0.65,pb=0.35,pc=0.7,pd=0.3" reach0.lha
+

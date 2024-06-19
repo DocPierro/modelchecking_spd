@@ -1,0 +1,17 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: SampleMinimum_01
+%   * Description: Current feasible minimum value
+%   * Date: 16/06/2015 at 16:55
+% 
+%   * Column1: 	sampleSize: 	Number of samples
+%   * Column2: 	fmin1: 	Minimum sampled value of output out
+%
+% ----------------------------------------------------------------------------
+
+1.000000000E0	8.865455064327E-1	
+2.000000000E0	8.865455064327E-1	
+3.000000000E0	8.865455064327E-1	
+4.000000000E0	8.865455064327E-1	
+5.000000000E0	8.865455064327E-1	

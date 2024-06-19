@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+	<node id="0" nodeType="place">
+		<attribute name="name">RecBuff_site_IC_1_file_IC_1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="1" nodeType="place">
+		<attribute name="name">all_active_site_IC_1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="2" nodeType="place">
+		<attribute name="name">Active_site_IC_1_file_IC_1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="3" nodeType="place">
+		<attribute name="name">Mutex_file_IC_1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="4" nodeType="place">
+		<attribute name="name">Message_site_IC_1_file_IC_1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="5" nodeType="place">
+		<attribute name="name">Modify_site_IC_1_file_IC_1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="6" nodeType="place">
+		<attribute name="name">MesBuffReply_site_IC_1_file_IC_1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="7" nodeType="place">
+		<attribute name="name">Acknowledge_site_IC_1_file_IC_1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="8" nodeType="place">
+		<attribute name="name">all_passive_site_IC_1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="9" nodeType="place">
+		<attribute name="name">updating_site_IC_1_file_IC_1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="10" nodeType="place">
+		<attribute name="name">WaitMutex_site_IC_1_file_IC_1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="11" nodeType="transition">
+		<attribute name="name">SendMsg_site_IC_1_file_IC_1</attribute>
+		<attribute name="distribution">
+			<attribute name="type">EXPONENTIAL</attribute>
+			<attribute name="param"><attribute name="expr"><attribute name="numValue">
+				5
+			</attribute></attribute></attribute>
+		</attribute>
+	</node>
+	<node id="12" nodeType="transition">
+		<attribute name="name">SendReply_site_IC_1_file_IC_1</attribute>
+		<attribute name="distribution">
+			<attribute name="type">EXPONENTIAL</attribute>
+			<attribute name="param"><attribute name="expr"><attribute name="numValue">
+				5
+			</attribute></attribute></attribute>
+		</attribute>
+	</node>
+	<node id="13" nodeType="transition">
+		<attribute name="name">Change_site_IC_1_file_IC_1</attribute>
+		<attribute name="distribution">
+			<attribute name="type">EXPONENTIAL</attribute>
+			<attribute name="param"><attribute name="expr"><attribute name="numValue">
+				0.2
+			</attribute></attribute></attribute>
+		</attribute>
+	</node>
+	<node id="14" nodeType="transition">
+		<attribute name="name">Release_site_IC_1_file_IC_1</attribute>
+		<attribute name="distribution">
+			<attribute name="type">DETERMINISTIC</attribute>
+			<attribute name="param"><attribute name="expr"><attribute name="numValue">
+				0
+			</attribute></attribute></attribute>
+		</attribute>
+	</node>
+	<node id="15" nodeType="transition">
+		<attribute name="name">Acquire_site_IC_1_file_IC_1</attribute>
+		<attribute name="distribution">
+			<attribute name="type">DETERMINISTIC</attribute>
+			<attribute name="param"><attribute name="expr"><attribute name="numValue">
+				0
+			</attribute></attribute></attribute>
+		</attribute>
+	</node>
+	<node id="16" nodeType="transition">
+		<attribute name="name">end_update_site_IC_1_file_IC_1</attribute>
+		<attribute name="distribution">
+			<attribute name="type">EXPONENTIAL</attribute>
+			<attribute name="param"><attribute name="expr"><attribute name="numValue">
+				0.2
+			</attribute></attribute></attribute>
+		</attribute>
+	</node>
+	<node id="17" nodeType="transition">
+		<attribute name="name">Update_site_IC_1_file_IC_1</attribute>
+		<attribute name="distribution">
+			<attribute name="type">DETERMINISTIC</attribute>
+			<attribute name="param"><attribute name="expr"><attribute name="numValue">
+				0
+			</attribute></attribute></attribute>
+		</attribute>
+	</node>
+	<node id="18" nodeType="transition">
+		<attribute name="name">Start_site_IC_1_file_IC_1</attribute>
+		<attribute name="distribution">
+			<attribute name="type">EXPONENTIAL</attribute>
+			<attribute name="param"><attribute name="expr"><attribute name="numValue">
+				5
+			</attribute></attribute></attribute>
+		</attribute>
+	</node>
+	<arc id="19" arcType="arc" source="11" target="0"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="20" arcType="arc" source="4" target="11"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="21" arcType="arc" source="6" target="12"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="22" arcType="arc" source="12" target="7"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="23" arcType="arc" source="13" target="2"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="24" arcType="arc" source="5" target="13"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="25" arcType="arc" source="14" target="1"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="26" arcType="arc" source="2" target="14"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="27" arcType="arc" source="14" target="3"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="28" arcType="arc" source="3" target="15"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="29" arcType="arc" source="15" target="5"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="30" arcType="arc" source="10" target="15"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="31" arcType="arc" source="16" target="6"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="32" arcType="arc" source="16" target="8"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="33" arcType="arc" source="9" target="16"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="34" arcType="arc" source="0" target="17"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="35" arcType="arc" source="8" target="17"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="36" arcType="arc" source="17" target="9"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="37" arcType="arc" source="1" target="18"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+	<arc id="38" arcType="arc" source="18" target="10"><attribute name="valuation"><attribute name="expr"><attribute name="numValue">
+		1
+	</attribute></attribute></attribute></arc>
+</model>

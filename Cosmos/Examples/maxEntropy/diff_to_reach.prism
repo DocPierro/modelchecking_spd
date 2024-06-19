@@ -1,0 +1,21 @@
+pta
+const int n = 5;
+const int B = 20;
+const int timeC = 10;
+const int wt = 1000;
+
+module c1
+	state1: [1..n] init 1;
+	x: clock;
+
+	invariant
+		  ( state1<n => x<B) 
+		& ( state1=n => x < wt)
+	endinvariant
+
+	[a] state1<n-1 & x<B -> 1.0 : (state1'=state1+1);
+	[b] state1=n-1 & x<timeC -> 1.0 : (state1'=n);
+	[c] state1=n-1 & x>timeC & x<B  -> 1.0 : (state1'=1)&(x'=0);	
+	[d] state1<n & x<B -> 1.0 : (state1'=1);
+	[e] state1=n & x<wt -> 1.0 : (state1'=1)&(x'=0);
+endmodule

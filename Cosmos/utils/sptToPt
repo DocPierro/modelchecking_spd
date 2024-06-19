@@ -1,0 +1,8 @@
+#!/usr/bin/sed -f
+
+s/formalism='Cosmos'/formalism='Place\/Transition Net'/1
+/<attribute name='declarations'*/,/<\/attribute>/ d
+s/<attribute name='weight'.*//g
+s/<attribute name='priority'.*//g
+s/<attribute name='service'.*//g
+s/<attribute name='distribution'.*<\/attribute>//g

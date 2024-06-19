@@ -1,0 +1,2162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="declaration">
+    <attribute name="constants">
+      <attribute name="intConsts">
+        <attribute name="intConst">
+          <attribute name="name">
+            N
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              1
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="intConst">
+          <attribute name="name">
+            N3
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              4
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="realConsts">
+        <attribute name="realConst">
+          <attribute name="name">
+            k11
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.4
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k10
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              3.3
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k15
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.1
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k14
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.8
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k13
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              10.0
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k12
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.1
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k18
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.1
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k19
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              20.0
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k16
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              10.0
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k17
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.8
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k30
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.1
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k3
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.1
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k20
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.6
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k4
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.5
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k5
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.5
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k22
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              20.0
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k6
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.1
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k21
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.1
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k24
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.1
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k7
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              3.3
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k8
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.42
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k23
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.6
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k26
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.4
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k9
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.1
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k25
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              5.0
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k1
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              1.0
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k2
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.4
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k27
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.1
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k28
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              5.0
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            k29
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              0.4
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="transition" x="981" y="524">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r29
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k29
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="4" nodeType="place" x="916" y="496">
+    <attribute name="name">
+      RE_ERK
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="function"><attribute name="*">
+        <attribute name="expr"><attribute name="numValue">
+          3
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          N3
+        </attribute></attribute>
+      </attribute></attribute></attribute>
+    </attribute>
+  </node>
+  <node id="5" nodeType="place" x="1167" y="562">
+    <attribute name="name">
+      RE_ERKPP_Phase3
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="6" nodeType="place" x="123" y="71">
+    <attribute name="name">
+      RasGTP
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="name">
+        N
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="7" nodeType="place" x="980" y="438">
+    <attribute name="name">
+      RE_ERK_MEKPF
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="8" nodeType="place" x="162" y="153">
+    <attribute name="name">
+      RE_Raf
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="function"><attribute name="*">
+        <attribute name="expr"><attribute name="numValue">
+          4
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          N
+        </attribute></attribute>
+      </attribute></attribute></attribute>
+    </attribute>
+  </node>
+  <node id="9" nodeType="transition" x="935" y="537">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r30
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k30
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="10" nodeType="place" x="226" y="95">
+    <attribute name="name">
+      RE_Raf_RasGTP
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="11" nodeType="place" x="1262" y="496">
+    <attribute name="name">
+      RE_ERKPP
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="12" nodeType="place" x="300" y="153">
+    <attribute name="name">
+      RE_RafP
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="13" nodeType="transition" x="1208" y="459">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r24
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k24
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="14" nodeType="place" x="226" y="219">
+    <attribute name="name">
+      RE_RafP_Phase1
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="15" nodeType="transition" x="1098" y="459">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r22
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="name">
+            k22
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            N3
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="17" nodeType="place" x="226" y="274">
+    <attribute name="name">
+      Phase1
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="function"><attribute name="*">
+        <attribute name="expr"><attribute name="numValue">
+          3
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          N
+        </attribute></attribute>
+      </attribute></attribute></attribute>
+    </attribute>
+  </node>
+  <node id="16" nodeType="transition" x="157" y="116">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r1
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="name">
+            k1
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            N
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="19" nodeType="transition" x="194" y="133">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r2
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k2
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="18" nodeType="transition" x="295" y="116">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r3
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k3
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="21" nodeType="place" x="1065" y="496">
+    <attribute name="name">
+      RE_ERKP
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="20" nodeType="place" x="1065" y="630">
+    <attribute name="name">
+      Phase3
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="function"><attribute name="*">
+        <attribute name="expr"><attribute name="numValue">
+          3
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          N3
+        </attribute></attribute>
+      </attribute></attribute></attribute>
+    </attribute>
+  </node>
+  <node id="23" nodeType="transition" x="1222" y="543">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r25
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="name">
+            k25
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            N3
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="22" nodeType="transition" x="1037" y="543">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r28
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="name">
+            k28
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            N3
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="25" nodeType="transition" x="227" y="181">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r5
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k5
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="24" nodeType="transition" x="181" y="194">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r6
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k6
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="27" nodeType="transition" x="283" y="200">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r4
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="name">
+            k4
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            N
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="26" nodeType="transition" x="1135" y="476">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r23
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k23
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="29" nodeType="transition" x="948" y="476">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r20
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k20
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="28" nodeType="transition" x="911" y="459">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r19
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="name">
+            k19
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            N3
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="31" nodeType="transition" x="1098" y="543">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r27
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k27
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="30" nodeType="transition" x="1021" y="459">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r21
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k21
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="34" nodeType="place" x="980" y="562">
+    <attribute name="name">
+      RE_ERKP_Phase3
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="35" nodeType="place" x="1167" y="438">
+    <attribute name="name">
+      RE_ERKP_MEKPP
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="32" nodeType="transition" x="1168" y="524">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r26
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k26
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="33" nodeType="place" x="423" y="298">
+    <attribute name="name">
+      RE_MEK
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="function"><attribute name="*">
+        <attribute name="expr"><attribute name="numValue">
+          2
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          N
+        </attribute></attribute>
+      </attribute></attribute></attribute>
+    </attribute>
+  </node>
+  <node id="38" nodeType="transition" x="488" y="326">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r17
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k17
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="39" nodeType="place" x="487" y="240">
+    <attribute name="name">
+      RE_MEK_RafP
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="36" nodeType="transition" x="442" y="339">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r18
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k18
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="37" nodeType="transition" x="455" y="278">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r8
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k8
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="42" nodeType="transition" x="418" y="261">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r7
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="name">
+            k7
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            N
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="43" nodeType="transition" x="528" y="261">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r9
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k9
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="40" nodeType="place" x="487" y="364">
+    <attribute name="name">
+      RE_MEKP_Phase2
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="41" nodeType="place" x="572" y="298">
+    <attribute name="name">
+      RE_MEKP
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="46" nodeType="place" x="572" y="432">
+    <attribute name="name">
+      Phase2
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="function"><attribute name="*">
+        <attribute name="expr"><attribute name="numValue">
+          2
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          N
+        </attribute></attribute>
+      </attribute></attribute></attribute>
+    </attribute>
+  </node>
+  <node id="47" nodeType="transition" x="544" y="345">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r16
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="name">
+            k16
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            N
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="44" nodeType="place" x="674" y="364">
+    <attribute name="name">
+      RE_MEKPP_Phase2
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="45" nodeType="place" x="779" y="298">
+    <attribute name="name">
+      RE_MEKPP
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="51" nodeType="transition" x="605" y="261">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r10
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="name">
+            k10
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            N
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="50" nodeType="transition" x="715" y="261">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r12
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k12
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="49" nodeType="transition" x="642" y="278">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r11
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k11
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="48" nodeType="transition" x="605" y="345">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r15
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k15
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="54" nodeType="place" x="674" y="240">
+    <attribute name="name">
+      RE_MEKP_RafP
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="53" nodeType="transition" x="675" y="326">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r14
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          k14
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="52" nodeType="transition" x="729" y="345">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      r13
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        MASSACTION
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="name">
+            k13
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            N
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <arc id="137" arcType="arc" source="8" target="16">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="136" arcType="arc" source="53" target="46">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="139" arcType="arc" source="20" target="22">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="138" arcType="arc" source="3" target="20">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="141" arcType="arc" source="35" target="26">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="140" arcType="arc" source="14" target="24">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="143" arcType="arc" source="10" target="19">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="142" arcType="arc" source="13" target="11">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="129" arcType="arc" source="24" target="8">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="128" arcType="arc" source="10" target="18">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="131" arcType="arc" source="46" target="52">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="130" arcType="arc" source="19" target="6">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="133" arcType="arc" source="34" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="132" arcType="arc" source="18" target="12">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="135" arcType="arc" source="12" target="27">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="134" arcType="arc" source="15" target="35">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="144" arcType="arc" source="50" target="45">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="55" arcType="arc" source="24" target="17">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="59" arcType="arc" source="9" target="20">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="58" arcType="arc" source="26" target="21">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="57" arcType="arc" source="20" target="23">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="56" arcType="arc" source="27" target="14">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="63" arcType="arc" source="45" target="28">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="62" arcType="arc" source="28" target="7">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="61" arcType="arc" source="25" target="17">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="60" arcType="arc" source="3" target="21">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="68" arcType="arc" source="25" target="12">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="69" arcType="arc" source="35" target="13">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="70" arcType="arc" source="32" target="20">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="71" arcType="arc" source="18" target="6">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="64" arcType="arc" source="14" target="25">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="65" arcType="arc" source="29" target="45">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="66" arcType="arc" source="32" target="11">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="67" arcType="arc" source="45" target="15">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="76" arcType="arc" source="13" target="45">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="77" arcType="arc" source="26" target="45">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="78" arcType="arc" source="33" target="42">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="79" arcType="arc" source="7" target="29">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="72" arcType="arc" source="30" target="21">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="73" arcType="arc" source="38" target="46">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="74" arcType="arc" source="43" target="12">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="75" arcType="arc" source="40" target="38">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="85" arcType="arc" source="4" target="28">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="84" arcType="arc" source="7" target="30">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="87" arcType="arc" source="34" target="9">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="86" arcType="arc" source="11" target="23">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="81" arcType="arc" source="5" target="31">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="80" arcType="arc" source="29" target="4">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="83" arcType="arc" source="30" target="45">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="82" arcType="arc" source="23" target="5">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="93" arcType="arc" source="31" target="20">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="92" arcType="arc" source="21" target="15">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="95" arcType="arc" source="54" target="49">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="94" arcType="arc" source="49" target="12">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="89" arcType="arc" source="37" target="12">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="88" arcType="arc" source="9" target="4">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="91" arcType="arc" source="45" target="52">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="90" arcType="arc" source="41" target="47">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="102" arcType="arc" source="51" target="54">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="103" arcType="arc" source="5" target="32">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="100" arcType="arc" source="36" target="46">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="101" arcType="arc" source="42" target="39">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="98" arcType="arc" source="22" target="34">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="99" arcType="arc" source="12" target="42">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="96" arcType="arc" source="48" target="46">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="97" arcType="arc" source="38" target="41">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="110" arcType="arc" source="37" target="33">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="111" arcType="arc" source="6" target="16">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="108" arcType="arc" source="53" target="45">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="109" arcType="arc" source="39" target="37">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="106" arcType="arc" source="36" target="33">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="107" arcType="arc" source="54" target="50">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="104" arcType="arc" source="40" target="36">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="105" arcType="arc" source="49" target="41">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="119" arcType="arc" source="44" target="48">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="118" arcType="arc" source="46" target="47">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="117" arcType="arc" source="39" target="43">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="116" arcType="arc" source="47" target="40">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="115" arcType="arc" source="44" target="53">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="114" arcType="arc" source="12" target="51">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="113" arcType="arc" source="48" target="41">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="112" arcType="arc" source="50" target="12">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="127" arcType="arc" source="41" target="51">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="126" arcType="arc" source="21" target="22">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="125" arcType="arc" source="19" target="8">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="124" arcType="arc" source="16" target="10">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="123" arcType="arc" source="31" target="21">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="122" arcType="arc" source="17" target="27">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="121" arcType="arc" source="43" target="41">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="120" arcType="arc" source="52" target="44">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+</model>

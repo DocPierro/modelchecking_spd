@@ -1,0 +1,14 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: Measure_out_TestMinimum_relativeError
+%   * Description: TestMinimum score on out; using relativeError
+%   * Date: 12/05/2015 at 10:19
+% 
+%   * Column1: 	sampleSize: 	Number of samples
+%   * Column2: 	score: 	TestMinimum score using relativeError, target is -1
+%
+% ----------------------------------------------------------------------------
+
+6.000000000E0	2.190657065E5	
+7.000000000E0	2.190657065E5	

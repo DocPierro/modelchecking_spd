@@ -1,0 +1,70 @@
+
+const double Lambda   = 0.10000;
+const double rho1 = 0.450000;
+const double rho2   = 0.450000;
+const int r = 5;
+NbPlaces = 7;
+NbTransitions = 8;
+
+PlacesList = { Queue1, Queue2 , RE_Queue1, RE_Queue2 , RE_AntiQueue2 ,ComplQueue2,Puit} ;
+TransitionsList = { LambdaT , rho1T ,rho1Tp,dummyrho1 , rho2T ,rho2Tp,dummyrho2, Puittrans};
+
+Marking= {
+(Queue1 ,1);
+(Queue2 ,0);
+(RE_Queue1   ,1);
+(RE_Queue2   ,0);
+(RE_AntiQueue2   ,r);
+(ComplQueue2 ,0);
+(Puit ,0);
+};
+
+Transitions={
+(LambdaT , EXPONENTIAL(Lambda),1,1,SINGLE);
+(rho1T  , EXPONENTIAL(rho1),1,1,SINGLE);
+(rho2T , EXPONENTIAL(rho2),1,1,SINGLE);
+(rho1Tp  , EXPONENTIAL(rho1),1,1,SINGLE);
+(rho2Tp , EXPONENTIAL(rho2),1,1,SINGLE);
+(dummyrho1  , EXPONENTIAL(rho1),1,1,SINGLE);
+(dummyrho2  , EXPONENTIAL(rho1),1,1,SINGLE);
+(Puittrans, EXPONENTIAL(0*Queue1),1,1,SINGLE);
+};
+
+
+InArcs={
+(Queue1    ,rho1T,1);
+(RE_Queue1 ,rho1T,1);
+(RE_AntiQueue2,rho1T,1);
+
+(Queue1    ,rho1Tp,1);
+
+(Queue2   ,rho2T,1);
+(RE_Queue2,rho2T,1);
+
+(Queue2      ,rho2Tp,1);
+(RE_Queue1   ,rho2Tp,1);
+(ComplQueue2 ,rho2Tp,1);
+};
+
+OutArcs={
+(LambdaT,Queue1   ,1);
+(LambdaT,RE_Queue1,1);
+
+(rho1T,Queue2   ,1);
+(rho1T,RE_Queue2,1);
+
+(rho1Tp,Queue2 ,1);
+(rho1Tp,ComplQueue2,1);
+
+(rho2T,RE_AntiQueue2 ,1);
+
+(Puittrans, Puit,1);
+};
+
+InhibitorArcs={
+(RE_AntiQueue2,rho1Tp,1);
+(RE_AntiQueue2,rho2Tp,1);
+(ComplQueue2,rho2T,1);
+(Queue1,dummyrho1,1);
+(Queue2,dummyrho2,1);
+};

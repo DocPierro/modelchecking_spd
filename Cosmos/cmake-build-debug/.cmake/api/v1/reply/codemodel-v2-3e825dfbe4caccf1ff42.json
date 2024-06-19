@@ -1,0 +1,151 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-a4c178bd50b018ce9da7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.3.1"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Cosmos",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ClientSim::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ClientSim-Debug-739c4c8c8aedfa1816a0.json",
+					"name" : "ClientSim",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ClientSimBase::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ClientSimBase-Debug-20d71b5805d2089e0670.json",
+					"name" : "ClientSimBase",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ClientSimMain::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ClientSimMain-Debug-8467e6221bac072c9474.json",
+					"name" : "ClientSimMain",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Cosmos::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Cosmos-Debug-e73efe38656917c5b80a.json",
+					"name" : "Cosmos",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "automataGen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-automataGen-Debug-d81f7832cfa2e9615e10.json",
+					"name" : "automataGen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "grml::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-grml-Debug-2c3626ca1cc6d4c304d8.json",
+					"name" : "grml",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "libeval::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-libeval-Debug-aa7e7569a393f691a1b2.json",
+					"name" : "libeval",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "libgspn::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-libgspn-Debug-c29074e46b0c594d35da.json",
+					"name" : "libgspn",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "liblha::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-liblha-Debug-27d4b625a160a25cd81a.json",
+					"name" : "liblha",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "modelConvert::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-modelConvert-Debug-dcd13b5bcee4c211bbed.json",
+					"name" : "modelConvert",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testClientSim::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testClientSim-Debug-b812a1c319383c14b95c.json",
+					"name" : "testClientSim",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/pierre/Documents/Travail/pm4pierro/Cosmos/cmake-build-debug",
+		"source" : "/home/pierre/Documents/Travail/pm4pierro/Cosmos"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

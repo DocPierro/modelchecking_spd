@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="Peterson" version="121">
+  <gspn name="GSPN" show-color-cmd="false" show-fluid-cmd="false">
+    <nodes>
+      <place marking="1" name="D1" x="14.0" y="5.0"/>
+      <place marking="1" name="P0" x="7.0" y="1.0"/>
+      <place name="P1" x="7.0" y="8.0"/>
+      <transition delay="0.1" name="T0" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="7.55" y="5.0"/>
+      <place name="Turn" x="18.0" y="13.0"/>
+      <transition name="T1" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="5.55" y="13.0"/>
+      <transition name="T2" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="9.55" y="13.0"/>
+      <place name="P2" x="7.0" y="18.0"/>
+      <transition name="T3" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="9.55" y="23.0"/>
+      <place marking="1" name="D2" x="22.0" y="5.0"/>
+      <place marking="1" name="Q0" x="29.0" y="1.0"/>
+      <place name="Q1" x="29.0" y="8.0"/>
+      <transition delay="0.01" label-x="-1.0" name="R0" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="29.55" y="5.0"/>
+      <transition name="R1" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="27.55" y="13.0"/>
+      <transition name="R2" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="31.55" y="13.0"/>
+      <place name="Q2" x="29.0" y="18.0"/>
+      <place name="P3" x="7.0" y="28.0"/>
+      <transition name="T4" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="5.55" y="23.0"/>
+      <transition delay="0.5" label-x="-0.5" name="T5" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="7.55" y="34.0"/>
+      <transition name="R3" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="31.55" y="23.0"/>
+      <place name="Q3" x="29.0" y="28.0"/>
+      <transition name="R4" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="27.55" y="23.0"/>
+      <transition delay="0.1" label-x="-1.0" name="R5" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="29.55" y="34.0"/>
+    </nodes>
+    <edges>
+      <arc head="T0" kind="INPUT" tail="P0"/>
+      <arc head="P1" kind="OUTPUT" tail="T0"/>
+      <arc head="T0" kind="INPUT" tail="D1"/>
+      <arc head="T1" kind="INPUT" tail="P1"/>
+      <arc head="T2" kind="INPUT" tail="P1"/>
+      <arc head="Turn" kind="OUTPUT" tail="T2"/>
+      <arc head="T1" kind="INPUT" mult-k="0.76669921875" tail="Turn">
+        <point x="11.5" y="16.0"/>
+      </arc>
+      <arc head="Turn" kind="OUTPUT" mult-k="1.4954101562499997" tail="T1">
+        <point x="11.5" y="16.0"/>
+      </arc>
+      <arc head="P2" kind="OUTPUT" tail="T1"/>
+      <arc head="P2" kind="OUTPUT" tail="T2"/>
+      <arc head="T3" kind="INPUT" tail="P2"/>
+      <arc head="R0" kind="INPUT" tail="Q0"/>
+      <arc head="Q1" kind="OUTPUT" tail="R0"/>
+      <arc head="R0" kind="INPUT" tail="D2"/>
+      <arc head="R1" kind="INPUT" tail="Q1"/>
+      <arc head="R2" kind="INPUT" tail="Q1"/>
+      <arc head="Q2" kind="OUTPUT" tail="R1"/>
+      <arc head="Q2" kind="OUTPUT" tail="R2"/>
+      <arc head="R1" kind="INPUT" mult-k="1.02646484375" tail="Turn">
+        <point x="24.0" y="14.0"/>
+      </arc>
+      <arc head="P3" kind="OUTPUT" tail="T3"/>
+      <arc head="T4" kind="INPUT" tail="P2"/>
+      <arc head="P3" kind="OUTPUT" tail="T4"/>
+      <arc head="T3" kind="INPUT" mult-k="1.04501953125" tail="D2">
+        <point x="13.5" y="10.0"/>
+      </arc>
+      <arc head="D2" kind="OUTPUT" mult-k="1.37548828125" tail="T3">
+        <point x="13.5" y="10.0"/>
+      </arc>
+      <arc head="T5" kind="INPUT" tail="P3"/>
+      <arc head="P0" kind="OUTPUT" tail="T5">
+        <point x="2.5" y="35.0"/>
+        <point x="2.5" y="2.0"/>
+      </arc>
+      <arc head="R3" kind="INPUT" tail="Q2"/>
+      <arc head="Q3" kind="OUTPUT" tail="R3"/>
+      <arc head="R4" kind="INPUT" tail="Q2"/>
+      <arc head="Q3" kind="OUTPUT" tail="R4"/>
+      <arc head="R4" kind="INPUT" mult-k="1.2075195312499996" tail="Turn">
+        <point x="24.0" y="19.5"/>
+      </arc>
+      <arc head="Turn" kind="OUTPUT" mult-k="1.1760742187499997" tail="R4">
+        <point x="23.5" y="19.0"/>
+      </arc>
+      <arc head="R3" kind="INPUT" mult-k="1.1018554687500002" tail="D1">
+        <point x="25.5" y="10.0"/>
+        <point x="25.5" y="19.0"/>
+      </arc>
+      <arc head="D1" kind="OUTPUT" mult-k="2.37548828125" tail="R3">
+        <point x="25.5" y="19.0"/>
+        <point x="25.5" y="10.0"/>
+      </arc>
+      <arc head="R5" kind="INPUT" tail="Q3"/>
+      <arc head="Q0" kind="OUTPUT" tail="R5">
+        <point x="37.0" y="35.0"/>
+        <point x="36.5" y="2.0"/>
+      </arc>
+      <arc head="D1" kind="OUTPUT" tail="T5">
+        <point x="15.0" y="35.0"/>
+      </arc>
+      <arc head="D2" kind="OUTPUT" tail="R5">
+        <point x="23.0" y="35.0"/>
+      </arc>
+      <arc head="T4" kind="INHIBITOR" tail="Turn"/>
+      <arc head="T2" kind="INHIBITOR" tail="Turn"/>
+      <arc head="R2" kind="INHIBITOR" mult-k="1.2879882812499996" tail="Turn">
+        <point x="25.0" y="16.0"/>
+      </arc>
+    </edges>
+  </gspn>
+  <measures gspn-name="GSPN" name="Measures">
+    <assignments/>
+    <cosmos max-iters="10000000" sol-time="TRANSIENT"/>
+    <formulas>
+      <formula comment="Basic statistics of the toolchain execution." language="STAT"/>
+      <formula comment="All the basic Petri net measures" language="ALL"/>
+    </formulas>
+  </measures>
+</project>

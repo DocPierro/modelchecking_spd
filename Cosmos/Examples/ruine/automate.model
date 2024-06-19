@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<model xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='http://coloane.lip6.fr/resources/schemas/model.xsd' formalism='CosmosLHA' xposition='0' yposition='0'>
+<attributes>
+<attribute name='HASL Formula' xposition='0' yposition='0'>AVG(last(x))</attribute>
+<attribute name='declarations' xposition='0' yposition='16'>var x;</attribute>
+</attributes>
+<nodes>
+<node nodetype='location' id ='3' xposition='245' yposition='290' scale='100' interface='false' alt='0' foreground='#000000' background='#ffffff'>
+<attributes>
+<attribute name='invariant' xposition='101' yposition='256'> [J1_5+J2_5+ J1_1+J2_1 &lt; 2]</attribute>
+<attribute name='type' xposition='245' yposition='325'>Initial</attribute>
+</attributes>
+</node>
+<node nodetype='location' id ='4' xposition='420' yposition='190' scale='100' interface='false' alt='0' foreground='#000000' background='#ffffff'>
+<attributes>
+<attribute name='invariant' xposition='270' yposition='154'>[J1_5+J2_5 &gt; J1_1+J2_1] &amp; [J1_5+J2_5+ J1_1+J2_1 = 2]</attribute>
+<attribute name='name' xposition='440' yposition='170'>sp</attribute>
+<attribute name='type' xposition='440' yposition='189'>Final</attribute>
+</attributes>
+</node>
+<node nodetype='location' id ='5' xposition='420' yposition='377' scale='100' interface='false' alt='0' foreground='#000000' background='#ffffff'>
+<attributes>
+<attribute name='invariant' xposition='278' yposition='398'>[J1_5+J2_5 &gt; J1_1+J2_1] &amp; [J1_5+J2_5+ J1_1+J2_1 = 2]</attribute>
+<attribute name='name' xposition='440' yposition='357'>sm</attribute>
+<attribute name='type' xposition='440' yposition='376'>Final</attribute>
+</attributes>
+</node>
+</nodes>
+<arcs>
+<arc arctype='arc' id='6' startid='3' endid='4' color='#000000' curved='true'>
+<attributes>
+<attribute name='update' xposition='332' yposition='240'>x=1</attribute>
+<attribute name='guard' xposition='328' yposition='240'>TRUE</attribute>
+<attribute name='action' xposition='328' yposition='240'>ALL</attribute>
+</attributes>
+</arc>
+<arc arctype='arc' id='7' startid='3' endid='5' color='#000000' curved='true'>
+<attributes>
+<attribute name='update' xposition='332' yposition='333'>x=0</attribute>
+<attribute name='guard' xposition='332' yposition='333'>TRUE</attribute>
+<attribute name='action' xposition='332' yposition='333'>ALL</attribute>
+</attributes>
+</arc>
+<arc arctype='arc' id='8' startid='3' endid='3' color='#000000' curved='true'>
+<pi xposition='209' yposition='321'/>
+<pi xposition='211' yposition='275'/>
+<attributes>
+<attribute name='guard' xposition='245' yposition='290'>TRUE</attribute>
+<attribute name='action' xposition='245' yposition='290'>ALL</attribute>
+</attributes>
+</arc>
+</arcs>
+<stickys>
+</stickys>
+</model>

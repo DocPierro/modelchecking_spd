@@ -1,0 +1,32 @@
+const double T=3600000;
+const double invT=1e-05;
+const double Ttrans=0;
+VariablesList = {time, PLVAR_P_T56_RewardStr, PLVAR_P_T53_RewardStr, PLVAR_P_T57_RewardStr, PLVAR_P_T58_RewardStr,PLVAR_P_T55_RewardStr, PLVAR_P_T54_RewardStr} ;
+LocationsList = {l0, l1,l2};
+%MeanToken_P_T56_RewardStr= AVG(Last( PLVAR_P_T56_RewardStr));
+%MeanToken_P_T53_RewardStr= AVG(Last( PLVAR_P_T53_RewardStr));
+%MeanToken_P_T57_RewardStr= AVG(Last( PLVAR_P_T57_RewardStr));
+%MeanToken_P_T58_RewardStr= AVG(Last( PLVAR_P_T58_RewardStr));
+%MeanToken_P_T55_RewardStr= AVG(Last( PLVAR_P_T55_RewardStr));
+%MeanToken_P_T54_RewardStr= AVG(Last( PLVAR_P_T54_RewardStr));
+Total = AVG(Last( PLVAR_P_T53_RewardStr + PLVAR_P_T54_RewardStr + PLVAR_P_T55_RewardStr + PLVAR_P_T56_RewardStr + PLVAR_P_T57_RewardStr + PLVAR_P_T58_RewardStr));
+
+InitialLocations={l0};
+FinalLocations={l2};
+Locations={
+(l0, TRUE, (time:1));
+(l1, TRUE, (time:1 , 
+PLVAR_P_T56_RewardStr: P_T56_RewardStr_968* invT ,
+PLVAR_P_T53_RewardStr: P_T53_RewardStr_998* invT , 
+PLVAR_P_T57_RewardStr: P_T57_RewardStr_963* invT , 
+PLVAR_P_T58_RewardStr: P_T58_RewardStr_976* invT , 
+PLVAR_P_T55_RewardStr: P_T55_RewardStr_1207* invT + P_T55_RewardStr_1211* invT + P_T55_RewardStr_1210* invT + P_T55_RewardStr_1209* invT + P_T55_RewardStr_1208* invT , 
+PLVAR_P_T54_RewardStr: P_T54_RewardStr_1201* invT + P_T54_RewardStr_1200* invT + P_T54_RewardStr_1193* invT + P_T54_RewardStr_1195* invT + P_T54_RewardStr_1194* invT ));
+(l2, TRUE);
+};
+Edges={
+((l0,l0),ALL,time<= Ttrans ,#);
+((l0,l1),#,time=Ttrans ,{time=0});
+((l1,l1),ALL,time<=T,#);
+((l1,l2),#,time=T ,#);
+};

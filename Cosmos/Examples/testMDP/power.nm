@@ -1,0 +1,69 @@
+mdp
+
+const int QMAX = 2; 
+
+module PM	// Power Manager (PM)
+
+	pm : [0..4] init 1;
+	// 0 - go to active 
+	// 1 - go to idle 
+	// 2 - go to idlelp 
+	// 3 - go to stby  
+	// 4 - go to sleep 
+	
+	// Only go to active when queue is full
+	[choose0] q=QMAX -> (pm'=0);
+	[choose0] q<QMAX -> (pm'=0);
+	[choose1] q<QMAX -> (pm'=1);
+	[choose2] q<QMAX -> (pm'=2);
+	[choose3] q<QMAX -> (pm'=3);
+	[choose4] q<QMAX -> (pm'=4);
+	
+	[tick] true -> (pm'=pm);
+	
+endmodule
+
+module SR	// Service Requester (SR)
+
+	sr : [0..1] init 0;
+	// 0 idle
+	// 1 1req
+	
+	[tick] sr=0 -> 0.898: (sr'=0) + 0.102: (sr'=1);
+	[tick] sr=1 -> 0.454: (sr'=0) + 0.546: (sr'=1);
+
+endmodule
+
+module SP 	// Service Provider (SP) (Disk drive)
+
+	sp : [0..1] init 1;
+	// 0 active
+	// 1 idle
+	
+endmodule
+
+module SQ	// Service Queue (SQ)
+
+	q : [0..QMAX] init 0;
+	
+	// request removed by SP if it is active
+	// [tick] sr=0 & sp=0 -> (q'=max(q-1,0)); Probleme parser avec max
+	[tick] sr=0 & sp=0 & q > 0 -> (q'=q-1);
+	[tick] sr=0 & sp=0 & q < 1 -> (q'=0);
+	[tick] sr=1 & sp=0 -> (q'=q);
+	
+	// otherwise do nothing
+	[tick] sr=0 & sp>0 -> (q'=q);
+	[tick] sr=1 & sp>0 & q<QMAX -> (q'=q+1);
+	[tick] sr=1 & sp>0 & q=QMAX -> (q'=q);
+
+endmodule
+
+module sched	// Scheduler
+
+	turn : [0..1];
+
+	[choose] turn=0 -> (turn'=1);
+	[tick] turn=1 -> (turn'=0);
+	
+endmodule

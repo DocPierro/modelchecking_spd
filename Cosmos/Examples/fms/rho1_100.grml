@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model formalismUrl="http://formalisms.cosyverif.org/HASL-formula.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="declaration">
+    <attribute name="constants">
+      <attribute name="intConsts">
+      </attribute>
+      <attribute name="realConsts">
+        <attribute name="realConst">
+          <attribute name="name">
+            T
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              100
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="variables">
+      <attribute name="reals">
+        <attribute name="real">
+          <attribute name="name">
+            Btime
+          </attribute>
+        </attribute>
+        <attribute name="real">
+          <attribute name="name">
+            t
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="discretes">
+      </attribute>
+      <attribute name="colors">
+      </attribute>
+    </attribute>
+  </attribute>
+  <attribute name="HASLFormula">
+    <attribute name="AVG">
+      <attribute name="YHF">
+        <attribute name="last">
+          <attribute name="expr"><attribute name="name">
+            Btime
+          </attribute></attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="state" x="269" y="194">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="less">
+        <attribute name="expr"><attribute name="name">
+          Q1
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="numValue">
+          2
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      nonblock
+    </attribute>
+    <attribute name="flows">
+      <attribute name="flow">
+        <attribute name="name">
+          t
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="type">
+      Initial
+    </attribute>
+  </node>
+  <node id="4" nodeType="state" x="384" y="194">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      f
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Final
+    </attribute>
+  </node>
+  <node id="5" nodeType="state" x="269" y="253">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="greaterEqual">
+        <attribute name="expr"><attribute name="name">
+          Q1
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="numValue">
+          2
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      block
+    </attribute>
+    <attribute name="flows">
+      <attribute name="flow">
+        <attribute name="name">
+          t
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+      <attribute name="flow">
+        <attribute name="name">
+          Btime
+        </attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="numValue">
+            1
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            T
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <arc id="6" arcType="transition" source="3" target="4">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="equal">
+        <attribute name="expr"><attribute name="name">
+          t
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          T
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+  <arc id="7" arcType="transition" source="3" target="3">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="8" arcType="transition" source="5" target="5">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="9" arcType="transition" source="5" target="3">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="10" arcType="transition" source="3" target="5">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="11" arcType="transition" source="5" target="4">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="equal">
+        <attribute name="expr"><attribute name="name">
+          t
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          T
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+</model>

@@ -1,0 +1,9 @@
+digraph G {
+	B13O1 [xlabel="B13O1",label="$B13O1$"];
+	B8O1 [xlabel="B8O1",label="$B8O1$"];
+	B7O1 [xlabel="B7O1",label="$B7O1$"];
+	B9O1 [xlabel="B9O1",label="$B9O1$"];
+	B11O1 [xlabel="B11O1",label="$B11O1$"];
+	B10O1 [xlabel="B10O1",label="$B10O1$"];
+	SimulinkTransition [shape=rect,height=0.2,style=filled,fillcolor=$CF_SimulinkTransition$ ,xlabel="SimulinkTransition",label="$ET_SimulinkTransition$"];
+}

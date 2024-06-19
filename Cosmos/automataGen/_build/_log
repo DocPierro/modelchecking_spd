@@ -1,0 +1,46 @@
+### Starting build.
+# Target: generator.ml.depends, tags: { extension:ml, file:generator.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules generator.ml > generator.ml.depends # cached
+# Target: automata.ml.depends, tags: { extension:ml, file:automata.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules automata.ml > automata.ml.depends # cached
+# Target: type.ml.depends, tags: { extension:ml, file:type.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules type.ml > type.ml.depends # cached
+# Target: type.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:type.cmo, file:type.ml, implem, ocaml, quiet }
+ocamlc.opt -c -o type.cmo type.ml # cached
+# Target: automata.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:automata.cmo, file:automata.ml, implem, ocaml, quiet }
+ocamlc.opt -c -o automata.cmo automata.ml # cached
+# Target: lexer.mll, tags: { extension:mll, file:lexer.mll, lexer, ocaml, ocamllex, quiet }
+ocamllex.opt -q lexer.mll # cached
+# Target: lexer.ml.depends, tags: { extension:ml, file:lexer.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules lexer.ml > lexer.ml.depends # cached
+# Target: parser.mly, tags: { extension:mly, file:parser.mly, infer, ocaml, ocamlyacc, parser, quiet }
+ocamlyacc parser.mly # cached
+# Target: parser.mli.depends, tags: { extension:mli, file:parser.mli, ocaml, ocamldep, quiet }
+ocamldep.opt -modules parser.mli > parser.mli.depends # cached
+# Target: parser.cmi, tags: { byte, compile, extension:mli, file:parser.mli, interf, ocaml, quiet }
+ocamlc.opt -c -o parser.cmi parser.mli # cached
+# Target: lexer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:lexer.cmo, file:lexer.ml, implem, ocaml, quiet }
+ocamlc.opt -c -o lexer.cmo lexer.ml # cached
+# Target: writer.ml.depends, tags: { extension:ml, file:writer.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules writer.ml > writer.ml.depends # cached
+# Target: writer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:writer.cmo, file:writer.ml, implem, ocaml, quiet }
+ocamlc.opt -c -o writer.cmo writer.ml # cached
+# Target: generator.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:generator.cmo, file:generator.ml, implem, ocaml, quiet }
+ocamlc.opt -c -o generator.cmo generator.ml # cached
+# Target: type.cmx, tags: { compile, extension:cmx, extension:ml, file:type.cmx, file:type.ml, implem, native, ocaml, quiet }
+ocamlopt.opt -c -o type.cmx type.ml # cached
+# Target: automata.cmx, tags: { compile, extension:cmx, extension:ml, file:automata.cmx, file:automata.ml, implem, native, ocaml, quiet }
+ocamlopt.opt -c -o automata.cmx automata.ml # cached
+# Target: parser.ml.depends, tags: { extension:ml, file:parser.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules parser.ml > parser.ml.depends # cached
+# Target: parser.cmx, tags: { compile, extension:cmx, extension:ml, file:parser.cmx, file:parser.ml, implem, native, ocaml, quiet }
+ocamlopt.opt -c -o parser.cmx parser.ml # cached
+# Target: lexer.cmx, tags: { compile, extension:cmx, extension:ml, file:lexer.cmx, file:lexer.ml, implem, native, ocaml, quiet }
+ocamlopt.opt -c -o lexer.cmx lexer.ml # cached
+# Target: writer.cmx, tags: { compile, extension:cmx, extension:ml, file:writer.cmx, file:writer.ml, implem, native, ocaml, quiet }
+ocamlopt.opt -c -o writer.cmx writer.ml # cached
+# Target: generator.cmx, tags: { compile, extension:cmx, extension:ml, file:generator.cmx, file:generator.ml, implem, native, ocaml, quiet }
+ocamlopt.opt -c -o generator.cmx generator.ml # cached
+# Target: generator.native, tags: { dont_link_with, extension:native, file:generator.native, link, native, ocaml, program, quiet }
+ocamlopt.opt type.cmx automata.cmx parser.cmx lexer.cmx writer.cmx generator.cmx -o generator.native # cached
+# Compilation successful.

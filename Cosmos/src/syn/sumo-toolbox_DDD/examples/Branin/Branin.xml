@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Simulator>
+	<Name>Branin</Name>
+	<Description>
+		Branin's function
+		The global minima: x* =  (-pi, 12.275), (pi , 2.275), (9.42478, 2.475),
+		f(x*) = 0.397887
+	</Description>
+	
+	<!-- The input parameters -->
+	<InputParameters>
+		<Parameter name="x" type="real" minimum="-5" maximum="10"/>
+		<Parameter name="y" type="real" minimum="0" maximum="15"/>
+
+	<Constraint type="NonlinearConstraint" >
+			<Option key="f" value="PrWc1" />
+		</Constraint>
+	</InputParameters>
+	
+	<!-- The output parameters -->
+	<OutputParameters>
+		<Parameter name="out" type="real"/>
+	</OutputParameters>
+	
+	<!-- A simulator may have multiple implementations: as an executable, a 
+	     java main class, a dataset, ...-->
+	<Implementation>
+		
+		<Executables>
+			<!-- An arch attribute may make sense here as well -->
+			<Executable platform="matlab" batch="true">bra</Executable>
+		</Executables>
+		
+       
+       
+	</Implementation>
+</Simulator>
+

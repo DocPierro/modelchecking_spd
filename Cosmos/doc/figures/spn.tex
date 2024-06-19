@@ -1,0 +1,35 @@
+\begin{tikzpicture}[node distance=0.6cm,>=stealth',auto]
+{\scriptsize
+  \tikzstyle{place}=[circle,thick,draw=blue!75,minimum size=4mm]
+  \tikzstyle{transition}=[rectangle,thick,draw=black!75,
+  minimum width=4mm,inner sep=0pt,minimum height=.7mm]
+
+    \node [] (i1)       {};
+    \node [transition,label=left:$Arrive_1$,label=right:Exp($\lambda_1$)] (tr1) [below of =i1]{};
+    \node [place,label=left:$Request_1$] (r1) [below of=tr1]  {};
+    \node [transition,,label=left:$Start_1$,fill=black!75] (ta1) [below of =r1]{}; %label=right:$(\mbox{pri}_1\colon w_1)$
+    \node [place,label=left:$Access_1$] (a1)  [below of=ta1] {};
+    \node [transition,label=left:$End_1$,label=right:{\hspace{-0mm}{\scriptsize Unif $[\alpha_1,\beta_1]$}}] (ti1) [below of =a1]{};
+    \node [place,tokens=1,label=above:$Free$] (f) [right of=r1,xshift=13mm]    {};
+    \node [place,label=right:$Request_2$] (r2) [right of=f,xshift=13mm]    {};
+   \node [transition,label=right:$Arrive_2$,label=left:Exp($\lambda_2$)] (tr2) [above of =r2]{};
+    \node [] (i2) [above of=tr2]    {};
+    \node [transition,label=right:$Start_2$,fill=black!75] (ta2) [below of =r2]{}; %label=left:$(\mbox{pri}_2\colon w_2)$,
+    \node [place,label=right:$Access_2$] (a2) [below of=ta2]    {};
+    \node [transition,label=right:$End_2$,label=left:{\hspace{-2mm}{\scriptsize Unif $[\alpha_2,\beta_2]$}}] (ti2) [below of =a2]{};
+%\draw [-latex'] (i1) to (tr1);
+\draw [-latex'] (tr1) to (r1);
+\draw [-latex'] (r1) to (ta1);
+\draw [-latex'] (ta1) to (a1);
+\draw [-latex'] (a1) to (ti1);
+%\draw [-latex'] (i2) to (tr2);
+\draw [-latex'] (tr2) to (r2);
+\draw [-latex'] (r2) to (ta2);
+\draw [-latex'] (ta2) to (a2);
+\draw [-latex'] (a2) to (ti2);
+\draw [-latex'] (f) .. controls +(0:10mm) and +(110:10mm) .. (ta2);
+\draw [-latex'] (f) .. controls +(180:10mm) and +(70:10mm) .. (ta1);
+\draw [-latex'] (ti1) .. controls +(45:15mm)  .. (f); %and +(260:20mm)
+\draw [-latex'] (ti2) .. controls +(135:15mm) .. (f); %and +(280:20mm) 
+}
+\end{tikzpicture} 

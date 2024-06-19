@@ -1,0 +1,33 @@
+
+const double timeB = 10;
+const double Dline = 200;
+
+VariablesList = {time,DISC countT, x,y} ;
+LocationsList = {lf1,lf2, lff};
+
+PROB;
+
+InitialLocations={lf1};
+FinalLocations={lff};
+Locations={
+(lf1, TRUE, (time:1,x:1,y:1));
+(lf2, TRUE, (time:1,x:1,y:1));
+(lff, TRUE, (time:1,x:1,y:1));
+};
+
+
+Edges={
+((lf1,lf1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lf2,lf2),ALL\{t_a,t_b}, countT<=Dline ,#);
+
+((lf1,lff),ALL, countT=Dline+1 ,#);
+((lf2,lff),ALL, countT=Dline+1 ,#);
+
+((lf1,lf1),{t_a}, x<=timeB  ,{countT = countT+1});
+((lf1,lf2),{t_b}, x<=timeB ,{countT = countT+1,x'=0});
+
+((lf2,lf2),{t_a}, y<=timeB  ,{countT = countT+1});
+((lf2,lf1),{t_b}, y<=timeB ,{countT = countT+1,y'=0});
+
+
+};

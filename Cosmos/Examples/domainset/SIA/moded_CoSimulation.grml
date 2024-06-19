@@ -1,0 +1,1936 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/swn.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="externalDeclaration">
+struct egoVehicle { int px; int py; int vx; int vy; int ax; int ay; };
+struct othVehicle { int px; int py; int vx; int vy; };
+typedef othVehicle* radarData;
+/* Variables globales de simulation */
+int vMax = (int) Vmax;
+int vMinInit = (int) VminInit;
+int vMin = (int) Vmin;
+int nVeh = (int) Nveh;
+int nVoies = (int) Nvoies;
+int mkNew = (int) MakeNew;
+int nCases = (int) Ncases;
+int envBehaviour = (int) EnvBehaviour;
+int typeGeneration = (int) TypeGeneration;
+/* Inclusion du contrôleur */
+#include "../controleur.h"
+/* Variables utilisées lors de transitions */
+int px; int py; int vx; int vy; int ax; int ay;
+int vehMax = (vMax + 2)*(nVoies + 1)+vMax;
+int vehVus = 0;
+radarData donnees = new othVehicle[vehMax];
+othVehicle vehiculevu;
+int dbx; int dby; int fbx; int fby;
+egoVehicle ego; egoVehicle nouvpos;
+int position; int vitesse; int voie; int deltavit; int chgtvoie; int accel; int vit; int pos;
+int selfpos; int selfvoie;
+bool ajoute; int tmppos; int tmpvoi; int tmpvit;
+int vitself; int vitoth; int collx; int colly;
+  </attribute>
+  <attribute name="declaration">
+    <attribute name="constants">
+      <attribute name="intConsts">
+        <attribute name="intConst">
+          <attribute name="name">
+            Nveh
+          </attribute>
+          <attribute name="expr"><attribute name="numValue">
+            10
+          </attribute></attribute>
+        </attribute>
+        <attribute name="intConst">
+          <attribute name="name">
+            Nvoies <!-- en realite, nombre de voies moins une -->
+          </attribute>
+          <attribute name="expr"><attribute name="numValue">
+            1
+          </attribute></attribute>
+        </attribute>
+        <attribute name="intConst">
+          <attribute name="name">
+            Ncases <!-- en realite, nombre de cases moins une -->
+          </attribute>
+          <attribute name="expr"><attribute name="numValue">
+            500
+          </attribute></attribute>
+        </attribute>
+        <attribute name="intConst">
+          <attribute name="name">
+            Vmax
+          </attribute>
+          <attribute name="expr"><attribute name="numValue">
+            2
+          </attribute></attribute>
+        </attribute>
+        <attribute name="intConst">
+          <attribute name="name">
+            VminInit
+          </attribute>
+          <attribute name="expr"><attribute name="numValue">
+            0
+          </attribute></attribute>
+        </attribute>
+        <attribute name="intConst">
+          <attribute name="name">
+            Vmin
+          </attribute>
+          <attribute name="expr"><attribute name="numValue">
+            0
+          </attribute></attribute>
+        </attribute>
+        <attribute name="intConst">
+          <attribute name="name">
+            MakeNew
+          </attribute>
+          <attribute name="expr"><attribute name="numValue">
+            0
+          </attribute></attribute>
+        </attribute>
+        <attribute name="intConst">
+          <attribute name="name">
+            EnvBehaviour
+          </attribute>
+          <attribute name="expr"><attribute name="numValue">
+            0
+          </attribute></attribute>
+        </attribute>
+        <attribute name="intConst">
+          <attribute name="name">
+            TypeGeneration
+          </attribute>
+          <attribute name="expr"><attribute name="numValue">
+            0
+          </attribute></attribute>
+        </attribute>
+      </attribute>
+      <attribute name="realConsts">
+        <attribute name="realConst">
+	  <attribute name="name">
+	    MinDelay
+	  </attribute>
+	  <attribute name="expr"><attribute name="numValue">
+	    50
+	  </attribute></attribute>
+	</attribute>
+	<attribute name="realConst">
+	  <attribute name="name">
+	    MaxDelay
+	  </attribute>
+	  <attribute name="expr"><attribute name="numValue">
+	    100
+	  </attribute></attribute>
+	</attribute>
+      </attribute>
+    </attribute>
+    <attribute name="classDeclaration">
+      <attribute name="name">
+        PosX
+      </attribute>
+      <attribute name="classType">
+        <attribute name="classIntInterval">
+          <attribute name="lowerBound">
+            0
+          </attribute>
+          <attribute name="higherBound">
+            <attribute name="expr"><attribute name="name">
+              Ncases
+            </attribute></attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="circular">
+        false
+      </attribute>
+    </attribute>
+    <attribute name="classDeclaration">
+      <attribute name="name">
+        PosY
+      </attribute>
+      <attribute name="classType">
+        <attribute name="classIntInterval">
+          <attribute name="lowerBound">
+            0
+          </attribute>
+          <attribute name="higherBound">
+            <attribute name="expr"><attribute name="name">
+              Nvoies
+            </attribute></attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="circular">
+        false
+      </attribute>
+    </attribute>
+    <attribute name="classDeclaration">
+      <attribute name="name">
+        VitX
+      </attribute>
+      <attribute name="classType">
+        <attribute name="classIntInterval">
+          <attribute name="lowerBound">
+            0
+          </attribute>
+          <attribute name="higherBound">
+            <attribute name="expr"><attribute name="name">
+              Vmax
+            </attribute></attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="circular">
+        false
+      </attribute>
+    </attribute>
+    <attribute name="classDeclaration">
+      <attribute name="name">
+        VitY
+      </attribute>
+      <attribute name="classType">
+        <attribute name="classIntInterval">
+          <attribute name="lowerBound">
+            0
+          </attribute>
+          <attribute name="higherBound">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="circular">
+        false
+      </attribute>
+    </attribute>
+    <attribute name="classDeclaration">
+      <attribute name="name">
+        AccX
+      </attribute>
+      <attribute name="classType">
+        <attribute name="classIntInterval">
+          <attribute name="lowerBound">
+            0
+          </attribute>
+          <attribute name="higherBound">
+            2
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="circular">
+        false
+      </attribute>
+    </attribute>
+    <attribute name="classDeclaration">
+      <attribute name="name">
+        AccY
+      </attribute>
+      <attribute name="classType">
+        <attribute name="classIntInterval">
+          <attribute name="lowerBound">
+            0
+          </attribute>
+          <attribute name="higherBound">
+            2
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="circular">
+        false
+      </attribute>
+    </attribute>
+    <attribute name="classDeclaration">
+      <attribute name="name">
+        Jeton
+      </attribute>
+      <attribute name="classType">
+        <attribute name="classIntInterval">
+          <attribute name="lowerBound">
+            1
+          </attribute>
+          <attribute name="higherBound">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="circular">
+        false
+      </attribute>
+    </attribute>
+    <attribute name="domainDeclaration">
+      <attribute name="name">
+        Vehicle
+      </attribute>
+      <attribute name="domainType">
+        <attribute name="cartesianProduct">
+          <attribute name="type">
+            PosX
+          </attribute>
+          <attribute name="type">
+            PosY
+          </attribute>
+          <attribute name="type">
+            VitX
+          </attribute>
+          <attribute name="type">
+            VitY
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="domainDeclaration">
+      <attribute name="name">
+        SelfVehicle
+      </attribute>
+      <attribute name="domainType">
+        <attribute name="cartesianProduct">
+          <attribute name="type">
+            PosX
+          </attribute>
+          <attribute name="type">
+            PosY
+          </attribute>
+          <attribute name="type">
+            VitX
+          </attribute>
+          <attribute name="type">
+            VitY
+          </attribute>
+          <attribute name="type">
+            AccX
+          </attribute>
+          <attribute name="type">
+            AccY
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">xs</attribute>
+      <attribute name="type">PosX</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">x</attribute>
+      <attribute name="type">PosX</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">ys</attribute>
+      <attribute name="type">PosY</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">y</attribute>
+      <attribute name="type">PosY</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">dxs</attribute>
+      <attribute name="type">VitX</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">dx</attribute>
+      <attribute name="type">VitX</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">dys</attribute>
+      <attribute name="type">VitY</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">dy</attribute>
+      <attribute name="type">VitY</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">ddx</attribute>
+      <attribute name="type">AccX</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">ddy</attribute>
+      <attribute name="type">AccY</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">j</attribute>
+      <attribute name="type">Jeton</attribute>
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="place" x="880" y="492">
+    <attribute name="name" x="900" y="472">
+      selfVehicle
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        SelfVehicle
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="4" nodeType="transition" x="686" y="487">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        2
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="639" y="467">
+      updateSelf
+    </attribute>
+    <attribute name="update">
+      position = (int) (b.P->x).c0;
+      vitesse = (int) (b.P->dx).c0;
+      accel = (int) (b.P->ddx).c0;
+      accel = accel - 1;
+      position = min(position + vitesse,(Color_PosX_Total - 1));
+      M._PL_selfVehicle -= ((SelfVehicle_Token(b.P->x, b.P->y, b.P->dx, b.P->dy, b.P->ddx, b.P->ddy) * (1 )));
+      M._PL_selfVehicle += ((SelfVehicle_Token( (PosX_Color_Classe) position, b.P->y, b.P->dx, b.P->dy, b.P->ddx, b.P->ddy) * (1 )));
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="5" nodeType="transition" x="683" y="577">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="703" y="557">
+      lightController
+    </attribute>
+    <attribute name="update">
+      px = (int) (b.P->x).c0;
+      py = (int) (b.P->y).c0;
+      vx = (int) (b.P->dx).c0;
+      vy = (int) (b.P->dy).c0;
+      ax = (int) (b.P->ddx).c0;
+      ay = (int) (b.P->ddy).c0;
+
+      vehVus = 0;
+
+      dbx=max(0,px-1); fbx=max((int) px+2*vMax,(int) Color_PosX_Total);
+      dby=max(0,py-1); fby=max((int) py+1,(int) Color_PosY_Total);
+      for (int i0=dbx;i0 &lt; fbx;i0++) {
+        if (i0>px+vMax) { dby=py; fby=py; }
+        for (int i1=dby;i1 &lt; fby;i1++) {
+          for (int i2=0;i2 &lt; (int) Color_VitX_Total;i2++) {
+            for (int i3=0;i3 &lt; (int) Color_VitY_Total;i3++) {
+              if (contains(Marking.P->_PL_otherVehicles, ((Vehicle_Token( (PosX_Color_Classe) i0, (PosY_Color_Classe) i1, (VitX_Color_Classe) i2, (VitY_Color_Classe) i3) * (1))))) {
+                vehiculevu = {i0, i1, i2, i3};
+                donnees[vehVus] = vehiculevu;
+                vehVus++;
+              }
+            }
+          }
+        }
+      }
+
+
+      ego = {px, py, vx, vy, ax, ay};
+      nouvpos = controller(vehVus, donnees, ego);
+
+      Marking.P->_PL_selfVehicle -= ((SelfVehicle_Token(b.P->x, b.P->y, b.P->dx, b.P->dy, b.P->ddx, b.P->ddy) * (1 )));
+      Marking.P->_PL_selfVehicle += ((SelfVehicle_Token( (PosX_Color_Classe) nouvpos.px, (PosY_Color_Classe) nouvpos.py, (VitX_Color_Classe) nouvpos.vx, (VitY_Color_Classe) nouvpos.vy, (AccX_Color_Classe) nouvpos.ax, (AccY_Color_Classe) nouvpos.ay) * (1)));
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="6" nodeType="place" x="487" y="108">
+    <attribute name="name" x="507" y="88">
+      simstep1
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Jeton
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="7" nodeType="place" x="487" y="316">
+    <attribute name="name" x="507" y="296">
+      simstep2
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Jeton
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="8" nodeType="place" x="487" y="492">
+    <attribute name="name" x="507" y="472">
+      simstep3
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Jeton
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="9" nodeType="place" x="487" y="582">
+    <attribute name="name" x="507" y="562">
+      simstep4
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Jeton
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="10" nodeType="transition" x="482" y="28">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="502" y="8">
+      simstepA
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        UNIFORM
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="11" nodeType="transition" x="482" y="214">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="502" y="194">
+      simstepB
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="12" nodeType="transition" x="482" y="408">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="502" y="388">
+      simstepC
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="13" nodeType="transition" x="686" y="103">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        2
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="707" y="96">
+      randOther
+    </attribute>
+    <attribute name="update">
+      position = (int) (b.P->x).c0;
+      vitesse = (int) (b.P->dx).c0;
+      voie = (int) (b.P->y).c0;
+      deltavit = (int) 0;
+      if (envBehaviour == 0) {
+        chgtvoie = rand() % 30;
+        if (chgtvoie == 1) { voie = 1 - voie; }
+      }
+      else if (envBehaviour == 1) {
+        deltavit = (rand() % 3) - 1;
+      }
+      else if (envBehaviour == 2) {
+        deltavit = rand() % (2*vMax+1);
+        deltavit = deltavit - vMax;
+      }
+      else if (envBehaviour == 3) {
+        deltavit = rand() % 40;
+ 	if (deltavit &lt; 38) { deltavit = 0; }
+ 	else if (deltavit == 38) { deltavit = -1; }
+	else { deltavit = 1; }
+      }
+      else if (envBehaviour == 4) { deltavit=0; }
+      position = position + vitesse;
+      vitesse = max(vMin,min(vMax,vitesse + deltavit));
+      Marking.P->_PL_inProcess -= ((Vehicle_Token(b.P->x, b.P->y, b.P->dx, b.P->dy) * (1 )));;
+      Marking.P->_PL_inProcess += ((Vehicle_Token( (PosX_Color_Classe) position, (PosY_Color_Classe) voie, (VitX_Color_Classe) vitesse, b.P->dy) * (1 )));
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="14" nodeType="place" x="388" y="113">
+    <attribute name="name" x="390" y="147">
+      initGenere
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Jeton
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="15" nodeType="transition" x="686" y="311">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        2
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="695" y="340">
+      updOther
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="17" nodeType="place" x="682" y="210">
+    <attribute name="name" x="702" y="190">
+      inProcess
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Vehicle
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="16" nodeType="transition" x="383" y="32">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="403" y="12">
+      generationInitiale
+    </attribute>
+    <attribute name="update">
+       if (typeGeneration == 0) {
+         Marking.P->_PL_selfVehicle += (( SelfVehicle_Token( (PosX_Color_Classe) 0, (PosY_Color_Classe) 0, (VitX_Color_Classe) 1, (VitY_Color_Classe) 0, (AccX_Color_Classe) 1, (AccY_Color_Classe) 1) * (1)));
+         for (int i=0;i &lt; nVeh;i++) {
+           vit = rand() % vMax; pos = (rand() % 15)+1; voie = rand() % nVoies;
+           Marking.P->_PL_otherVehicles += (( Vehicle_Token( (PosX_Color_Classe) pos, (PosY_Color_Classe) voie, (VitX_Color_Classe) vit, (VitY_Color_Classe) 0) * (1)));
+         }
+       }
+       else if (typeGeneration > 0) {
+         selfpos = rand() % (2*nVeh*vMax); selfvoie = rand() % (nVoies+1);
+         if (typeGeneration == 1) { vit = rand() % (vMax+1); }
+         if (typeGeneration == 2) { vit = rand() % (vMax-vMinInit); vit = vMinInit + vit; }
+         if (typeGeneration == 3) { vit = vMax; }
+         if (typeGeneration == 4) { 
+           vit = rand() % (vMax-vMinInit); vit = vMinInit+vit;
+           selfvoie = rand() % 5; if (selfvoie &lt; 4) { selfvoie = 0; } else { selfvoie = 1; }
+         }
+         Marking.P->_PL_selfVehicle += (( SelfVehicle_Token( (PosX_Color_Classe) selfpos, (PosY_Color_Classe) selfvoie, (VitX_Color_Classe) vit, (VitY_Color_Classe) 0, (AccX_Color_Classe) 1, (AccY_Color_Classe) 1) * (1)));
+         for (int i=0;i &lt; nVeh;i++) {
+           ajoute = false;
+           while (not ajoute) {
+             tmppos = rand() % (2*nVeh*vMax); tmpvoi = rand() % (nVoies+1);
+             if (typeGeneration == 4) { tmpvoi = rand() % 5; if (tmpvoi &lt; 4) { tmpvoi = 0; } else { tmpvoi = 1; } }
+             ajoute = true;
+             if (tmppos == selfpos &amp;&amp; tmpvoi == selfvoie) { ajoute = false; }
+             else {
+               for (int i2=0;i2 &lt; (int) Color_VitX_Total;i2++) {
+                 for (int i3=0;i3 &lt; (int) Color_VitY_Total;i3++) {
+                   if (contains(Marking.P->_PL_otherVehicles, ((Vehicle_Token( (PosX_Color_Classe) tmppos, (PosY_Color_Classe) tmpvoi, (VitX_Color_Classe) i2, (VitY_Color_Classe) i3) * (1))))) {
+                     ajoute = false;
+                   }
+                 }
+               }
+             }
+           }
+           if (typeGeneration == 1) { vit = rand() % (vMax+1); }
+           if (typeGeneration == 2) { vit = rand() % (vMax-vMinInit); vit = vMinInit + vit; }
+           if (typeGeneration == 3) { vit = vMax; }
+           if (typeGeneration == 4) { vit = rand() % (vMax-vMinInit); vit = vMinInit + vit; }
+           Marking.P->_PL_otherVehicles += (( Vehicle_Token( (PosX_Color_Classe) tmppos, (PosY_Color_Classe) tmpvoi, (VitX_Color_Classe) vit, (VitY_Color_Classe) 0) * (1)));
+         }
+       }
+       for (int i=1;i &lt; (vMax+2);i++) { // le 4 est temporaire et doit être remplacé par VitX _ max
+          Marking.P->_PL_PositionMax += ( PosX_Token( (PosX_Color_Classe) (Color_PosX_Total - i)));
+       }
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="19" nodeType="transition" x="946" y="28">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        2
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="966" y="8">
+      exit
+    </attribute>
+    <attribute name="update">
+      position = (int) (b.P->x).c0;
+      Marking.P->_PL_PositionMax += ( PosX_Token( (PosX_Color_Classe) position ) );
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="18" nodeType="place" x="880" y="221">
+    <attribute name="name" x="900" y="201">
+      otherVehicles
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Vehicle
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="21" nodeType="transition" x="1111" y="487">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        10
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="1131" y="467">
+      end
+    </attribute>
+    <attribute name="update">
+      Marking.P->_PL_PosFinale -= 1;
+      position = (int) (b.P->x).c0;
+      Marking.P->_PL_PosFinale += position;
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="20" nodeType="transition" x="1111" y="215">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="1131" y="195">
+      collision
+    </attribute>
+    <attribute name="update">
+      Marking.P->_PL_PosFinale -= 1;
+      position = (int) (b.P->x).c0;
+      Marking.P->_PL_PosFinale += position;
+      vitself = (int) (b.P->dxs).c0;
+      vitoth = (int) (b.P->dx).c0;
+      collx = (int) (b.P->x).c0; colly = (int) (b.P->y).c0;
+      Marking.P->_PL_VitSelf += vitself;
+      Marking.P->_PL_VitOther += vitoth;
+      Marking.P->_PL_CollX += collx;
+      Marking.P->_PL_CollY += colly;
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="23" nodeType="transition" x="856" y="28">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name" x="876" y="8">
+      enter
+    </attribute>
+    <attribute name="update">
+       /* Marking.P->_PL_otherVehicles -= ((Vehicle_Token(b.P->x, b.P->y, b.P->dx, b.P->dy) * (1 )));; */
+       vit = rand() % 2; pos = (rand() % 2)+1; voie = rand() % 2;
+       if (mkNew > 0) { // On ne génère de nouveaux véhicules que si … on a le droit d'en générer !
+       Marking.P->_PL_otherVehicles += (( Vehicle_Token( (PosX_Color_Classe) pos, (PosY_Color_Classe) voie, (VitX_Color_Classe) vit, (VitY_Color_Classe) 0) * (1)));
+       }
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        UNIFORM
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          MinDelay
+        </attribute></attribute>
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="name">
+          MaxDelay
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="58" nodeType="place" x="0" y="0">
+    <attribute name="name" x="1208" y="277">
+      VitSelf
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="59" nodeType="place" x="0" y="0">
+    <attribute name="name" x="0" y="0">
+      VitOther
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="60" nodeType="place" x="0" y="0">
+    <attribute name="name" x="0" y="0">
+      CollX
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="61" nodeType="place" x="0" y="0">
+    <attribute name="name" x="0" y="0">
+      CollY
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="22" nodeType="place" x="1188" y="297">
+    <attribute name="name" x="1208" y="277">
+      PosFinale
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="24" nodeType="place" x="1185" y="558">
+    <attribute name="name" x="1205" y="538">
+      PositionMax
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        PosX
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <arc id="25" arcType="arc" source="4" target="3">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dy
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="27" arcType="arc" source="16" target="14">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+         <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+<!--
+          <attribute name="intValue">
+            1
+          </attribute>
+-->
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="26" arcType="arc" source="18" target="19">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="29" arcType="arc" source="18" target="20">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="28" arcType="arc" source="8" target="4">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="31" arcType="arc" source="10" target="6">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="30" arcType="arc" source="14" target="10">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="34" arcType="arc" source="6" target="11">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="35" arcType="arc" source="12" target="8">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="32" arcType="arc" source="9" target="5">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="33" arcType="arc" source="10" target="14">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="38" arcType="arc" source="13" target="17">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="39" arcType="inhibitorarc" source="14" target="16">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+<!--          <attribute name="intValue">
+            1
+          </attribute> -->
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="36" arcType="arc" source="6" target="13">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="37" arcType="arc" source="4" target="9">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="42" arcType="arc" source="18" target="13">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="43" arcType="arc" source="3" target="21">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dy
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="40" arcType="arc" source="7" target="15">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="41" arcType="arc" source="7" target="12">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="46" arcType="arc" source="17" target="15">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="47" arcType="arc" source="23" target="18">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="44" arcType="arc" source="13" target="6">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="45" arcType="arc" source="15" target="7">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="51" arcType="arc" source="3" target="5">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dy
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="50" arcType="arc" source="5" target="3">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dy
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="49" arcType="arc" source="15" target="18">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="48" arcType="arc" source="3" target="4">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dy
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="55" arcType="arc" source="20" target="22">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="54" arcType="arc" source="21" target="22">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="53" arcType="arc" source="11" target="7">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              j
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="52" arcType="arc" source="3" target="20">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dxs
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              dys
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddx
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              ddy
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="57" arcType="arc" source="24" target="19">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="56" arcType="arc" source="24" target="21">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+</model>

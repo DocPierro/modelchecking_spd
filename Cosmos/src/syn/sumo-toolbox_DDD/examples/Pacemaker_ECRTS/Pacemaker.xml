@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Simulator>
+	<Name>Pacemaker</Name>
+	<Description>
+		HIL optimization of energy consumption
+	</Description>
+	
+	<!-- The input parameters -->
+	<InputParameters>
+            <Parameter name="tlri" type="real" minimum="0.01" maximum="2.5"/>
+            <Parameter name="tavi" type="real" minimum="0.01" maximum="2.5"/>
+
+
+	<!--Constraint type="NonlinearConstraint" >
+			<Option key="f" value="Constraint1" />
+		</Constraint-->  
+	</InputParameters>
+	
+	<!-- The output parameters -->
+	<OutputParameters>
+		<Parameter name="out" type="real"/>
+	</OutputParameters>
+	
+	<!-- A simulator may have multiple implementations: as an executable, a 
+	     java main class, a dataset, ...-->
+	<Implementation>
+		
+		<Executables>
+			<!-- An arch attribute may make sense here as well -->
+			<Executable platform="matlab">pm1</Executable>
+		</Executables>
+		
+       
+       
+	</Implementation>
+</Simulator>
+

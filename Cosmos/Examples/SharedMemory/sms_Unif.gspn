@@ -1,0 +1,35 @@
+
+
+NbPlaces = 5;
+NbTransitions = 6;
+
+PlacesList = { Request1,Access1,Request2,Access2,Free } ;
+TransitionsList = { Arrive1, Start1, Arrive2, Start2 , End1,End2} ;
+
+Marking={
+(Request1 , 0) ; (Access1 , 0);
+(Request2 , 0) ; (Access2 , 0);
+(Free , 1) ; 
+};
+
+Transitions={
+(Arrive1,EXPONENTIAL(2), 1, 1, SINGLE); 
+(Start1, IMMEDIATE, 1, 1);
+(Arrive2, EXPONENTIAL(2), 1, 1, SINGLE); 
+(Start2, IMMEDIATE, 1, 1);
+(End1, UNIFORM(0.4, 0.6), 1, 1); 
+(End2, UNIFORM(0.4, 0.6), 1, 1); 
+};
+
+InArcs={
+(Request1,Start1,1);(Access1,End1,1);
+(Free,Start1,1);
+(Request2,Start2,1);(Access2,End2,1);
+(Free,Start2,1);
+};
+
+OutArcs={
+(Arrive1,Request1,1);(Start1,Access1,1);(End1,Free,1);
+(Arrive2,Request2,1);(Start2,Access2,1);(End2,Free,1);
+};
+

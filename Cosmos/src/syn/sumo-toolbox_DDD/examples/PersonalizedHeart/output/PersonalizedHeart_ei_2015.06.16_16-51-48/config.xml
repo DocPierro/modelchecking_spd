@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ToolboxConfiguration version="2014a"> 
+  <Plan> 
+    <ContextConfig>default</ContextConfig>  
+    <SUMO>default</SUMO>  
+    <Simulator>PersonalizedHeart</Simulator>  
+    <DataSource>matlab</DataSource>  
+    <ModelBuilder>kriging</ModelBuilder>  
+    <InitialDesign>lhd</InitialDesign>  
+    <SequentialDesign>expectedImprovement</SequentialDesign>  
+    <Measure type="TestMinimum" trueValue="-1" target="-1" use="on" errorFcn="relativeError"/>  
+    <Run name="#simulator#_ei" repeat="1"></Run>
+  </Plan>  
+  <!-- /////////////////////////////////////////////////////////////////////// -->  
+  <!-- General configuration section -->  
+  <ContextConfig id="default"> 
+    <OutputDirectory>output</OutputDirectory>  
+    <PlotOptions> 
+      <Option key="saveModels" value="true"/>  
+      <Option key="plotModels" value="true"/>  
+      <Option key="withContour" value="true"/>  
+      <Option key="plotContour" value="false"/>  
+      <Option key="saveModelPlots" value="true"/>  
+      <Option key="outputType" value="png"/>  
+      <Option key="keepOldModels" value="off"/> 
+    </PlotOptions>  
+    <Profiling> 
+      <Profiler name=".*" enabled="true"> 
+        <Output type="toTable"/>  
+        <Output type="toImage"/>  
+        <Output type="toFile"/>  
+        <Output type="toPanel"/> 
+      </Profiler> 
+    </Profiling> 
+  </ContextConfig>  
+  <!-- /////////////////////////////////////////////////////////////////////// -->  
+  <!-- The logging configuration should be left alone under normal circumstances -->  
+  <Logging> 
+    <!-- Root logger -->  
+    <RootLogger> 
+      <!-- log all run-specific information in the main log as well -->  
+      <Option key="runsInMainLog" value="true"/>  
+      <!-- Set the default logging level for the root logger -->  
+      <Option key="Level" value="INFO"/>  
+      <!-- Specify the handlers to create in the root logger
+			 (all loggers are children of the root logger)
+			 The following creates two handlers -->  
+      <Handlers> 
+        <!-- Configure ConsoleHandler instances -->  
+        <ConsoleHandler> 
+          <Option key="Level" value="INFO"/> 
+        </ConsoleHandler>  
+        <!-- Configure FileHandler instances -->  
+        <FileHandler> 
+          <Option key="Level" value="ALL"/> 
+        </FileHandler> 
+      </Handlers> 
+    </RootLogger>  
+    <!-- The Options here specify the level for a specific logger -->  
+    <!-- <Option key="loggername" value="level" /> -->  
+    <Option key="iminds.sumo" value="FINEST"/>  
+    <Option key="Matlab" value="FINEST"/> 
+  </Logging>  
+  <!-- /////////////////////////////////////////////////////////////////////// -->  
+  <!-- Nicola: What to change if we want to modify maximum number of simulations of real system???? -->  
+  <SUMO id="default" type="SUMO"> 
+    <Option key="createMovie" value="yes"/>  
+    <Option key="minimumTotalSamples" value="0"/>  
+    <Option key="maximumTotalSamples" value="100"/>  
+    <Option key="maximumTime" value="Inf"/>  
+    <Option key="maxModelingIterations" value="Inf"/>  
+    <Option key="seedRandomState" value="default"/>  
+    <Option key="minimumInitialSamples" value="100%"/>  
+    <Option key="maximumSamples" value="10"/>  
+    <Option key="minimumAdaptiveSamples" value="100"/> 
+  </SUMO>  
+  <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->  
+  <!-- Build kriging models using a genetic algorithm-->  
+  <ModelBuilder id="kriging" type="ModelBuilder" combineOutputs="false"> 
+    <Option key="nBestModels" value="1"/>  
+    <ModelFactory id="kriging" type="KrigingFactory"> 
+      <Option key="hyperparameters0" value="0.5"/>  
+      <Option key="regressionFunction" value="regpoly0"/>  
+      <Option key="multipleBasisFunctionsAllowed" value="false"/>  
+      <BasisFunction type="BasisFunction" name="corrgauss"> 
+        <Parameter name="theta" min="-2" max="2" scale="log" duplicate="true"/> 
+      </BasisFunction>  
+      <Optimizer>fminconWithDerivatives</Optimizer> 
+    </ModelFactory> 
+  </ModelBuilder>  
+  <!-- Another optimizer (used by kriging components in this file) -->  
+  <Optimizer id="fminconWithDerivatives" type="MatlabOptimizer"> 
+    <Option key="gradobj" value="on"/>  
+    <Option key="derivativecheck" value="off"/>  
+    <Option key="diagnostics" value="off"/>  
+    <Option key="algorithm" value="active-set"/> 
+  </Optimizer>  
+  <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->  
+  <!-- A sampling algorithm aimed at optimization problems (only for Kriging and RBF) -->  
+  <SequentialDesign id="expectedImprovement" type="OptimizeCriterion" combineOutputs="false"> 
+    <!-- This criterion has to be solved to choose new samples, one can choose the optimizer used here -->  
+    <Optimizer>directOptimizer</Optimizer>  
+    <CandidateRanker type="expectedImprovement" scaling="none"/>  
+    <CandidateRanker type="maxvar" scaling="none"/>  
+    <!--
+		when debug is 'on' a contour plot of the criterion function is drawn every iteration.
+		Together with the current samples and the chosen samples
+		-->  
+    <Option key="debug" value="off"/> 
+  </SequentialDesign>  
+  <Optimizer id="directOptimizer" type="DirectOptimizer"> 
+    <Option key="maxevals" value="1000"/>  
+    <Option key="maxits" value="300"/> 
+  </Optimizer>  
+  <!-- Evaluate samples using a matlab script (ie. your simulator is a matlab script) -->  
+  <DataSource id="matlab" type="iminds.sumo.datasources.matlab.MatlabDataSource"> 
+    <!-- Maximum number of times to resubmit a point (e.g., in case something went wrong) -->  
+    <Option key="maxResubmissions" value="1"/>  
+    <!-- If a sample takes longer than "sampleTimeout*average evaluation time of one sample" 
+		seconds to evaluate it is removed from the pending list (set to -1 to disable) -->  
+    <Option key="sampleTimeout" value="-1"/> 
+  </DataSource>  
+  <!--What initial experimental design to use and how many points to generate -->  
+  <InitialDesign id="lhd" type="LatinHypercubeDesign"> 
+    <Option key="points" value="10"/> 
+  </InitialDesign> 
+</ToolboxConfiguration>

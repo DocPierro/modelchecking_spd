@@ -1,0 +1,25 @@
+NbVariables = 2;
+NbLocations = 2 ;
+
+const double T = 100;
+
+VariablesList = {x, t} ;
+LocationsList = {l0, l1};
+
+AVG(Last(x));
+
+InitialLocations = {l0};
+
+FinalLocations = {l1};
+
+Locations={
+(l0, TRUE , (x:Wait[c0] , t:1));
+(l1, TRUE , (x:Wait[c0] , t:1));
+};
+
+Edges={
+((l0,l0),ALL,  t <= T,#);
+((l0,l1),ALL,  t >= T, {x=x/T} );
+};
+
+

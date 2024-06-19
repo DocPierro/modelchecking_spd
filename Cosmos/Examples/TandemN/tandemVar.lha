@@ -1,0 +1,21 @@
+VariablesList = {DISC vc0};
+LocationsList = {li,l0,l1,l2};
+%Probability=PROB;
+LikelyhoodProb = AVG(Last(vc0));
+VarProb = VAR(Last(vc0));
+InitialLocations = { li };
+FinalLocations = {l1,l2};
+Locations = {
+(li,TRUE);
+(l0,((RE_Queue1+RE_Queue2)>0 & (RE_Queue1+RE_Queue2)<5));
+(l1,(RE_Queue1+RE_Queue2)=5);
+(l2,(RE_Queue1+RE_Queue2)=0);
+};
+Edges = {
+((li,l0),#  ,#,{vc0=1});
+((l0,l0),{Arrive},#,{vc0 = vc0*0.1/lambda});
+((l0,l0),{Serve1,Serve1p},#,#);
+((l0,l0),{Serve2,Serve2p},#,{vc0 = vc0*0.45/rho2});
+((l0,l1),{Arrive},#,{vc0 = vc0*0.1/lambda});
+((l0,l2),ALL,#,{vc0=0});
+};

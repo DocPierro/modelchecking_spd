@@ -1,0 +1,24 @@
+NbVariables=2;
+NbLocations=4;
+
+VariablesList={t,x};
+LocationsList={l0,l1,l2,l3};
+
+esperance=AVG(Last(x));
+
+InitialLocations = {l0};
+FinalLocations = {l1};
+
+Locations={
+  (l0, TRUE, (t:1) );
+  (l1, TRUE );
+  (l2, TRUE );
+  (l3, TRUE );
+};
+
+Edges={
+  ((l0,l0), ALL\{collision,end}, t<=100000, # );
+  ((l0,l1), {collision}, #, {x=PosFinale});
+  ((l0,l2), {end}, #, {x=PosFinale});
+  ((l0,l3), #, t=100000, #);
+};

@@ -1,0 +1,31 @@
+
+VariablesList = { vc0, DISC vd0 , DISC vd1, DISC vd2, DISC vd3};
+LocationsList = {lii, li,lfc,lf,lnf1,ldl,lnf2};
+FinishCorrect=AVG(Last(vd0));
+Finish=AVG(Last(vd1));
+DeadLock=AVG(Last(vd2));
+Step=AVG(Last(vd3));
+InitialLocations = { lii };
+FinalLocations = {lfc,lf,ldl,lnf2};
+Locations = {
+(lii,TRUE,(vc0:1.));
+(li,(a7<2 & a17<2),(vc0:1.));
+(lfc,(a7=2));
+(lf,(a17=2 ));
+(lnf1,TRUE,(vc0:1.));
+(ldl,TRUE);
+(lnf2,TRUE);
+};
+Edges = {
+((lii,lii),ALL,vc0=0,#);
+((lii,li),ALL,vc0>=0.000000000001,{vd3=vd3+1});
+((li,li),ALL,#,{vd3=vd3+1});
+((li,lfc),ALL,#,{vd0=1,vd1=1,vd3=vd3+1});
+((li,lf),ALL,#,{vd1=1,vd3=vd3+1});
+((li,lnf1),#,vc0=12000,#);
+((lii,lfc),ALL,#,{vd0=1,vd1=1,vd3=vd3+1});
+((lii,lf),ALL,#,{vd1=1,vd3=vd3+1});
+((lii,lnf1),#,vc0=12000,#);
+((lnf1,lnf2),ALL,#,#);
+((lnf1,ldl),#,vc0=1000000000,{vd2=1});
+};

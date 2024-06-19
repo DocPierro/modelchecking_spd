@@ -1,0 +1,41 @@
+const int N=6;
+
+VariablesList = {t, DISC n, DISC c, DISC c0, DISC c1,DISC c2,DISC c3, DISC ct} ;
+LocationsList = {l0,l1, l2, lf1, lf2};
+
+p=PROB(lf1);
+av=AVG(Last(c));
+av2=AVG(Last(ct));
+%pdf = PDF(Last(r),0.05,0,1);
+%cdf = CDF(Last(r),0.05,0,1);
+
+InitialLocations = {l0};
+
+FinalLocations = {lf1, lf2};
+
+Locations={
+(l0, TRUE , (t:1 ));
+(l1, TRUE , (t:1 ));
+(l2, TRUE , (t:1 ));
+(lf1, TRUE , (t:1 ));
+(lf2, TRUE , (t:1 ));
+};
+
+Edges={
+((l0,l1),ALL\{t_a}, # , {c=0});
+((l1,l1),ALL\{t_a}, # , #);
+((l1,l1),{t_a}, n<=3, {n=n+1,c=2*c + floor(t),c0= floor(t), c1=c0, c2=c1,c3=c2, t=0});
+
+((l1,l1),{t_a}, c0+c1+c2+c3 >=1 & c0+c1+c2+c3 <=2 & n>=4 & n<=N-1, {n=n+1,c=2*c + floor(t),c0= floor(t), c1=c0, c2=c1,c3=c2, t=0});
+((l1,lf1),{t_a}, c0+c1+c2+c3 >=1 & c0+c1+c2+c3 <=2 & n=N ,{ct=-1 });
+
+((l1,l2),{t_a}, c0+c1+c2+c3 <=0 & n>=4 & n<=N-1, {n=n+1,c=2*c + floor(t),c0= floor(t), c1=c0, c2=c1,c3=c2, t=0});
+((l1,l2),{t_a}, c0+c1+c2+c3 >=3 & n>=4 & n<=N-1, {n=n+1,c=2*c + floor(t),c0= floor(t), c1=c0, c2=c1,c3=c2, t=0});
+
+((l2,l2),ALL\{t_a}, # , #);
+((l2,l2),{t_a}, n<=N-1, {n=n+1,c=2*c + floor(t),c0= floor(t), c1=c0, c2=c1,c3=c2, t=0});
+((l2,lf2),{t_a}, n=N , {ct=c,c=-1});
+((l1,lf2),{t_a}, c0+c1+c2+c3 <=1 & n=N ,{ct=c,c=-1});
+((l1,lf2),{t_a}, c0+c1+c2+c3 >=2 & n=N ,{ct=c,c=-1});
+
+};

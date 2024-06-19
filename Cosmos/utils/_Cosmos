@@ -1,0 +1,60 @@
+#compdef Cosmos
+
+local curcontext="$curcontext" state line
+typeset -A opt_args
+
+_arguments '(-V)-v:Verbose level:->verbose' \
+	   '(-I)-i[Ask the user to choose next transition]' \
+	   '--level:Confidence level:->level' \
+	   '--width:Required confidence interval width:->width' \
+	   '--batch:Number of trajectory by batch :->batch' \
+	   '--max-run:Max maximal number of trajectory:->max-run' \
+	   '--seed:Seed of the random number generator:->seed' \
+	   '--njob:Number of parallel simulation:->njob' \
+           '--use-setdomain-impl:Use the Set implementation on Places and Transitions:->use-setdomain-impl' \
+	   '--update-time:frequencie of the screen update:->update-time' \
+	   '(-h)--help[help message]' \
+	   '--version[Display version number]' \
+	   '-b:Bounded Rare Event:->bounded' \
+	   '--state-space[Generate the state space in the prism format]' \
+       '--lump-state-space[Lump the generated state space]' \
+	   '--prism[Use prism to performe the computation]' \
+	   '--prism-path:Path to the prism executable:->data' \
+	   '--gppcmd:C++ compiler to use:->gppcmd' \
+	   '--gppflags:flags to the C++ compiler:->gppflags' \
+	   '--set-Horizon:Set the horizon for bounded rare event:->Horizon' \
+	   '--seed:Specify the random generator seed:->seed' \
+	   '--local-test[Use local testing]' \
+	   '--HASL-formula:External HASL formule:->HASL' \
+	   '--gnuplot-driver[Lauch gnuplot on the output data]' \
+	   '--output-data:File where to output data:->data' \
+	   '--output-trace:File where to output trace:->data' \
+	   '--output-raw:Output result of each trajectory in a file:->data' \
+	   '--output-graph:Output PDF or CDF to a file:->data' \
+       '--output-dot:Output a graphical representation of the Petri net:->data'\
+	   '--tmp-status:Persistance of the tmp file:->status' \
+	   '--const:Overwrite constants value:->Constants' \
+	   '--count-transition[Count number of transition in the lha]' \
+       '--use-setdomain-impl[Use set to implment domain]' \
+	   '--trace-place:trace only a subset of places:->Comma separated list of place to trace' \
+	   '--loop:Time of the loop:->time' \
+	   '--sampling:Time of the loop:->time' \
+	   '--transient:Time for transient part:->time' \
+	   '--formula:Use a LTL formula instead of an automaton:->LTL Formula' \
+	   '--debug-string[Add debug information in generated code]' \
+	   '--chernoff:Use chernoff bound to compute parameters:->parameter' \
+           '--no-magic-print:Ignore magic_print when using custom C code in models:->no-magic-print' \
+	   ':SPN model file:_files -g ".*.(gspn|grml|GSPN|GRML)(-.)"' \
+	   ':LHA property file:_files -g ".*.(lha|grml|LHA|GRML)(-.)"' \
+	   && return 0
+
+	   case $state in
+	   (data)
+		_files && return 0;;
+	   (status) 
+	   	compadd "$@" 0 1 2 3 && return 0;;
+	   (bounded)
+		compadd "$@" 1 2 3 && return 0;;
+	   (parameter)
+		compadd "$@" "level" "width" "nbrun" "update-time" && return 0;;
+	   esac

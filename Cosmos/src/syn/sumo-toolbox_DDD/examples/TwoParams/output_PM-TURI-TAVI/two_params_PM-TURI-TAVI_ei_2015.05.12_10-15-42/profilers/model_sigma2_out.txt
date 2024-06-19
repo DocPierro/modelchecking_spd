@@ -1,0 +1,14 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: model_sigma2_out
+%   * Description: Hyperparameter optimization process
+%   * Date: 12/05/2015 at 10:15
+% 
+%   * Column1: 	Model #: 	Model #
+%   * Column2: 	sigma2: 	Process variance
+%
+% ----------------------------------------------------------------------------
+
+0.000000000E0	?	
+1.000000000E0	3.480162382933E-54	

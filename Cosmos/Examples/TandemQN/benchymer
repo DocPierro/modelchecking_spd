@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in {1..100}
+do
+	echo $i;
+	ymer tandem.sm tandem2.csl --const=c=5,T=40 --delta=0.001 --alpha=0.005 --beta=0.005
+done

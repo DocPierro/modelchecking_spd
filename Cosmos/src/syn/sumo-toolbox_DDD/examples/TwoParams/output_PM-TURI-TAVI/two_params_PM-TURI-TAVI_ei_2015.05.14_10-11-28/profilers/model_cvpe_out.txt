@@ -1,0 +1,19 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: model_cvpe_out
+%   * Description: Hyperparameter optimization process
+%   * Date: 14/05/2015 at 10:21
+% 
+%   * Column1: 	Model #: 	Model #
+%   * Column2: 	cvpe: 	Cross validated prediction error
+%
+% ----------------------------------------------------------------------------
+
+0.000000000E0	7.379612717467E7	
+1.000000000E0	3.821355362774E7	
+2.000000000E0	2.840793338264E7	
+3.000000000E0	2.256265372195E7	
+4.000000000E0	2.700692094562E7	
+5.000000000E0	2.698287406776E7	
+6.000000000E0	5.011393597909E9	

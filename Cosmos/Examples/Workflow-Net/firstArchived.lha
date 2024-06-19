@@ -1,0 +1,35 @@
+NbVariables = 1;
+NbLocations = 4 ;
+
+
+const double t1 = 0;
+const double t2 = 40;
+
+VariablesList = { t } ;
+LocationsList = {li, l0, l1, l2};
+
+p=PROB;
+pdf=PDF(Last(t),0.5,t1,t2);
+
+InitialLocations = {li};
+
+FinalLocations = {l2};
+
+Locations={
+(li, (archived =1), (t:0));
+(l0, (archived =0), (t:1));
+(l1, (archived = 0), (t:1));
+(l2, (archived > 0), (t:1));
+};
+
+Edges={
+((li,li), ALL, # , #);
+((li,l0), ALL, # , #);
+((l0,l0), ALL, # , #);
+((l0,l1), #, t = t1, #);
+((l0,l2), #, t = t1, #);
+((l1,l2), ALL, t <= t2 , #);
+((l1,l1), ALL, t <= t2 , #);
+};
+
+

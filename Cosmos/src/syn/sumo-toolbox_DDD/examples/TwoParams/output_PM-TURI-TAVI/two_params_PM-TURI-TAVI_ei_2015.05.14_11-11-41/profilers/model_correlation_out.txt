@@ -1,0 +1,21 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: model_correlation_out
+%   * Description: Hyperparameter optimization process
+%   * Date: 14/05/2015 at 11:23
+% 
+%   * Column1: 	Model #: 	Model #
+%   * Column2: 	correlation: 	Correlation function
+%
+% ----------------------------------------------------------------------------
+
+0.0	corrgauss	
+1.0	corrgauss	
+2.0	corrgauss	
+3.0	corrgauss	
+4.0	corrgauss	
+5.0	corrgauss	
+6.0	corrgauss	
+7.0	corrgauss	
+8.0	corrgauss	

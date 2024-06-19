@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+  <node id="3" nodeType="place" x="385" y="133">
+    <attribute name="name">
+      i
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="4" nodeType="transition" x="380" y="93">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      ln
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          2.0
+        </attribute></attribute>
+      </attribute>
+      </attribute>
+  </node>
+  <arc id="5" arcType="arc" source="4" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+</model>

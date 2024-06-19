@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+  <node id="3" nodeType="place" x="386" y="193">
+    <attribute name="name">
+      LastDraw
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="4" nodeType="transition" x="161" y="35">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      Draw2
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="5" nodeType="transition" x="161" y="70">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      Draw3
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="6" nodeType="transition" x="161" y="210">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      Draw7
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="7" nodeType="transition" x="161" y="142">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      Draw5
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="8" nodeType="transition" x="161" y="285">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      Draw9
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="9" nodeType="transition" x="161" y="106">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      Draw4
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="10" nodeType="transition" x="161" y="360">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      DrawAs
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="11" nodeType="transition" x="161" y="175">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      Draw6
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="12" nodeType="transition" x="161" y="321">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      Draw10
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          4
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="13" nodeType="transition" x="161" y="250">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      Draw8
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <arc id="32" arcType="arc" source="3" target="12">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="name">
+        LastDraw
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="33" arcType="arc" source="3" target="10">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="name">
+        LastDraw
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="14" arcType="arc" source="5" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        3
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="15" arcType="arc" source="4" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        2
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="17" arcType="arc" source="11" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        6
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="16" arcType="arc" source="7" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        5
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="19" arcType="arc" source="13" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        8
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="18" arcType="arc" source="6" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        7
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="21" arcType="arc" source="12" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        10
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="20" arcType="arc" source="8" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        9
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="23" arcType="arc" source="9" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        4
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="22" arcType="arc" source="10" target="3">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        11
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="25" arcType="arc" source="3" target="5">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="name">
+        LastDraw
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="24" arcType="arc" source="3" target="4">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="name">
+        LastDraw
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="27" arcType="arc" source="3" target="7">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="name">
+        LastDraw
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="26" arcType="arc" source="3" target="9">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="name">
+        LastDraw
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="29" arcType="arc" source="3" target="6">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="name">
+        LastDraw
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="28" arcType="arc" source="3" target="11">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="name">
+        LastDraw
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="31" arcType="arc" source="3" target="8">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="name">
+        LastDraw
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="30" arcType="arc" source="3" target="13">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="name">
+        LastDraw
+      </attribute></attribute>
+    </attribute>
+  </arc>
+</model>

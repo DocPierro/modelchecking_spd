@@ -1,0 +1,254 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "libliblha.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"target_compile_options",
+			"ADD_DEFINITIONS",
+			"target_include_directories",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 89,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 102,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 96,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 24,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 100,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 101,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 233,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++11 -fdiagnostics-color=always   -O3 -Wall -Wno-sign-compare"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-format-truncation"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "BOOST_LIB=\"\""
+				},
+				{
+					"backtrace" : 4,
+					"define" : "BOOST_PATH=\"-I/usr/include\""
+				},
+				{
+					"backtrace" : 4,
+					"define" : "CMAKE_VERSION=\"3.28.1\""
+				},
+				{
+					"backtrace" : 4,
+					"define" : "CPP_COMPILER=\"g++\""
+				},
+				{
+					"backtrace" : 4,
+					"define" : "GIT_REVISION=\"3cd589-dirty\""
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "/home/pierre/Documents/Travail/pm4pierro/Cosmos/src/ModelGenerator/LhaParser"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/pierre/Documents/Travail/pm4pierro/Cosmos/cmake-build-debug/src/ModelGenerator/LhaParser"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/pierre/Documents/Travail/pm4pierro/Cosmos/src/Simulator"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/pierre/Documents/Travail/pm4pierro/Cosmos/cmake-build-debug/src/ModelGenerator/Eval"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/pierre/Documents/Travail/pm4pierro/Cosmos/src/libgrml"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/pierre/Documents/Travail/pm4pierro/Cosmos/cmake-build-debug/src/ModelGenerator/GspnParser"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				2,
+				3,
+				4
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "grml::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "libeval::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "libgspn::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "liblha::@6890427a1f51a3e7e1df",
+	"name" : "liblha",
+	"nameOnDisk" : "libliblha.a",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				2,
+				3,
+				4
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				5,
+				6
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/src/ModelGenerator/LhaParser/Lha-parser.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/src/ModelGenerator/LhaParser/Lha-parser.hh",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/src/ModelGenerator/LhaParser/Lha-scanner.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/ModelGenerator/LhaParser/Lha-Reader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/ModelGenerator/LhaParser/Lha_gmlparser.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/src/ModelGenerator/LhaParser/Lha-parser.cc.rule",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/src/ModelGenerator/LhaParser/Lha-scanner.cc.rule",
+			"sourceGroupIndex" : 2
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

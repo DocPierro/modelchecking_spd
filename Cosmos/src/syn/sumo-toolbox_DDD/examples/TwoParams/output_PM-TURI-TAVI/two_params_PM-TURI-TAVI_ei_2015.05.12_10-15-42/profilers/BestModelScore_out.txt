@@ -1,0 +1,14 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: BestModelScore_out
+%   * Description: Model Score; aggregated score over all measures
+%   * Date: 12/05/2015 at 10:15
+% 
+%   * Column1: 	sampleSize: 	Number of samples
+%   * Column2: 	bestScore: 	Best model score
+%
+% ----------------------------------------------------------------------------
+
+6.000000000E0	2.190637065E5	
+7.000000000E0	2.190637065E5	

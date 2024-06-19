@@ -1,0 +1,26 @@
+const double T=200;
+const double invT=0.005;
+const double Ttrans=0;
+VariablesList = {time,DISC countT, t_a, t_b, PLVAR_powerState, PLVAR_B12O1, PLVAR_B12O2, PLVAR_B12O3} ;
+LocationsList = {l0, l1,l2};
+Valid=PROB;
+remain=AVG(Last(PLVAR_B12O2));
+Throughput_t_a= AVG(Last(t_a));
+Throughput_t_b= AVG(Last(t_b));
+MeanToken_powerState= AVG(Last( PLVAR_powerState));
+
+InitialLocations={l0};
+FinalLocations={l2};
+Locations={
+(l0, TRUE, (time:1));
+(l1, (B12O2# >0), (time:1 , PLVAR_powerState: powerState* invT ));
+(l2, TRUE);
+};
+Edges={
+((l0,l0),ALL,time<= Ttrans ,#);
+((l0,l1),#,time=Ttrans ,{time=0});
+((l1,l1),{t_a},time<=T,{t_a = t_a + invT, countT = countT+1 });
+((l1,l1),{t_b},time<=T,{t_b = t_b + invT, countT = countT+1 });
+((l1,l1),{time_0_0,time_1_0,time_2_0,SynchIN15,Synch12O1,Synch12O2,Synch12O3,Synctrans},time<=T, # );
+((l1,l2),#,time=T ,#);
+};

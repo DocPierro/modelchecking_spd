@@ -1,0 +1,14 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: SamplesPerMinute
+%   * Description: Numer of samples evaluated per minute
+%   * Date: 05/05/2015 at 15:09
+% 
+%   * Column1: 	samplesPerMinute: 	Number of samples evaluated per minute
+%
+% ----------------------------------------------------------------------------
+
+8.422825858075E-1	
+8.92485273993E-1	
+9.105809506465E-1	

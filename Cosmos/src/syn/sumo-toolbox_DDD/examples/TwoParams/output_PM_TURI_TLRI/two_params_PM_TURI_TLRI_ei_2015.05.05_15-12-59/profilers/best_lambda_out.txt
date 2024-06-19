@@ -1,0 +1,18 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: best_lambda_out
+%   * Description: Hyperparameter values for each new best model
+%   * Date: 05/05/2015 at 15:17
+% 
+%   * Column1: 	Number of samples: 	Number of samples
+%   * Column2: 	lambda: 	Amount of regression lambda (log10)
+%
+% ----------------------------------------------------------------------------
+
+4.000000000E0	7.771561172376E-16	
+5.000000000E0	6.661338147751E-16	
+6.000000000E0	5.921189464668E-16	
+7.000000000E0	5.392511833894E-16	
+8.000000000E0	4.996003610813E-16	
+9.000000000E0	4.687608326195E-16	

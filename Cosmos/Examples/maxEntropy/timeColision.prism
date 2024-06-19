@@ -1,0 +1,29 @@
+pta
+
+
+module c1
+	state1: [1..2] init 1;
+	x1: clock;
+
+	invariant
+		(state1 = 2 => x1<1)
+		& x1 < 3
+	endinvariant
+
+	[] state1=1 & x1<3 -> 1.00 : (state1'=2)&(x1'=0);
+	[] state1=2 & x1<1 -> 1.0 : (state1'=1)&(x1'=0);
+endmodule
+
+module c2 = c1 [state1=state2,x1=x2 ] endmodule
+module c3 = c1 [state1=state3,x1=x3 ] endmodule
+//module c4 = c1 [state1=state4,x1=x4 ] endmodule
+//module c5 = c1 [state1=state5,x1=x5 ] endmodule
+
+
+rewards
+	state1=1 : -1;
+	state1=2 : 10;
+endrewards
+
+label "conflict" = state1=2 & state2=2;
+

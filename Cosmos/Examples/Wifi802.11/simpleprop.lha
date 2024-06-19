@@ -1,0 +1,32 @@
+const double T=10000;
+const double invT=0.0001;
+const double Ttrans= 0;
+VariablesList = {time,DISC countT, CorrectPacketAckp1,CorrectPacketAckp2,CorrectPacketAckp3,CorrectPacketAckp4,PLVAR_Idle, PLVAR_Medium, PLVAR_Garbled, CorrectPacketAck12, CorrectPacketAck21} ;
+LocationsList = {l0, l1,l2};
+Throughput_CorrectPacketAckp1= AVG(Last(CorrectPacketAckp1));
+Throughput_CorrectPacketAckp2= AVG(Last(CorrectPacketAckp2));
+Throughput_CorrectPacketAckp3= AVG(Last(CorrectPacketAckp3));
+Throughput_CorrectPacketAckp4= AVG(Last(CorrectPacketAckp4));
+Throughput_CorrectPacketAck12= AVG(Last(CorrectPacketAck12));
+Throughput_CorrectPacketAck21= AVG(Last(CorrectPacketAck21));
+MeanToken_Idle= AVG(Last( PLVAR_Idle));
+MeanToken_Medium= AVG(Last( PLVAR_Medium));
+MeanToken_Garbled= AVG(Last( PLVAR_Garbled));
+
+InitialLocations={l0};
+FinalLocations={l2};
+Locations={
+(l0, TRUE, (time:1));
+(l1, TRUE, (time:1 , PLVAR_Idle: Idle* invT , PLVAR_Medium: Medium* invT , PLVAR_Garbled: Garbled* invT ));
+(l2, TRUE);
+};
+Edges={
+((l0,l0),ALL,time<= Ttrans ,#);
+((l0,l1),#,time=Ttrans ,{time=0});
+((l1,l1),{CorrectPacketAck},time<=12,{CorrectPacketAckp1 = CorrectPacketAckp1 + invT, countT = countT+1 });
+((l1,l1),{CorrectPacketAck},time<=13,{CorrectPacketAckp2 = CorrectPacketAckp2 + invT, countT = countT+1 });
+((l1,l1),{CorrectPacketAck},time<=14,{CorrectPacketAckp3 = CorrectPacketAckp3 + invT, countT = countT+1 });
+((l1,l1),{CorrectPacketAck},time<=15,{CorrectPacketAckp4 = CorrectPacketAckp4 + invT, countT = countT+1 });
+((l1,l1),{PacketArrival,WaitAIFS1,BeginSending,PacketLoss,SendRTS,SendCTS,SendData,SendAck,SenderSenseCollision,SenderTimeout,BeginReceiving,GettingGarbled,EndingGarbled,SenderGarbled,BeginWaitingForResponse,StopReceiving,ReceiverGarbled,ReceiverTimeout,ReceiverWrongPacket,SenderWrongPacket,CorrectPacketButAck,ShortEnterVulnerable,ReceiverSenseCollision,GoToBackoff,ExitBackoff,PauseBackoff,ResumeBackoff1,DecrementBackoff,WaitAIFS2,InternalCollision,ResumeBackoff2,WaitAIFS3,WaitAIFS4,ReturnToBackoff,ChooseBackoff,DropPacket,ResumeBackoff3,ResumeBackoff4},time<=T,{countT = countT+1 });
+((l1,l2),#,time=T ,#);
+};

@@ -1,0 +1,29 @@
+NbVariables = 4 ;
+NbLocations = 4 ;
+
+VariablesList = {x, y,r,OK} ;
+LocationsList = {l0, l1, l2, lp};
+
+Pi= 4*PROB;
+%av=AVG(Mean(P2));
+%pdf = PDF(Last(r),0.05,0,1);
+%cdf = CDF(Last(r),0.05,0,1);
+
+InitialLocations = {l0};
+
+FinalLocations = {lp};
+
+Locations={
+(l0, TRUE , (x:1 , y:0) );
+(l1, TRUE , (x:0 , y:1 ));
+(l2, TRUE , (x:0 , y:0 ));
+(lp, TRUE , (x:0 , y:0 ) );
+};
+
+Edges={
+((l0,l1),ALL, # ,#);
+((l1,l2),ALL, # , {r=x*x + y*y});
+((l2,lp),ALL, r<=1 ,  {OK=4});
+};
+
+

@@ -1,0 +1,2 @@
+Cosmos tandem.grml reach0.lha --tmp-status 2 --const "p=0.8,pp=0.8,peq=0.2,pm=0.2"  -r --width 0 --max-run 100000
+

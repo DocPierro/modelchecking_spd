@@ -1,0 +1,22 @@
+NOTDETERMINISTIC
+
+const int bo = 14;
+
+VariablesList = {time,DISC countT, DISC index, DISC varTab[14], DISC diff} ;
+LocationsList = {l0,l1,l2};
+
+PROB;
+
+InitialLocations={l0};
+FinalLocations={l2};
+Locations={
+(l0, TRUE, (time:1));
+(l1, TRUE, (time:1 ));
+(l2, TRUE);
+};
+Edges={
+((l0,l0),ALL, countT<=bo-1 ,{countT = countT+1, varTab[ mod(index,bo)]=time, index=index+1 });
+((l0,l1),ALL, countT=bo ,{countT = 0, varTab[ mod(index,bo)]=time, index=index+1, diff= (varTab[ mod((index-1),bo)] - varTab[ mod((index),bo)])});
+((l1,l1),ALL, countT <= 1000 & diff>=1 ,{countT = countT+1, varTab[ mod(index,bo)]=time, index=index+1, diff = (varTab[ mod((index-1),bo)] - varTab[ mod((index),bo)]) });
+((l1,l2),ALL, countT = 1001  ,#);
+};

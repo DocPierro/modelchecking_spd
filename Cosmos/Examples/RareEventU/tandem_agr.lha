@@ -1,0 +1,23 @@
+
+
+NbVariables = 1;
+NbLocations = 3;
+const int N= 50;
+VariablesList = {x} ;
+
+LocationsList = {l1, lp, lm };
+AVG(Last(x));
+InitialLocations={l1};
+
+FinalLocations={ lp  };
+
+Locations={	
+(l1, (RE_Queue1  + RE_Queue2  > 0) & (RE_Queue1  + RE_Queue2  < N) ) ;
+(lp, (RE_Queue1  + RE_Queue2  = N)  );
+(lm, (RE_Queue1  + RE_Queue2  = 0)  );}; 
+
+Edges={
+((l1,l1)  ,ALL,  # , #);
+((l1,lp)  ,ALL,  # , {x=1});
+((l1,lm)  ,ALL,  # , {x=0});
+};

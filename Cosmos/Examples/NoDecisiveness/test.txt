@@ -1,0 +1,4 @@
+Cosmos random_walkBonded.grml reach0RE.lha --tmp-status keep --const p=0.5 --prism --prism-path  ~/Documents/prism/prism/bin/prism
+Cosmos random_walk.grml reach0.lha --tmp-status keep --const p=0.6 -r --width 0 --max-run 5000
+
+❯ Cosmos random_walk.grml reach0.lha --tmp-status keep --const "pp=0.95,p=0.8"  -r --width 0 --max-run 1000000

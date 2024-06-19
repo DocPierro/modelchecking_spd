@@ -1,0 +1,20 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: SampleEvaluationTime
+%   * Description: Sample evaluation time.
+%   * Date: 12/05/2015 at 10:17
+% 
+%   * Column1: 	numSamples: 	Number of samples
+%   * Column2: 	evalTime: 	Time spent evaluating (s)
+%   * Column3: 	totalTime: 	Total processing time (s)
+%
+% ----------------------------------------------------------------------------
+
+0.000000000E0	2.160000000E-1	6.760000000E-1	
+1.000000000E0	9.100000000E-2	5.093000000E0	
+2.000000000E0	1.100000000E-1	5.728000000E0	
+3.000000000E0	9.500000000E-2	6.279000000E0	
+4.000000000E0	8.700000000E-2	6.820000000E0	
+5.000000000E0	8.600000000E-2	7.346000000E0	
+6.000000000E0	7.700000000E-2	5.900000000E-1	

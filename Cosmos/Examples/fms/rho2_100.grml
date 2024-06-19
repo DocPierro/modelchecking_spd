@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model formalismUrl="http://formalisms.cosyverif.org/HASL-formula.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="declaration">
+    <attribute name="constants">
+      <attribute name="intConsts">
+      </attribute>
+      <attribute name="realConsts">
+        <attribute name="realConst">
+          <attribute name="name">
+            T
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              100
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="variables">
+      <attribute name="reals">
+        <attribute name="real">
+          <attribute name="name">
+            t
+          </attribute>
+        </attribute>
+        <attribute name="real">
+          <attribute name="name">
+            Product
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="discretes">
+      </attribute>
+      <attribute name="colors">
+      </attribute>
+    </attribute>
+  </attribute>
+  <attribute name="HASLFormula">
+    <attribute name="AVG">
+      <attribute name="YHF">
+        <attribute name="last">
+          <attribute name="expr"><attribute name="name">
+            Product
+          </attribute></attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="state" x="226" y="151">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      i
+    </attribute>
+    <attribute name="flows">
+      <attribute name="flow">
+        <attribute name="name">
+          Product
+        </attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="function"><attribute name="+">
+            <attribute name="expr"><attribute name="name">
+              Buffer1
+            </attribute></attribute>
+            <attribute name="expr"><attribute name="function"><attribute name="+">
+              <attribute name="expr"><attribute name="name">
+                Pos1_1
+              </attribute></attribute>
+              <attribute name="expr"><attribute name="function"><attribute name="+">
+                <attribute name="expr"><attribute name="name">
+                  Pos1_2
+                </attribute></attribute>
+                <attribute name="expr"><attribute name="function"><attribute name="+">
+                  <attribute name="expr"><attribute name="name">
+                    Pos1_3
+                  </attribute></attribute>
+                  <attribute name="expr"><attribute name="function"><attribute name="+">
+                    <attribute name="expr"><attribute name="name">
+                      Pos1_4
+                    </attribute></attribute>
+                    <attribute name="expr"><attribute name="function"><attribute name="+">
+                      <attribute name="expr"><attribute name="name">
+                        Q1
+                      </attribute></attribute>
+                      <attribute name="expr"><attribute name="function"><attribute name="+">
+                        <attribute name="expr"><attribute name="name">
+                          Buffer2
+                        </attribute></attribute>
+                        <attribute name="expr"><attribute name="function"><attribute name="+">
+                          <attribute name="expr"><attribute name="name">
+                            Pos2_1
+                          </attribute></attribute>
+                          <attribute name="expr"><attribute name="function"><attribute name="+">
+                            <attribute name="expr"><attribute name="name">
+                              Pos2_2
+                            </attribute></attribute>
+                            <attribute name="expr"><attribute name="function"><attribute name="+">
+                              <attribute name="expr"><attribute name="name">
+                                Pos2_3
+                              </attribute></attribute>
+                              <attribute name="expr"><attribute name="function"><attribute name="+">
+                                <attribute name="expr"><attribute name="name">
+                                  Pos2_4
+                                </attribute></attribute>
+                                <attribute name="expr"><attribute name="name">
+                                  Q2
+                                </attribute></attribute>
+                              </attribute></attribute></attribute>
+                            </attribute></attribute></attribute>
+                          </attribute></attribute></attribute>
+                        </attribute></attribute></attribute>
+                      </attribute></attribute></attribute>
+                    </attribute></attribute></attribute>
+                  </attribute></attribute></attribute>
+                </attribute></attribute></attribute>
+              </attribute></attribute></attribute>
+            </attribute></attribute></attribute>
+          </attribute></attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            T
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+      <attribute name="flow">
+        <attribute name="name">
+          t
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="type">
+      Initial
+    </attribute>
+  </node>
+  <node id="4" nodeType="state" x="426" y="151">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      f
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Final
+    </attribute>
+  </node>
+  <arc id="5" arcType="transition" source="3" target="4">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="equal">
+        <attribute name="expr"><attribute name="name">
+          t
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          T
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+  <arc id="6" arcType="transition" source="3" target="3">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+</model>

@@ -1,0 +1,23 @@
+NbVariables = 1;
+NbLocations = 2 ;
+
+VariablesList = {t} ;
+LocationsList = {l0, l1};
+
+AVG(Last(t));
+
+InitialLocations = {l0};
+
+FinalLocations = {l1};
+
+Locations={
+(l0, (end = 0), (t:1));
+(l1, (end = 1), (t:1));
+};
+
+Edges={
+((l0,l0),ALL,  #,#);
+((l0,l1),ALL,   #,#);
+};
+
+

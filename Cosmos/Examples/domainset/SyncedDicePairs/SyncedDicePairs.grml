@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/swn.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="declaration">
+    <attribute name="classDeclaration">
+      <attribute name="name">
+        Dice
+      </attribute>
+      <attribute name="classType">
+        <attribute name="classIntInterval">
+          <attribute name="lowerBound">
+            1
+          </attribute>
+          <attribute name="higherBound">
+            6
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="circular">
+        false
+      </attribute>
+    </attribute>
+    <attribute name="domainDeclaration">
+      <attribute name="name">
+        DicePair
+      </attribute>
+      <attribute name="domainType">
+        <attribute name="cartesianProduct">
+          <attribute name="type">
+            Dice
+          </attribute>
+          <attribute name="type">
+            Dice
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">w</attribute>
+      <attribute name="type">Dice</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">z</attribute>
+      <attribute name="type">Dice</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">y</attribute>
+      <attribute name="type">Dice</attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">x</attribute>
+      <attribute name="type">Dice</attribute>
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="transition" x="695" y="253">
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="name" x="715" y="233">
+      DoSomething
+    </attribute>
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        5
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="4" nodeType="place" x="834" y="258">
+    <attribute name="marking">
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        DicePair
+      </attribute>
+    </attribute>
+    <attribute name="name" x="854" y="238">
+      FinalPair
+    </attribute>
+  </node>
+  <node id="5" nodeType="place" x="264" y="186">
+    <attribute name="marking">
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Dice
+      </attribute>
+    </attribute>
+    <attribute name="name" x="284" y="166">
+      DiceOne
+    </attribute>
+  </node>
+  <node id="6" nodeType="place" x="264" y="272">
+    <attribute name="marking">
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Dice
+      </attribute>
+    </attribute>
+    <attribute name="name" x="284" y="252">
+      DiceThree
+    </attribute>
+  </node>
+  <node id="7" nodeType="transition" x="203" y="181">
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="name" x="223" y="161">
+      RollOne
+    </attribute>
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="8" nodeType="transition" x="203" y="267">
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="name" x="223" y="247">
+      RollThree
+    </attribute>
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="9" nodeType="transition" x="203" y="223">
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="name" x="223" y="203">
+      RollTwo
+    </attribute>
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="10" nodeType="transition" x="203" y="313">
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="name" x="223" y="293">
+      RollFour
+    </attribute>
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="11" nodeType="place" x="264" y="228">
+    <attribute name="marking">
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Dice
+      </attribute>
+    </attribute>
+    <attribute name="name" x="284" y="208">
+      DiceTwo
+    </attribute>
+  </node>
+  <node id="12" nodeType="place" x="264" y="318">
+    <attribute name="marking">
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Dice
+      </attribute>
+    </attribute>
+    <attribute name="name" x="284" y="298">
+      DiceFour
+    </attribute>
+  </node>
+  <node id="13" nodeType="place" x="514" y="208">
+    <attribute name="marking">
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        DicePair
+      </attribute>
+    </attribute>
+    <attribute name="name" x="534" y="188">
+      PairOne
+    </attribute>
+  </node>
+  <node id="14" nodeType="place" x="514" y="296">
+    <attribute name="marking">
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        DicePair
+      </attribute>
+    </attribute>
+    <attribute name="name" x="534" y="276">
+      PairTwo
+    </attribute>
+  </node>
+  <node id="15" nodeType="transition" x="380" y="203">
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="name" x="400" y="183">
+      makePair2
+    </attribute>
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        3
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="16" nodeType="transition" x="380" y="291">
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="name" x="400" y="271">
+      MakePair
+    </attribute>
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        3
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <arc id="32" arcType="arc" source="11" target="15">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="33" arcType="arc" source="6" target="16">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="17" arcType="arc" source="12" target="16">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="18" arcType="arc" source="15" target="13">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="19" arcType="arc" source="16" target="14">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="20" arcType="arc" source="13" target="3">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="21" arcType="arc" source="14" target="3">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              z
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="22" arcType="arc" source="3" target="4">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              y
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="name">
+              w
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="23" arcType="inhibitorarc" source="5" target="7">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="24" arcType="inhibitorarc" source="11" target="9">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="25" arcType="inhibitorarc" source="6" target="8">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="26" arcType="inhibitorarc" source="12" target="10">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="27" arcType="arc" source="7" target="5">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="28" arcType="arc" source="8" target="6">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="29" arcType="arc" source="9" target="11">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="30" arcType="arc" source="10" target="12">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="31" arcType="arc" source="5" target="15">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+</model>

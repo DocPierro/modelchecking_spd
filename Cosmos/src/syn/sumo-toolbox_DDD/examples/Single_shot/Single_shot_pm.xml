@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+	<Simulator>
+		<Name>Single_shot_pm</Name>
+		<Description>
+			Config file for single shot design  of ES results. input file is ES_explored
+		</Description>
+		
+		<!-- The input parameters --> 
+		<InputParameters>
+            <Parameter name="tlri" type="real" minimum="0.01" maximum="2.5"/>
+            <Parameter name="tavi" type="real" minimum="0.01" maximum="2.5"/>
+		</InputParameters>
+			
+		<!-- The output parameters -->
+		<OutputParameters>
+			<Parameter name="out" type="real"/>
+		</OutputParameters>
+			
+		<!-- A simulator may have multiple implementations: as an executable, a 
+		java main class, a dataset, ...-->
+		<Implementation>
+			
+			<DataFiles>
+ 				<ScatteredDataFile id="default">ES_explored.txt</ScatteredDataFile>
+				<!-- <ScatteredDataFile id="validation">Ackley2DScattered2.txt</ScatteredDataFile>  -->
+			</DataFiles>
+		
+		</Implementation>
+	</Simulator>

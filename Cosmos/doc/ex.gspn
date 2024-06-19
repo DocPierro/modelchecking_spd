@@ -1,0 +1,50 @@
+const double lambda1=1;
+const double lambda2=2;
+const double alpha1 = 1;
+const double alpha2 = 1;
+const double beta1 = 5;
+const double beta2 = 5;
+
+NbPlaces = 5;
+NbTransitions = 6;
+
+PlacesList = { 
+   Request_1, Request_2,
+   Access_1, Access_2,
+   Free
+} ;
+
+TransitionsList = { 
+   Arrive_1,Arrive_2,
+   Start_1 ,Start_2,
+   End_1   ,End_2
+} ;
+
+Marking={
+   (Request_1 , 0); (Request_2 , 0) ; 
+   (Access_1 , 0) ; (Access_2 , 0) ;
+   (Free, 1);
+};
+
+Transitions={
+   (Arrive_1,EXPONENTIAL(lambda1),1,1, SINGLE); 
+   (Arrive_2,EXPONENTIAL(lambda2),1,1, SINGLE);
+   (Start_1,DETERMINISTIC(0),1,1); 
+   (Start_2,DETERMINISTIC(0),1,1);
+   (End_1,UNIFORM(alpha1,beta1),1,1); 
+   (End_2,UNIFORM(alpha2,beta2),1,1);
+};
+
+InArcs={
+   (Request_1,Start_1,1); (Free,Start_1,1);
+   (Request_2,Start_2,1); (Free,Start_2,1);
+   (Access_1,End_1,1);
+   (Access_2,End_2,1);
+};
+
+OutArcs={
+   (Arrive_1,Request_1,1); 
+   (Arrive_2,Request_2,1);
+   (End_1,Free,1);
+   (End_2,Free,1);
+};

@@ -1,0 +1,23 @@
+pta
+
+const int n = 5;
+const int wt = 3;
+
+module c1
+	state1: [1..n] init 1;
+	x1: clock;
+
+	invariant
+		  ( state1<n => x1<1) 
+		& ( state1=n => x1 < wt)
+	endinvariant
+
+	[] state1<n & x1<1 -> 1.0 : (state1'=state1+1);
+	[] state1<n & x1<1 -> 1.0 : (state1'=1);
+	[] state1=n & x1<wt -> 1.0 : (state1'=1)&(x1'=0);
+endmodule
+
+//module c2 = c1 [state1=state2,x1=x2 ] endmodule
+//module c3 = c1 [state1=state3,x1=x3 ] endmodule
+//module c4 = c1 [state1=state4,x1=x4 ] endmodule
+//module c5 = c1 [state1=state5,x1=x5 ] endmodule

@@ -1,0 +1,45 @@
+
+const int C=5;
+
+
+NbPlaces = 6;
+NbTransitions = 5;
+
+
+PlacesList = { N_Queue1, Queue1, Phase1, Phase2, Queue2, N_Queue2} ;
+TransitionsList = { Arrive, ToPhase2, Route1, Route2 , Leave} ;
+
+Marking={
+(N_Queue1 , C) ; (Queue1 ,0);
+(N_Queue2 , C) ; (Queue2 , 0);
+(Phase1 , 1) ;   (Phase2 , 0) ; 
+};
+
+Transitions={
+(Arrive,EXPONENTIAL(4*C),1, 1, SINGLE); 
+
+(ToPhase2,EXPONENTIAL(0.2),1, 1,SINGLE);
+
+(Route1,EXPONENTIAL(1.8),1, 1, SINGLE);
+
+(Route2,EXPONENTIAL(2), 1, 1, SINGLE);
+
+(Leave,EXPONENTIAL(4), 1,1, SINGLE); 
+};
+
+InArcs={
+(N_Queue1,Arrive,1);
+(Queue1,ToPhase2,1);(Phase1,ToPhase2,1);
+(Queue1,Route1,1);(Phase1,Route1,1);(N_Queue2,Route1,1);
+(Queue1,Route2,1);(Phase2,Route2,1);(N_Queue2,Route2,1);
+(Queue2,Leave, 1);
+};
+
+OutArcs={
+(Arrive,Queue1,1);
+(ToPhase2,Queue1,1);(ToPhase2,Phase2,1);
+(Route1,N_Queue1,1);(Route1,Queue2,1);(Route1,Phase1,1);
+(Route2,N_Queue1,1);(Route2,Queue2,1);(Route2,Phase1,1);
+(Leave,N_Queue2,1);
+};
+

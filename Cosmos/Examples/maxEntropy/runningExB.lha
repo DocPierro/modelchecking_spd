@@ -1,0 +1,34 @@
+
+NOTDETERMINISTIC
+const double c1 = 1.0;
+const int c2 = 3;
+
+VariablesList = {DISC countT, t1,t2,time};
+LocationsList = {li,l1,l2,lf};
+
+reach=PROB;
+
+InitialLocations={li};
+FinalLocations={lf};
+Locations={
+(li, TRUE, (t1:1,t2:1,time:1));
+(l1, TRUE, (t1:1,t2:1,time:1));
+(l2, TRUE, (t1:1,t2:1,time:1));
+(lf, TRUE, (t1:1,t2:1,time:1));
+
+};
+
+Edges={
+((li,li),ALL\{t_a,t_b},time <=Dline ,#);
+((l1,l1),ALL\{t_a,t_b},time <=Dline & t1<=c2 ,#);
+((l2,l2),ALL\{t_a,t_b},time <=Dline & t1<=c2 ,#);
+((lf,lf),ALL\{t_a,t_b},time <=Dline ,#);
+
+((li,li),{t_a,t_b}, # ,{countT = countT+1});
+((li,l1),{t_a}, # ,{countT = countT+1,t1=0});
+((l1,l1),{t_a,t_b}, t1<=c2 ,{countT = countT+1});
+((l1,l2),{t_b}, t1>=c1& t1<=c2 ,{countT = countT+1,t2=0});
+((l2,l2),{t_a,t_b}, t1<=c2 ,{countT = countT+1});
+((l2,lf),{t_a}, t2>=c1&t1<=c2 ,{countT = countT+1});
+((lf,lf),{t_a,t_b}, # ,{countT = countT+1});
+};

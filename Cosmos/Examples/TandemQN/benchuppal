@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in {1..100}
+do
+	echo $i;
+	~/uppaal64-4.1.16/bin-Linux/verifyta tqn.xml tqn.q -p 0.001 -P 0.001 -a 0.005 -B 0.005
+done

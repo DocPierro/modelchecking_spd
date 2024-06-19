@@ -1,0 +1,38 @@
+dtmc
+const int n = 100;
+const int r = 100;
+
+const double lambda = 0.40000;
+const double rho1 = 0.3000;
+const double rho2 = 0.30000;
+
+module Tandem
+	Queue1 : [0..n] init 1;	Queue2 : [0..r] init 0;
+	[] Queue1>0 & Queue1<n & Queue2>0 & Queue2<r -> 
+		lambda: (Queue1'=Queue1+1)
+		+ rho1: (Queue1'=Queue1-1) & (Queue2'=Queue2+1)
+		+ rho2: (Queue2'=Queue2-1);
+
+	[] Queue1>0 & Queue1<n & Queue2=0 -> 
+		lambda: (Queue1'=Queue1+1)
+		+ rho1: (Queue1'=Queue1-1) & (Queue2'=Queue2+1)
+		+ rho2: (Queue2'=Queue2);
+
+	[] Queue1>0 & Queue1<n & Queue2=r -> 
+		lambda: (Queue1'=Queue1+1)
+		+ rho1: (Queue1'=Queue1)
+		+ rho2: (Queue2'=Queue2-1);
+
+	[] Queue1=0 & Queue2>0 & Queue2<r -> 
+		lambda: (Queue1'=Queue1+1)
+		+ rho1: (Queue1'=Queue1) 
+		+ rho2: (Queue2'=Queue2-1);
+
+	[] Queue1=n & Queue2>0 & Queue2<r -> 
+		lambda: (Queue1'=Queue1)
+		+ rho1: (Queue1'=Queue1-1) & (Queue2'=Queue2+1) 
+		+ rho2: (Queue2'=Queue2-1);
+
+endmodule
+formula win = Queue1 + Queue2=n ;
+formula loose = Queue1 + Queue2=0 ;

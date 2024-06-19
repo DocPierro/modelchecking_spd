@@ -1,0 +1,17 @@
+pta
+
+module originator
+	
+o : [0..1] init 0;
+x : clock;
+y : clock;
+invariant
+(x<=4)&(y<=4)
+endinvariant
+
+[a] (o=0) & (x<2)&(y>0)&(x>0) -> 0.5: (o'=0) & (y'=0)
+    	    		      	+0.5: (o'=1)& (y'=0) ;
+[a] (o=1) & (x<2)&(y>0)&(x>0) -> (o'=0) & (y'=0);
+[b] (o=0) & (y<2)& (x<3)&(x>0)&(y>0) -> (o'=0) & (x'=0);
+
+endmodule

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+
+  <attribute name="declaration"><attribute name="constants">
+    <attribute name="intConsts">
+    </attribute>
+    <attribute name="realConsts">
+     </attribute>
+    <attribute name="extConsts">
+    </attribute>
+  </attribute>
+<attribute name="classDeclaration">
+      <attribute name="name">ContinuousColorClass</attribute>
+      <attribute name="continuous">true</attribute>
+     </attribute>
+     <attribute name="variableDeclaration">
+      <attribute name="name">c1</attribute>
+      <attribute name="type">ContinuousColorClass</attribute>
+     </attribute>
+     <attribute name="variableDeclaration">
+      <attribute name="name">c2</attribute>
+      <attribute name="type">ContinuousColorClass</attribute>
+  </attribute>
+</attribute>
+  <node id="0" nodeType="place">
+    <attribute name="name">Nm1</attribute><attribute name="domain"><attribute name="type">
+        ContinuousColorClass
+                             </attribute></attribute>
+<attribute name="marking"><attribute name="token">
+            <attribute name="occurs">
+                <attribute name="intValue">
+                    1
+                </attribute>
+            </attribute>
+            <attribute name="tokenProfile">
+                <attribute name="expr">
+                   <attribute name="realConst">2.000000</attribute>
+                </attribute>
+            </attribute>
+		  </attribute></attribute>
+</node>
+  <node id="1" nodeType="place">
+    <attribute name="name">Nm2</attribute><attribute name="domain"><attribute name="type">
+        ContinuousColorClass
+                             </attribute></attribute>
+<attribute name="marking"><attribute name="token">
+            <attribute name="occurs">
+                <attribute name="intValue">
+                    1
+                </attribute>
+            </attribute>
+            <attribute name="tokenProfile">
+                <attribute name="expr">
+                   <attribute name="realConst">1.000000</attribute>
+                </attribute>
+            </attribute>
+		  </attribute></attribute>
+</node>
+  <node id="2" nodeType="transition">
+    <attribute name="name">tr</attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        DETERMINISTIC
+      </attribute>
+      <attribute name="param">
+        <attribute name="number">0</attribute>
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+      <attribute name="priority"><attribute name="expr">
+        <attribute name="numValue">1.000000</attribute>
+      </attribute></attribute>
+      <attribute name="weight"><attribute name="expr">
+        <attribute name="numValue">1.000000</attribute>
+      </attribute></attribute>
+      <attribute name="update">
+	M._PL_Nm1 -= ContinuousColorClass_Token(B.c2);
+	M._PL_Nm1 += ContinuousColorClass_Token(B.c1.c0 + B.c2.c0);
+      </attribute>
+  </node>
+  <arc id="3" arcType="arc" source="0" target="2">
+                    <attribute name="valuation"><attribute name="token">
+            <attribute name="occurs">
+                <attribute name="intValue">
+                    1
+                </attribute>
+            </attribute>
+            <attribute name="tokenProfile">
+                <attribute name="expr">
+                   <attribute name="name">c1</attribute>
+                </attribute>
+            </attribute>
+		  </attribute></attribute>
+</arc>
+  <arc id="4" arcType="arc" source="1" target="2">
+                    <attribute name="valuation"><attribute name="token">
+            <attribute name="occurs">
+                <attribute name="intValue">
+                    1
+                </attribute>
+            </attribute>
+            <attribute name="tokenProfile">
+                <attribute name="expr">
+                   <attribute name="name">c2</attribute>
+                </attribute>
+            </attribute>
+		  </attribute></attribute>
+</arc>
+  <arc id="5" arcType="arc" source="2" target="1">
+                    <attribute name="valuation"><attribute name="token">
+            <attribute name="occurs">
+                <attribute name="intValue">
+                    1
+                </attribute>
+            </attribute>
+            <attribute name="tokenProfile">
+                <attribute name="expr">
+                   <attribute name="name">c1</attribute>
+                </attribute>
+            </attribute>
+		  </attribute></attribute>
+</arc>
+  <arc id="6" arcType="arc" source="2" target="0">
+                    <attribute name="valuation"><attribute name="token">
+            <attribute name="occurs">
+                <attribute name="intValue">
+                    1
+                </attribute>
+            </attribute>
+            <attribute name="tokenProfile">
+                <attribute name="expr">
+                   <attribute name="name">c2</attribute>
+                </attribute>
+            </attribute>
+		  </attribute></attribute>
+</arc>
+</model>

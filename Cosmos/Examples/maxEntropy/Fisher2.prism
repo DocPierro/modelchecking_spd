@@ -1,0 +1,44 @@
+pta
+
+module c1
+	state: [1..7] init 1;
+	x1: clock;
+	// 5 conflict 1
+	// 7 conflict 2
+	// 6 work
+
+	invariant
+		 (state=1 => x1<5)
+		&(state=2 => x1<3)
+		&(state=4 => x1<5)
+		&(state=5 => x1<1)	
+	endinvariant
+
+	[snd12] state=1 & x1<5 -> 1.00 : (state'=2)&(x1'=0);
+	[] state=2 & x1>2 & x1<3-> 1.0 : (state'=4)&(x1'=0);
+	[rcv21] state=2 -> 1.0 : (state'=5)&(x1'=0);
+	[endwork12] state=4 & x1 < 5 -> 1.0 : (state'=1)&(x1'=0);
+	[] state=5 & x1<1 -> 1.0 : (state'=1) &(x1'=0);
+
+	[rcv21] state=1 -> 1.0 : (state'=6)&(x1'=0);
+	[endwork21] state=6 -> 1.0 : (state'=1)&(x1'=0);
+endmodule
+
+module network1
+	netstate1: [1..2] init 1;
+	nt1 :clock;
+	// 1 empty
+	// 2 1->2
+
+	invariant
+		(netstate1=2 => nt1<1)
+	endinvariant
+
+	[snd12] netstate1=1 -> 1.0 : (netstate1'=2)& (nt1'=0);
+	[rcv12] netstate1=2 & nt1<1-> 1.0 : (netstate1'=1)& (nt1'=0);
+endmodule
+
+module c2 = c1 [state=state2,snd12=snd21,rcv21=rcv12,endwork12=endwork21,endwork21=endwork12,x1=x2] endmodule
+module network2 = network1 [netstate1=netstate2,snd12=snd21,rcv12=rcv21,nt1=nt2] endmodule
+
+label "gains_information" = true;

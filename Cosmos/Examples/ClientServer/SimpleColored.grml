@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model formalismUrl="http://formalisms.cosyverif.org/s-net.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="declaration">
+    <attribute name="classDeclaration">
+      <attribute name="name">
+        color
+      </attribute>
+      <attribute name="classType">
+        <attribute name="classEnum">
+          <attribute name="enumValue">
+            c1
+          </attribute>
+          <attribute name="enumValue">
+            c2
+          </attribute>
+          <attribute name="enumValue">
+            c3
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="circular">
+        false
+      </attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">v</attribute>
+      <attribute name="type">color</attribute>
+    </attribute>
+  </attribute>
+  <attribute name="authors" x="0" y="0">
+  </attribute>
+  <attribute name="title" x="0" y="0">
+  </attribute>
+  <attribute name="date" x="0" y="0">
+  </attribute>
+  <attribute name="comments" x="0" y="0">
+    Designed with Coloane
+  </attribute>
+  <attribute name="version" x="0" y="0">
+    0,0
+  </attribute>
+  <node id="3" nodeType="place" x="216" y="217">
+    <attribute name="name" x="236" y="212">
+      client
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        color
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="function">
+              <attribute name="all">
+                <attribute name="type">
+                  color
+                </attribute>
+              </attribute>
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </node>
+  <node id="4" nodeType="place" x="344" y="215">
+    <attribute name="name" x="364" y="210">
+      wait
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        color
+      </attribute>
+    </attribute>
+    <attribute name="marking">
+    </attribute>
+  </node>
+  <node id="5" nodeType="transition" x="294" y="167">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="number">
+          0
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1.0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="name" x="0" y="0">
+      t1
+    </attribute>
+  </node>
+  <node id="6" nodeType="transition" x="293" y="271">
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="number">
+          0
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1.0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="boolValue">
+          true
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="name" x="0" y="0">
+      t2
+    </attribute>
+  </node>
+  <node id="7" nodeType="place" x="421" y="222">
+    <attribute name="name" x="441" y="217">
+      P1
+    </attribute>
+    <attribute name="marking">
+      <attribute name="expr"><attribute name="numValue">
+        0
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <arc id="8" arcType="arc" source="3" target="5">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              v
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="9" arcType="arc" source="5" target="4">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              v
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="10" arcType="arc" source="4" target="6">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              v
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="11" arcType="arc" source="6" target="3">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              v
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="12" arcType="arc" source="5" target="7">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+  <arc id="13" arcType="arc" source="7" target="6">
+    <attribute name="valuation">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </arc>
+</model>

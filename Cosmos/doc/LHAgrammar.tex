@@ -1,0 +1,128 @@
+\documentclass{article}
+\usepackage{syntax}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\begin{document}
+
+
+\section{General Expression}
+
+\begin{grammar}
+  <MarkingDepExpr> ::= <ConstIdentifier> | <DiscreteVarIdentifier> | <PlaceIdentifier>
+  \alt  <MarkingDepExpr> `+'  <MarkingDepExpr> | <MarkingDepExpr> `-'  <MarkingDepExpr>
+  \alt  <MarkingDepExpr> `*'  <MarkingDepExpr>
+  \alt `Card' <MarkingDepExpr>
+  \alt <MarkingDepExpr> `[' <ColorList> `]'
+  \alt <DomainMarking>
+
+ <Expr> ::= <ConstIdentifier> | <DiscreteVarIdentifier>  | <VarIdentifier> | <PlaceIdentifier>
+  \alt  <Expr> `+'  <Expr> | <Expr> `-'  <Expr>
+  \alt  <Expr> `*'  <Expr>
+  \alt `Card' <Expr>
+  \alt <Expr> `[' <ColorList> `]'
+  \alt <DomainMarking>
+
+  <ColorList> ::= <ColorExpr> `,' <ColorList>
+  \alt <ColorExpr>
+
+  <ColorExpr> ::= <ColorIdentifier> | <ColorVarIdentifier>
+  \alt <ColorExpr> `++' | <ColorExpr> `--'
+
+  <LinearExpr> ::= <LinearExpr> `+'  <LinearExpr> | <LinearExpr> `-'  <LinearExpr>
+  \alt <MarkingDepExpr> `*' <VarExpr>
+
+  <VarExpr> ::= <VarIdentifier> | <VarIdentifier> `[' <ColorList> `]'
+
+  <DiscreteVarExpr> ::= <DiscreteVarExpr> \alt <DiscreteVarExpr> `[' <ColorList> `]'
+
+<MarkingDepProp> ::= `true' | `false' | `not' <MarkingDepProp>
+  \alt <MarkingDepProp> `\&\&' <MarkingDepProp> |  <MarkingDepProp> `||' <MarkingDepProp>
+  \alt <MarkingDepExpr> `|\!\!>\!<\!\!|' <MarkingDepExpr>  
+  \alt <ColorExpr> `=' <ColorExpr> | <ColorExpr> `!=' <ColorExpr>
+
+\end{grammar}
+
+All the expression are typed with a domain. An expression of a domain
+$D$ is a function that map to each color of the domain $D$ an integer
+or real expression. 
+
+Value of the domain ``Uncolored'' act as scalar.  The construction
+``Card'' take an expression over a domain and return an expression of
+the uncolored domain by taking the sum of the expression over all
+color. The construction ``Expr[c1,c2]'' return a value in the
+uncolored domain equal to the valuation of ``Expr'' for the color
+``c1,c2''.
+
+
+There is two type of expression, The one describe
+by ``Expr'' can depend of any quantities define in the Net or in the
+automaton whereas ``MarkingDepExpr'' can not depend of quantities
+which are continuous variable. The difference is that
+``MarkingDepExpr'' are constant between two transition of the
+automaton whereas ``Expr'' evolve linearly between two
+transition. Both of them can be discontinuous when a transition of the
+automaton occurs.
+
+
+\section{Declarative Part and General Expression}
+
+\begin{grammar}
+  <Declaration> ::= <VarDeclaration> `;' | <ConstDeclaration> `;'
+
+  <ConstDeclaration> ::= 
+  `const' `int' <IDENTIFIER> `=' <INTEGER>
+  \alt `const' `double' <IDENTIFIER> `=' <FLOAT>
+
+  <VarDeclaration> ::= 
+   `var' <IDENTIFIER> (`in' <DomainIdentifier>) ?
+   \alt `discvar' <IDENTIFIER> (`in' <DomainIdentifier>) ?
+   \alt `colorvar' <IDENTIFIER> `in' <DomainIdentifier>
+\end{grammar}
+
+This section define the identifier for the different type of variable
+as well as their domain.
+
+\section{Location Invariant Proposition}
+
+\begin{grammar}
+  <LocInvProp> ::= <MarkingDepProp>
+\end{grammar}
+
+Location invariant do not depend of continuous variable value.
+It ensure that location invariant are constant between two transitions
+of the automaton.
+
+\section{Flow Expression}
+
+\begin{grammar}
+  <FlowDef> ::= <VarExpr> `\'' `=' <MarkingDepExpr> 
+\end{grammar}
+As location invariant, flow rate are constant between two transitions
+of the automaton to ensure that continuous variables are piecewise
+linear.
+
+
+\section{Guard Proposition}
+\begin{grammar}
+  <GuardProp> ::= `true' | <GuardProp> `\&\&' <GuardProp>
+  \alt <LinearExp> `=' <MarkingDepExpr> \alt <LinExp> `<=' <MarkingDepExpr>
+  \alt <LinearExp> `>=' <MarkingDepExpr>
+  \alt <MarkingDepProp>
+
+  <ColorExpr> ::= \dots\! | <BindingVarIdentifier>
+\end{grammar}
+
+
+\section{Update Expression}
+
+\begin{grammar}
+  <UpdateExpr> ::= <VarExpr> `:=' <Expr> | <DiscreteVarExpr> `:=' <Expr>
+  \alt <ColorVarIdentifier> `:=' <ColorExpr>
+
+   <ColorExpr> ::= \dots\! | <BindingVarIdentifier>
+\end{grammar}
+
+
+
+\end{document}

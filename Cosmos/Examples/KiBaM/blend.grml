@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+    <attribute name="Hybrid_GSPN_Simulink"></attribute>
+    <attribute name="declaration">
+        <attribute name="constants">
+            <attribute name="intConsts">
+                <attribute name="intConst">
+                    <attribute name="name">Dline</attribute>
+                    <attribute name="expr"><attribute name="numValue">-1</attribute></attribute>
+                </attribute>
+            </attribute>
+        </attribute>
+        <attribute name="UserDefineDistributionPoly">
+            <attribute name="polyDataFile"> controller.grml.data </attribute>
+            <attribute name="name">trans_0_0_10</attribute>
+            <attribute name="var">t</attribute>
+            <attribute name="nbParam">3</attribute>
+            <attribute name="lowerBound">0</attribute>
+            <attribute name="upperBound">1</attribute>
+            <attribute name="norm">6</attribute>
+            <attribute name="cdf">7</attribute>
+            <attribute name="pdf">8</attribute>
+        </attribute>
+        <attribute name="UserDefineDistributionPoly">
+            <attribute name="polyDataFile"> controller.grml.data </attribute>
+            <attribute name="name">trans_1_0_10</attribute>
+            <attribute name="var">t</attribute>
+            <attribute name="nbParam">3</attribute>
+            
+            <attribute name="lowerBound">2</attribute>
+            <attribute name="upperBound">3</attribute>
+            <attribute name="norm">9</attribute>
+            <attribute name="cdf">10</attribute>
+            <attribute name="pdf">11</attribute>
+        </attribute>
+        <attribute name="UserDefineDistributionPoly">
+            <attribute name="polyDataFile"> controller.grml.data </attribute>
+            <attribute name="name">trans_2_0_10</attribute>
+            <attribute name="var">t</attribute>
+            <attribute name="nbParam">3</attribute>
+            <attribute name="lowerBound">4</attribute>
+            <attribute name="upperBound">5</attribute>
+            <attribute name="norm">12</attribute>
+            <attribute name="cdf">13</attribute>
+            <attribute name="pdf">14</attribute>
+        </attribute>
+        <attribute name="variables">
+            <attribute name="clocks">
+                <attribute name="clock">
+                    <attribute name="name"> x_1 </attribute>
+                </attribute>
+                <attribute name="clock">
+                    <attribute name="name"> x_2 </attribute>
+                </attribute>
+            </attribute>
+        </attribute>
+        <attribute name="classDeclaration">
+            <attribute name="name">ContinuousColorClass</attribute>
+            <attribute name="continuous">true</attribute>
+        </attribute>
+        <attribute name="variableDeclaration">
+            <attribute name="name">continuous</attribute>
+            <attribute name="type">ContinuousColorClass</attribute>
+        </attribute>
+
+    </attribute>
+    <attribute name="externalDeclaration">
+        void magicReset(){};
+        bool magicConditional(int){return true;};
+        void magicUpdate(int,double){};
+        int print_magic(int i){return i;};
+        const int transDistrTab[3][11] ={ { 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, }, { 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, }, { 2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, }, };
+        
+    </attribute>
+    <node id="240"  nodeType="place">
+        <attribute name="name">Counter </attribute>
+        <attribute name="marking"><attribute name="expr">
+            <attribute name="numValue">0  </attribute>
+        </attribute></attribute>
+    </node>
+    <node id="110"  nodeType="place">
+        <attribute name="name">s_0_1 </attribute>
+        <attribute name="marking"><attribute name="expr">
+            <attribute name="numValue">1  </attribute>
+        </attribute></attribute>
+    </node>
+    <node id="111"  nodeType="place">
+        <attribute name="name">s_1_1 </attribute>
+        <attribute name="marking"><attribute name="expr">
+            <attribute name="numValue">0  </attribute>
+        </attribute></attribute>
+    </node>
+    <node id="112"  nodeType="place">
+        <attribute name="name">s_2_1 </attribute>
+        <attribute name="marking"><attribute name="expr">
+            <attribute name="numValue">0  </attribute>
+        </attribute></attribute>
+    </node>
+    <node id="200"  nodeType="place">
+        <attribute name="name">s_a_ </attribute>
+        <attribute name="marking"><attribute name="expr">
+            <attribute name="numValue">0  </attribute>
+        </attribute></attribute>
+    </node>
+    <node id="201"  nodeType="place">
+        <attribute name="name">s_b_ </attribute>
+        <attribute name="marking"><attribute name="expr">
+            <attribute name="numValue">0  </attribute>
+        </attribute></attribute>
+    </node>
+    <node id="202"  nodeType="place">
+        <attribute name="name">powerState</attribute>
+        <attribute name="marking"><attribute name="expr">
+            <attribute name="numValue">0  </attribute>
+        </attribute></attribute>
+    </node>
+    <node id="210"  nodeType="transition">
+        <attribute name="name">t_a</attribute>
+        <attribute name="distribution">
+            <attribute name="type">
+                IMDT
+            </attribute>
+        </attribute>
+        <attribute name="priority"><attribute name="expr">
+            <attribute name="numValue">2</attribute>
+        </attribute></attribute>
+        <attribute name="weight"><attribute name="expr">
+            <attribute name="numValue"> 1.000000 </attribute>
+        </attribute></attribute>
+        
+    </node>
+    <node id="211"  nodeType="transition">
+        <attribute name="name">t_b</attribute>
+        <attribute name="distribution">
+            <attribute name="type">
+                IMDT
+            </attribute>
+        </attribute>
+        <attribute name="priority"><attribute name="expr">
+            <attribute name="numValue">2</attribute>
+        </attribute></attribute>
+        <attribute name="weight"><attribute name="expr">
+            <attribute name="numValue"> 1.000000 </attribute>
+        </attribute></attribute>
+        
+    </node>
+    <node id="160"  nodeType="transition">
+        <attribute name="name">time_0_0</attribute>
+        <attribute name="distribution">
+            <attribute name="type">
+                USERDEFINE
+            </attribute>
+            <attribute name="param">
+                <attribute name="expr"><attribute name="unParsed"> transDistrTab[0][0]        </attribute></attribute>
+            </attribute>
+            <attribute name="param">
+                <attribute name="expr"><attribute name="name">
+                    x_1
+                </attribute></attribute>
+            </attribute>
+            <attribute name="param">
+                <attribute name="expr"><attribute name="name">
+                    x_2
+                </attribute></attribute>
+            </attribute>
+        </attribute>
+        <attribute name="priority"><attribute name="expr">
+            <attribute name="numValue">1.00</attribute>
+        </attribute></attribute>
+        <attribute name="weight"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+        <attribute name="update">
+            x_1=0;
+        </attribute>
+    </node>
+    <node id="161"  nodeType="transition">
+        <attribute name="name">time_1_0</attribute>
+        <attribute name="distribution">
+            <attribute name="type">
+                USERDEFINE
+            </attribute>
+            <attribute name="param">
+                <attribute name="expr"><attribute name="unParsed"> transDistrTab[1][0]        </attribute></attribute>
+            </attribute>
+            <attribute name="param">
+                <attribute name="expr"><attribute name="name">
+                    x_1
+                </attribute></attribute>
+            </attribute>
+            <attribute name="param">
+                <attribute name="expr"><attribute name="name">
+                    x_2
+                </attribute></attribute>
+            </attribute>
+        </attribute>
+        <attribute name="priority"><attribute name="expr">
+            <attribute name="numValue">1.00</attribute>
+        </attribute></attribute>
+        <attribute name="weight"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+        <attribute name="update">
+            x_2=0;
+        </attribute>
+    </node>
+    <node id="162"  nodeType="transition">
+        <attribute name="name">time_2_0</attribute>
+        <attribute name="distribution">
+            <attribute name="type">
+                USERDEFINE
+            </attribute>
+            <attribute name="param">
+                <attribute name="expr"><attribute name="unParsed"> transDistrTab[2][0]        </attribute></attribute>
+            </attribute>
+            <attribute name="param">
+                <attribute name="expr"><attribute name="name">
+                    x_1
+                </attribute></attribute>
+            </attribute>
+            <attribute name="param">
+                <attribute name="expr"><attribute name="name">
+                    x_2
+                </attribute></attribute>
+            </attribute>
+        </attribute>
+        <attribute name="priority"><attribute name="expr">
+            <attribute name="numValue">1.00</attribute>
+        </attribute></attribute>
+        <attribute name="weight"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+        <attribute name="update">
+            x_1=0;
+        </attribute>
+    </node>
+    <arc id="220" arcType="arc" source="200" target="210" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="221" arcType="arc" source="201" target="211" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="142" arcType="arc" source="110" target="160" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="233" arcType="arc" source="160" target="200" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="314" arcType="arc" source="160" target="240" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="245" arcType="arc" source="160" target="111" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="147" arcType="arc" source="111" target="161" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="238" arcType="arc" source="161" target="201" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="319" arcType="arc" source="161" target="240" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="2410" arcType="arc" source="161" target="112" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="1412" arcType="arc" source="112" target="162" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="2313" arcType="arc" source="162" target="200" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="3114" arcType="arc" source="162" target="240" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="2415" arcType="arc" source="162" target="111" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="1916" arcType="arc" source="162" target="19" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="1917" arcType="arc" source="210" target="202" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="1918" arcType="arc" source="202" target="211" >
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <node id="1001" nodeType="place">
+        <attribute name="name">B12O1</attribute><attribute name="domain"><attribute name="type">
+            ContinuousColorClass
+        </attribute></attribute>
+        <attribute name="marking"><attribute name="token">
+            <attribute name="occurs">
+                <attribute name="intValue">
+                    1
+                </attribute>
+            </attribute>
+            <attribute name="tokenProfile">
+                <attribute name="expr">
+                    <attribute name="realConst">0.000000</attribute>
+                </attribute>
+            </attribute>
+        </attribute></attribute>
+    </node>
+    <node id="1002" nodeType="place">
+        <attribute name="name">B12O2</attribute><attribute name="domain"><attribute name="type">
+            ContinuousColorClass
+        </attribute></attribute>
+        <attribute name="marking"><attribute name="token">
+            <attribute name="occurs">
+                <attribute name="intValue">
+                    1
+                </attribute>
+            </attribute>
+            <attribute name="tokenProfile">
+                <attribute name="expr">
+                    <attribute name="realConst">0.000000</attribute>
+                </attribute>
+            </attribute>
+        </attribute></attribute>
+    </node>
+    <node id="1003" nodeType="place">
+        <attribute name="name">B12O3</attribute><attribute name="domain"><attribute name="type">
+            ContinuousColorClass
+        </attribute></attribute>
+        <attribute name="marking"><attribute name="token">
+            <attribute name="occurs">
+                <attribute name="intValue">
+                    1
+                </attribute>
+            </attribute>
+            <attribute name="tokenProfile">
+                <attribute name="expr">
+                    <attribute name="realConst">0.000000</attribute>
+                </attribute>
+            </attribute>
+        </attribute></attribute>
+    </node>
+    <node id="1013" nodeType="transition">
+        <attribute name="name">SynchIN15</attribute>
+        <attribute name="distribution">
+            <attribute name="type">
+                SYNC
+            </attribute>
+            <attribute name="param">
+                <attribute name="number">0</attribute>
+                <attribute name="expr"><attribute name="unParsed">
+                    15
+                </attribute></attribute>
+            </attribute>
+        </attribute>
+        <attribute name="priority"><attribute name="expr">
+            <attribute name="numValue">1.000000</attribute>
+        </attribute></attribute>
+        <attribute name="weight"><attribute name="expr">
+            <attribute name="numValue">1.000000</attribute>
+        </attribute></attribute>
+    </node>
+    <node id="1004" nodeType="transition">
+        <attribute name="name">Synch12O1</attribute>
+        <attribute name="distribution">
+            <attribute name="type">
+                SYNC
+            </attribute>
+            <attribute name="param">
+                <attribute name="number">0</attribute>
+                <attribute name="expr"><attribute name="unParsed">
+                    _Scope_OUT1
+                </attribute></attribute>
+            </attribute>
+        </attribute>
+        <attribute name="priority"><attribute name="expr">
+            <attribute name="numValue">1.000000</attribute>
+        </attribute></attribute>
+        <attribute name="weight"><attribute name="expr">
+            <attribute name="numValue">1.000000</attribute>
+        </attribute></attribute>
+    </node>
+    <node id="1005" nodeType="transition">
+        <attribute name="name">Synch12O2</attribute>
+        <attribute name="distribution">
+            <attribute name="type">
+                SYNC
+            </attribute>
+            <attribute name="param">
+                <attribute name="number">0</attribute>
+                <attribute name="expr"><attribute name="unParsed">
+                    _Scope_OUT2
+                </attribute></attribute>
+            </attribute>
+        </attribute>
+        <attribute name="priority"><attribute name="expr">
+            <attribute name="numValue">1.000000</attribute>
+        </attribute></attribute>
+        <attribute name="weight"><attribute name="expr">
+            <attribute name="numValue">1.000000</attribute>
+        </attribute></attribute>
+    </node>
+    <node id="1006" nodeType="transition">
+        <attribute name="name">Synch12O3</attribute>
+        <attribute name="distribution">
+            <attribute name="type">
+                SYNC
+            </attribute>
+            <attribute name="param">
+                <attribute name="number">0</attribute>
+                <attribute name="expr"><attribute name="unParsed">
+                    _Scope_OUT3
+                </attribute></attribute>
+            </attribute>
+        </attribute>
+        <attribute name="priority"><attribute name="expr">
+            <attribute name="numValue">1.000000</attribute>
+        </attribute></attribute>
+        <attribute name="weight"><attribute name="expr">
+            <attribute name="numValue">1.000000</attribute>
+        </attribute></attribute>
+    </node>
+    <arc id="1006" arcType="arc" source="202" target="1013">
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="1007" arcType="arc" source="1004" target="1001">
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="1008" arcType="arc" source="1005" target="1002">
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+    <arc id="1006" arcType="arc" source="1006" target="1003">
+        <attribute name="valuation"><attribute name="expr">
+            <attribute name="numValue">1</attribute>
+        </attribute></attribute>
+    </arc>
+
+</model>
+

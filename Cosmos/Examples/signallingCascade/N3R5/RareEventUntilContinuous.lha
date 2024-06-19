@@ -1,0 +1,17 @@
+%Initial formula:RE_Raf<4 U RE_ERKPP=3
+NbVariables = 1;
+NbLocations = 2;
+VariablesList = {v0};
+LocationsList = {l0,l1};
+ProbabilitOfAcceptingPath=PROB;
+ResultProb=AVG(Last(v0));
+InitialLocations = { l0 };
+FinalLocations = {l1};
+Locations = {
+(l0,( !(RE_ERKPP=9)));
+(l1,(RE_ERKPP=9));
+};
+Edges = {
+((l0,l0),ALL,#,#);
+((l0,l1),ALL,#,{v0=1});
+};

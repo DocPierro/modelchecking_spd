@@ -1,0 +1,19 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: model_lambda_out
+%   * Description: Hyperparameter optimization process
+%   * Date: 05/05/2015 at 15:46
+% 
+%   * Column1: 	Model #: 	Model #
+%   * Column2: 	lambda: 	Amount of regression lambda (log10)
+%
+% ----------------------------------------------------------------------------
+
+0.000000000E0	7.771561172376E-16	
+1.000000000E0	6.661338147751E-16	
+2.000000000E0	5.921189464668E-16	
+3.000000000E0	5.392511833894E-16	
+4.000000000E0	4.996003610813E-16	
+5.000000000E0	4.687608326195E-16	
+6.000000000E0	4.440892098501E-16	

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+	<node id="0" nodeType="place">
+		<attribute name="name">Think_p1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="1" nodeType="place">
+		<attribute name="name">Think_p2</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="2" nodeType="place">
+		<attribute name="name">Think_p3</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="3" nodeType="place">
+		<attribute name="name">Think_p4</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="4" nodeType="place">
+		<attribute name="name">Think_p5</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="5" nodeType="place">
+		<attribute name="name">Wait_p1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="6" nodeType="place">
+		<attribute name="name">Wait_p2</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="7" nodeType="place">
+		<attribute name="name">Wait_p3</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="8" nodeType="place">
+		<attribute name="name">Wait_p4</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="9" nodeType="place">
+		<attribute name="name">Wait_p5</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="10" nodeType="place">
+		<attribute name="name">Eat_p1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="11" nodeType="place">
+		<attribute name="name">Eat_p2</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="12" nodeType="place">
+		<attribute name="name">Eat_p3</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="13" nodeType="place">
+		<attribute name="name">Eat_p4</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="14" nodeType="place">
+		<attribute name="name">Eat_p5</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			0
+		</attribute></attribute></attribute>
+	</node>
+	<node id="15" nodeType="place">
+		<attribute name="name">Fork_p1</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="16" nodeType="place">
+		<attribute name="name">Fork_p2</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="17" nodeType="place">
+		<attribute name="name">Fork_p3</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="18" nodeType="place">
+		<attribute name="name">Fork_p4</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="19" nodeType="place">
+		<attribute name="name">Fork_p5</attribute>
+		<attribute name="marking"><attribute name="expr"><attribute name="numValue">
+			1
+		</attribute></attribute></attribute>
+	</node>
+	<node id="20" nodeType="transition">
+		<attribute name="name">takeLeft_p1</attribute>
+	</node>
+	<node id="21" nodeType="transition">
+		<attribute name="name">takeLeft_p2</attribute>
+	</node>
+	<node id="22" nodeType="transition">
+		<attribute name="name">takeLeft_p3</attribute>
+	</node>
+	<node id="23" nodeType="transition">
+		<attribute name="name">takeLeft_p4</attribute>
+	</node>
+	<node id="24" nodeType="transition">
+		<attribute name="name">takeLeft_p5</attribute>
+	</node>
+	<node id="25" nodeType="transition">
+		<attribute name="name">takeRight_p1</attribute>
+	</node>
+	<node id="26" nodeType="transition">
+		<attribute name="name">takeRight_p2</attribute>
+	</node>
+	<node id="27" nodeType="transition">
+		<attribute name="name">takeRight_p3</attribute>
+	</node>
+	<node id="28" nodeType="transition">
+		<attribute name="name">takeRight_p4</attribute>
+	</node>
+	<node id="29" nodeType="transition">
+		<attribute name="name">takeRight_p5</attribute>
+	</node>
+	<node id="30" nodeType="transition">
+		<attribute name="name">backToThink_p1</attribute>
+	</node>
+	<node id="31" nodeType="transition">
+		<attribute name="name">backToThink_p2</attribute>
+	</node>
+	<node id="32" nodeType="transition">
+		<attribute name="name">backToThink_p3</attribute>
+	</node>
+	<node id="33" nodeType="transition">
+		<attribute name="name">backToThink_p4</attribute>
+	</node>
+	<node id="34" nodeType="transition">
+		<attribute name="name">backToThink_p5</attribute>
+	</node>
+</model>

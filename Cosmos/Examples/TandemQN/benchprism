@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in {1..100}
+do
+	echo $i;
+	prism tandem.sm tandem.csl -const c=5  -const T=20 -sim -simwidth 0.001 -simconf 0.005
+done

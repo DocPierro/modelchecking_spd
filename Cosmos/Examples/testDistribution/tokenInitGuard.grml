@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/swn.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="declaration">
+    <attribute name="classDeclaration">
+      <attribute name="name">
+        Truc
+      </attribute>
+      <attribute name="classType">
+        <attribute name="classIntInterval">
+          <attribute name="lowerBound">
+            1
+          </attribute>
+          <attribute name="higherBound">
+            5
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="circular">
+        false
+      </attribute>
+    </attribute>
+    <attribute name="variableDeclaration">
+      <attribute name="name">x</attribute>
+      <attribute name="type">Truc</attribute>
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="place" x="432" y="103">
+    <attribute name="marking">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="intConst">
+              <attribute name="type">
+                Truc
+              </attribute>
+              <attribute name="intValue">
+                2
+              </attribute>
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="intConst">
+              <attribute name="type">
+                Truc
+              </attribute>
+              <attribute name="intValue">
+                3
+              </attribute>
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="domain">
+      <attribute name="type">
+        Truc
+      </attribute>
+    </attribute>
+    <attribute name="name" x="452" y="83">
+      Machin
+    </attribute>
+  </node>
+  <node id="4" nodeType="transition" x="427" y="183">
+    <attribute name="service">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr">
+        <attribute name="equal">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+          <attribute name="expr">
+            <attribute name="intConst">
+              <attribute name="type">
+                Truc
+              </attribute>
+              <attribute name="intValue">
+                2
+              </attribute>
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="name" x="447" y="163">
+      TRUCMUCHE
+    </attribute>
+    <attribute name="weight">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="priority">
+      <attribute name="expr"><attribute name="numValue">
+        1
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <arc id="5" arcType="arc" source="3" target="4">
+    <attribute name="valuation">
+      <attribute name="token">
+        <attribute name="occurs">
+          <attribute name="intValue">
+            1
+          </attribute>
+        </attribute>
+        <attribute name="tokenProfile">
+          <attribute name="expr">
+            <attribute name="name">
+              x
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </arc>
+</model>

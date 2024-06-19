@@ -1,0 +1,14 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: best_correlation_out
+%   * Description: Hyperparameter values for each new best model
+%   * Date: 12/05/2015 at 10:14
+% 
+%   * Column1: 	Number of samples: 	Number of samples
+%   * Column2: 	correlation: 	Correlation function
+%
+% ----------------------------------------------------------------------------
+
+6.0	corrgauss	
+7.0	corrgauss	

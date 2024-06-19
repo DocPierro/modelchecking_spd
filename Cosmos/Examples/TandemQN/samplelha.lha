@@ -1,0 +1,17 @@
+const double T=1;
+const double invT=0.5;
+const double invT2=2;
+VariablesList = {time, PLVARACC_Queue1,DISC PLVAR_Queue1[2]} ;
+LocationsList = {l0, l1, l2};
+MeanToken_Queue1$GRAPH$0$0.5$= AVG(Last( PLVAR_Queue1[0] ));
+MeanToken_Queue1$GRAPH$0.5$1$= AVG(Last( PLVAR_Queue1[1] ));
+
+InitialLocations={l0};
+FinalLocations={l2};
+Locations={
+(l0, TRUE, (time:1, PLVARACC_Queue1: Queue1* invT2 ));
+(l1, TRUE, (time:1, PLVARACC_Queue1: Queue1* invT2 ));
+(l2, TRUE , (time:1));};
+Edges={((l0,l0),ALL,time<= invT ,#);((l0,l1),#,time=invT ,{time=0, PLVARACC_Queue1 = 0.0 , PLVAR_Queue1[0]=PLVARACC_Queue1});
+((l1,l1),ALL,time<= invT ,#);((l1,l2),#,time=invT ,{time=0, PLVARACC_Queue1 = 0.0 , PLVAR_Queue1[1]=PLVARACC_Queue1});
+};

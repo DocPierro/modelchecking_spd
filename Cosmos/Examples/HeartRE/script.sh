@@ -1,0 +1,3 @@
+Cosmos idhp_model_heart_realtime_syn.grml PMTDetectionRegexpFull.grml --const PM_TPVARP=170 --trace-place 'SIG_AS,SIG_AP,SIG_VS,SIG_VP,countEp' --gnuplot-driver svg --tmp-status 2 --batch 1 --max-run 1000 --HASL-formula 'AVG(Max(countEp));'
+
+Cosmos idhp_model_heart_realtime_synReduit.grml PMTDetectionRegexp.grml --const PM_TPVARP=170 --trace-place "SIG_AS,SIG_AP,SIG_VS,SIG_VP,countEp" --HASL-formula "AVG(Max(countEp));" --batch 0

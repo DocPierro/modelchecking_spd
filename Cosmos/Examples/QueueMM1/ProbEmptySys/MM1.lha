@@ -1,0 +1,35 @@
+% Probability that the system is empty for MM1
+% Steady state p=1-lambda/mu
+
+
+NbVariables = 2;
+NbLocations = 3;
+
+const double T=1000; % time bound
+
+VariablesList = {time,p} ;
+LocationsList = {l0, l1, l2};
+
+
+AVG(Last(p));
+
+InitialLocations={l0,l1};
+
+FinalLocations={l2};
+
+Locations={
+(l0, Queue > 0 , (time:1));
+(l1, Queue <= 0 , (time:1, p:1));
+(l2, TRUE);
+};
+
+Edges={
+((l0,l0),ALL,  time<=T,#);
+((l0,l1),ALL,  time<=T,#);
+((l1,l0),ALL,  time<=T,#);
+((l1,l1),ALL,  time<=T,#);
+((l0,l2),#,    time=T , {p=p/T});
+((l1,l2),#,    time=T , {p=p/T});
+};
+
+

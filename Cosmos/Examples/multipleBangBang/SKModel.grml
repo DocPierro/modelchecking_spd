@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="Hybrid_GSPN_Simulink"></attribute>
+  <attribute name="declaration"><attribute name="constants">
+    <attribute name="intConsts">
+    </attribute>
+    <attribute name="realConsts">
+     </attribute>
+    <attribute name="extConsts">
+    </attribute>
+  </attribute>
+<attribute name="classDeclaration">
+      <attribute name="name">ContinuousColorClass</attribute>
+      <attribute name="continuous">true</attribute>
+     </attribute>
+     <attribute name="variableDeclaration">
+      <attribute name="name">continuous</attribute>
+      <attribute name="type">ContinuousColorClass</attribute>
+  </attribute>
+</attribute>
+  <node id="1000" nodeType="place">
+    <attribute name="name">B7O1</attribute><attribute name="domain"><attribute name="type">
+        ContinuousColorClass
+                             </attribute></attribute>
+<attribute name="marking"><attribute name="token">
+            <attribute name="occurs">
+                <attribute name="intValue">
+                    1
+                </attribute>
+            </attribute>
+            <attribute name="tokenProfile">
+                <attribute name="expr">
+                   <attribute name="realConst">0.000000</attribute>
+                </attribute>
+            </attribute>
+		  </attribute></attribute>
+</node>
+  <node id="1001" nodeType="place">
+    <attribute name="name">B7O2</attribute><attribute name="domain"><attribute name="type">
+        ContinuousColorClass
+                             </attribute></attribute>
+<attribute name="marking"><attribute name="token">
+            <attribute name="occurs">
+                <attribute name="intValue">
+                    1
+                </attribute>
+            </attribute>
+            <attribute name="tokenProfile">
+                <attribute name="expr">
+                   <attribute name="realConst">0.000000</attribute>
+                </attribute>
+            </attribute>
+		  </attribute></attribute>
+</node>
+  <node id="1002" nodeType="transition">
+    <attribute name="name">Synch7O1</attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        SYNC
+      </attribute>
+      <attribute name="param">
+        <attribute name="number">0</attribute>
+        <attribute name="expr"><attribute name="unParsed">
+          _Scope_OUT1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+      <attribute name="priority"><attribute name="expr">
+        <attribute name="numValue">1.000000</attribute>
+      </attribute></attribute>
+      <attribute name="weight"><attribute name="expr">
+        <attribute name="numValue">1.000000</attribute>
+      </attribute></attribute>
+  </node>
+  <node id="1003" nodeType="transition">
+    <attribute name="name">Synch7O2</attribute>
+    <attribute name="distribution">
+      <attribute name="type">
+        SYNC
+      </attribute>
+      <attribute name="param">
+        <attribute name="number">0</attribute>
+        <attribute name="expr"><attribute name="unParsed">
+          _Scope_OUT2
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+      <attribute name="priority"><attribute name="expr">
+        <attribute name="numValue">1.000000</attribute>
+      </attribute></attribute>
+      <attribute name="weight"><attribute name="expr">
+        <attribute name="numValue">1.000000</attribute>
+      </attribute></attribute>
+  </node>
+  <arc id="1004" arcType="arc" source="1002" target="1000">
+                    <attribute name="valuation"><attribute name="expr">
+        <attribute name="numValue">1</attribute>
+    </attribute></attribute>
+</arc>
+  <arc id="1005" arcType="arc" source="1003" target="1001">
+                    <attribute name="valuation"><attribute name="expr">
+        <attribute name="numValue">1</attribute>
+    </attribute></attribute>
+</arc>
+</model>

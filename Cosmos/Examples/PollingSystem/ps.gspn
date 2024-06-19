@@ -1,0 +1,89 @@
+NbPlaces = 14;
+NbTransitions = 16;
+
+PlacesList = { 
+Server_1, Q1_Idle, Q1_wait,
+Server_2, Q2_Idle, Q2_wait,
+Server_3, Q3_Idle, Q3_wait,
+Server_4, Q4_Idle, Q4_wait,
+Action_0, Action_1
+} ;
+
+TransitionsList = { 
+Loop1a, Loop1b, serve1, request1,
+Loop2a, Loop2b, serve2, request2,
+Loop3a, Loop3b, serve3, request3,  
+Loop4a, Loop4b, serve4, request4
+} ;
+
+Marking={
+(Server_1 , 1); (Q1_Idle , 1) ; (Q1_wait , 0) ;
+(Server_2 , 0); (Q2_Idle , 1) ; (Q2_wait , 0) ;
+(Server_3 , 0); (Q3_Idle , 1) ; (Q3_wait , 0) ;
+(Server_4 , 0); (Q4_Idle , 1) ; (Q4_wait , 0) ;
+(Action_0 , 1); (Action_1 , 0);
+  
+};
+
+Transitions={
+(Loop1a,EXPONENTIAL(200),1,1, SINGLE); (Loop1b,EXPONENTIAL(200),1,1, SINGLE); 
+(serve1,EXPONENTIAL(1),1,1, SINGLE); (request1,EXPONENTIAL(0.25),1,1, SINGLE);
+(Loop2a,EXPONENTIAL(200),1,1, SINGLE); (Loop2b,EXPONENTIAL(200),1,1, SINGLE); 
+(serve2,EXPONENTIAL(1),1,1, SINGLE); (request2,EXPONENTIAL(0.25),1,1, SINGLE);
+(Loop3a,EXPONENTIAL(200),1,1, SINGLE); (Loop3b,EXPONENTIAL(200),1,1, SINGLE); 
+(serve3,EXPONENTIAL(1),1,1, SINGLE); (request3,EXPONENTIAL(0.25),1,1, SINGLE);
+(Loop4a,EXPONENTIAL(200),1,1, SINGLE); (Loop4b,EXPONENTIAL(200),1,1, SINGLE); 
+(serve4,EXPONENTIAL(1),1,1, SINGLE); (request4,EXPONENTIAL(0.25),1,1, SINGLE);
+
+};
+
+InArcs={
+(Server_1,serve1,1); (Server_1,Loop1a,1); (Server_1,Loop1b,1);
+(Server_2,serve2,1); (Server_2,Loop2a,1); (Server_2,Loop2b,1);
+(Server_3,serve3,1); (Server_3,Loop3a,1); (Server_3,Loop3b,1);
+(Server_4,serve4,1); (Server_4,Loop4a,1); (Server_4,Loop4b,1);
+
+(Q1_Idle,Loop1a,1);  (Q1_Idle,request1,1); 
+(Q2_Idle,Loop2a,1);  (Q2_Idle,request2,1);
+(Q3_Idle,Loop3a,1);  (Q3_Idle,request3,1); 
+(Q4_Idle,Loop4a,1);  (Q4_Idle,request4,1); 
+
+(Q1_wait, Loop1b,1); (Q1_wait, serve1,1);
+(Q2_wait, Loop2b,1); (Q2_wait, serve2,1);
+(Q3_wait, Loop3b,1); (Q3_wait, serve3,1); 
+(Q4_wait, Loop4b,1); (Q4_wait, serve4,1);
+
+(Action_0,Loop1a,1); (Action_0,Loop1b,1);
+(Action_0,Loop2a,1); (Action_0,Loop2b,1);
+(Action_0,Loop3a,1); (Action_0,Loop3b,1);
+(Action_0,Loop4a,1); (Action_0,Loop4b,1);
+
+(Action_1,serve1,1); 
+(Action_1,serve2,1);  
+(Action_1,serve3,1);
+(Action_1,serve4,1);
+};
+
+OutArcs={
+(request1,Q1_wait,1); 
+(request2,Q2_wait,1);
+(request3,Q3_wait,1);
+(request4,Q4_wait,1);
+
+(serve1,Q1_Idle,1); (serve1,Server_2,1); (serve1,Action_0,1);
+(serve2,Q2_Idle,1); (serve2,Server_3,1); (serve2,Action_0,1);
+(serve3,Q3_Idle,1); (serve3,Server_4,1); (serve3,Action_0,1);
+(serve4,Q4_Idle,1); (serve4,Server_1,1); (serve4,Action_0,1);
+ 
+(Loop1a,Q1_Idle,1); (Loop1a,Server_2,1); (Loop1a,Action_0,1);
+(Loop2a,Q2_Idle,1); (Loop2a,Server_3,1); (Loop2a,Action_0,1);
+(Loop3a,Q3_Idle,1); (Loop3a,Server_4,1); (Loop3a,Action_0,1);
+(Loop4a,Q4_Idle,1); (Loop4a,Server_1,1); (Loop4a,Action_0,1);
+
+(Loop1b,Q1_wait,1); (Loop1b,Server_1,1); (Loop1b,Action_1,1);
+(Loop2b,Q2_wait,1); (Loop2b,Server_2,1); (Loop2b,Action_1,1);
+(Loop3b,Q3_wait,1); (Loop3b,Server_3,1); (Loop3b,Action_1,1);
+(Loop4b,Q4_wait,1); (Loop4b,Server_4,1); (Loop4b,Action_1,1);
+
+};
+

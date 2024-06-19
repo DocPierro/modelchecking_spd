@@ -1,0 +1,26 @@
+const double T=10;
+const double invT=0.1;
+const double Ttrans=0;
+VariablesList = {time,DISC countT, SimulinkTransition, PLVAR_B13O1, PLVAR_B8O1, PLVAR_B7O1, PLVAR_B9O1, PLVAR_B11O1, PLVAR_B10O1} ;
+LocationsList = {l0, l1,l2};
+Throughput_SimulinkTransition= AVG(Last(SimulinkTransition));
+MeanToken_B13O1= AVG(Last( PLVAR_B13O1));
+MeanToken_B8O1= AVG(Last( PLVAR_B8O1));
+MeanToken_B7O1= AVG(Last( PLVAR_B7O1));
+MeanToken_B9O1= AVG(Last( PLVAR_B9O1));
+MeanToken_B11O1= AVG(Last( PLVAR_B11O1));
+MeanToken_B10O1= AVG(Last( PLVAR_B10O1));
+
+InitialLocations={l0};
+FinalLocations={l2};
+Locations={
+(l0, TRUE, (time:1));
+(l1, TRUE, (time:1 , PLVAR_B13O1: B13O1* invT , PLVAR_B8O1: B8O1* invT , PLVAR_B7O1: B7O1* invT , PLVAR_B9O1: B9O1* invT , PLVAR_B11O1: B11O1* invT , PLVAR_B10O1: B10O1* invT ));
+(l2, TRUE);
+};
+Edges={
+((l0,l0),ALL,time<= Ttrans ,#);
+((l0,l1),#,time=Ttrans ,{time=0});
+((l1,l1),{SimulinkTransition},time<=T,{SimulinkTransition = SimulinkTransition + invT, countT = countT+1 });
+((l1,l2),#,time=T ,#);
+};

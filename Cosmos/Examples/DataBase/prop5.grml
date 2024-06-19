@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model formalismUrl="http://formalisms.cosyverif.org/HASL-formula.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="declaration">
+    <attribute name="constants">
+      <attribute name="intConsts">
+      </attribute>
+      <attribute name="realConsts">
+        <attribute name="realConst">
+          <attribute name="name">
+            Tinit
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              100
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            maxsndtime
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              100
+            </attribute>
+          </attribute>
+        </attribute>
+        <attribute name="realConst">
+          <attribute name="name">
+            threshold
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              100
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="variables">
+      <attribute name="reals">
+        <attribute name="real">
+          <attribute name="name">
+            transient
+          </attribute>
+        </attribute>
+        <attribute name="real">
+          <attribute name="name">
+            tupdate
+          </attribute>
+        </attribute>
+        <attribute name="real">
+          <attribute name="name">
+            tsend
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="discretes">
+      </attribute>
+      <attribute name="colors">
+        <attribute name="color">
+          <attribute name="name">
+            modf
+          </attribute>
+          <attribute name="domain">
+            file
+          </attribute>
+        </attribute>
+        <attribute name="color">
+          <attribute name="name">
+            mods
+          </attribute>
+          <attribute name="domain">
+            site
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </attribute>
+  <attribute name="HASLFormula">
+    <attribute name="AVG">
+      <attribute name="YHF">
+        <attribute name="last">
+          <attribute name="expr"><attribute name="name">
+            tupdate
+          </attribute></attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="state" x="112" y="154">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      InitialTransientPeriod
+    </attribute>
+    <attribute name="flows">
+      <attribute name="flow">
+        <attribute name="name">
+          transient
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="type">
+      Initial
+    </attribute>
+  </node>
+  <node id="4" nodeType="state" x="238" y="154">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      WaitModify
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="5" nodeType="state" x="483" y="154">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      WaitGetMutex
+    </attribute>
+    <attribute name="flows">
+      <attribute name="flow">
+        <attribute name="name">
+          tupdate
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="6" nodeType="state" x="808" y="154">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      WaitStartSndMsg
+    </attribute>
+    <attribute name="flows">
+      <attribute name="flow">
+        <attribute name="name">
+          tupdate
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="7" nodeType="state" x="716" y="267">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      WaitSend
+    </attribute>
+    <attribute name="flows">
+      <attribute name="flow">
+        <attribute name="name">
+          tsend
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+      <attribute name="flow">
+        <attribute name="name">
+          tupdate
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="8" nodeType="state" x="372" y="267">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      WaitEndUpdate
+    </attribute>
+    <attribute name="flows">
+      <attribute name="flow">
+        <attribute name="name">
+          tupdate
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+  </node>
+  <node id="9" nodeType="state" x="172" y="267">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      Final
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Final
+    </attribute>
+  </node>
+  <arc id="10" arcType="transition" source="3" target="3">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="11" arcType="transition" source="3" target="4">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="equal">
+        <attribute name="expr"><attribute name="name">
+          transient
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          Tinit
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+  <arc id="12" arcType="transition" source="4" target="4">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+      <attribute name="actionName">
+        Start
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="13" arcType="transition" source="4" target="5">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          mods
+        </attribute>
+        <attribute name="expr"><attribute name="name">
+          s
+        </attribute></attribute>
+      </attribute>
+      <attribute name="update">
+        <attribute name="name">
+          modf
+        </attribute>
+        <attribute name="expr"><attribute name="name">
+          f
+        </attribute></attribute>
+      </attribute>
+      <attribute name="update">
+        <attribute name="name">
+          tupdate
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        Start
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="14" arcType="transition" source="5" target="5">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+      <attribute name="actionName">
+        Acquire
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="15" arcType="transition" source="5" target="5">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="or">
+        <attribute name="boolExpr"><attribute name="notEqual">
+          <attribute name="expr"><attribute name="name">
+            mods
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            s
+          </attribute></attribute>
+        </attribute></attribute>
+        <attribute name="boolExpr"><attribute name="notEqual">
+          <attribute name="expr"><attribute name="name">
+            modf
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            f
+          </attribute></attribute>
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        Acquire
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="17" arcType="transition" source="6" target="6">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+      <attribute name="actionName">
+        Change
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="16" arcType="transition" source="5" target="6">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="and">
+        <attribute name="boolExpr"><attribute name="equal">
+          <attribute name="expr"><attribute name="name">
+            mods
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            s
+          </attribute></attribute>
+        </attribute></attribute>
+        <attribute name="boolExpr"><attribute name="and">
+          <attribute name="boolExpr"><attribute name="equal">
+            <attribute name="expr"><attribute name="name">
+              modf
+            </attribute></attribute>
+            <attribute name="expr"><attribute name="name">
+              f
+            </attribute></attribute>
+          </attribute></attribute>
+          <attribute name="boolExpr"><attribute name="lessEqual">
+            <attribute name="expr"><attribute name="name">
+              tupdate
+            </attribute></attribute>
+            <attribute name="expr"><attribute name="name">
+              threshold
+            </attribute></attribute>
+          </attribute></attribute>
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        Acquire
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="19" arcType="transition" source="6" target="7">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          tsend
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="and">
+        <attribute name="boolExpr"><attribute name="equal">
+          <attribute name="expr"><attribute name="name">
+            modf
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            f
+          </attribute></attribute>
+        </attribute></attribute>
+        <attribute name="boolExpr"><attribute name="equal">
+          <attribute name="expr"><attribute name="name">
+            mods
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            s
+          </attribute></attribute>
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        Change
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="18" arcType="transition" source="6" target="6">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="or">
+        <attribute name="boolExpr"><attribute name="notEqual">
+          <attribute name="expr"><attribute name="name">
+            modf
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            f
+          </attribute></attribute>
+        </attribute></attribute>
+        <attribute name="boolExpr"><attribute name="notEqual">
+          <attribute name="expr"><attribute name="name">
+            mods
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            s
+          </attribute></attribute>
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        Change
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="21" arcType="transition" source="7" target="7">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="and">
+        <attribute name="boolExpr"><attribute name="notEqual">
+          <attribute name="expr"><attribute name="name">
+            modf
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            f
+          </attribute></attribute>
+        </attribute></attribute>
+        <attribute name="boolExpr"><attribute name="lessEqual">
+          <attribute name="expr"><attribute name="name">
+            tsend
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            maxsndtime
+          </attribute></attribute>
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        SendMsg
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="20" arcType="transition" source="7" target="7">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="lessEqual">
+        <attribute name="expr"><attribute name="name">
+          tsend
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          maxsndtime
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+      <attribute name="actionName">
+        SendMsg
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="23" arcType="transition" source="7" target="8">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="and">
+        <attribute name="boolExpr"><attribute name="equal">
+          <attribute name="expr"><attribute name="name">
+            modf
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            f
+          </attribute></attribute>
+        </attribute></attribute>
+        <attribute name="boolExpr"><attribute name="and">
+          <attribute name="boolExpr"><attribute name="lessEqual">
+            <attribute name="expr"><attribute name="name">
+              tsend
+            </attribute></attribute>
+            <attribute name="expr"><attribute name="name">
+              maxsndtime
+            </attribute></attribute>
+          </attribute></attribute>
+          <attribute name="boolExpr"><attribute name="equal">
+            <attribute name="expr"><attribute name="name">
+              Message
+            </attribute></attribute>
+            <attribute name="expr"><attribute name="numValue">
+              0
+            </attribute></attribute>
+          </attribute></attribute>
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="22" arcType="transition" source="7" target="7">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="and">
+        <attribute name="boolExpr"><attribute name="equal">
+          <attribute name="expr"><attribute name="name">
+            modf
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            f
+          </attribute></attribute>
+        </attribute></attribute>
+        <attribute name="boolExpr"><attribute name="and">
+          <attribute name="boolExpr"><attribute name="lessEqual">
+            <attribute name="expr"><attribute name="name">
+              tsend
+            </attribute></attribute>
+            <attribute name="expr"><attribute name="name">
+              maxsndtime
+            </attribute></attribute>
+          </attribute></attribute>
+          <attribute name="boolExpr"><attribute name="greater">
+            <attribute name="expr"><attribute name="name">
+              Message
+            </attribute></attribute>
+            <attribute name="expr"><attribute name="numValue">
+              0
+            </attribute></attribute>
+          </attribute></attribute>
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        SendMsg
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="25" arcType="transition" source="8" target="8">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="or">
+        <attribute name="boolExpr"><attribute name="notEqual">
+          <attribute name="expr"><attribute name="name">
+            modf
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            f
+          </attribute></attribute>
+        </attribute></attribute>
+        <attribute name="boolExpr"><attribute name="notEqual">
+          <attribute name="expr"><attribute name="name">
+            mods
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            s
+          </attribute></attribute>
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        Release
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="24" arcType="transition" source="8" target="8">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+      <attribute name="actionName">
+        Release
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="26" arcType="transition" source="8" target="9">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="and">
+        <attribute name="boolExpr"><attribute name="equal">
+          <attribute name="expr"><attribute name="name">
+            modf
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            f
+          </attribute></attribute>
+        </attribute></attribute>
+        <attribute name="boolExpr"><attribute name="equal">
+          <attribute name="expr"><attribute name="name">
+            mods
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            s
+          </attribute></attribute>
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        Release
+      </attribute>
+    </attribute>
+  </arc>
+</model>

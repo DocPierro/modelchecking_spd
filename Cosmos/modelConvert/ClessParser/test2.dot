@@ -1,0 +1,37 @@
+digraph G {
+
+	node[fontsize=18];
+	edge[fontsize=18];
+	PSTA [shape=circle,xlabel="PSTA",label="•"];
+	PEND [shape=circle,xlabel="PEND",label=" "];
+	P1_0 [shape=circle,xlabel="P1_0",label=" "];
+	VI_x [shape=circle,xlabel="VI_x",label=" "];
+	P2_2 [shape=circle,xlabel="P2_2",label=" "];
+	TV_5 [shape=circle,xlabel="TV_5",label=" "];
+	PI3_6 [shape=circle,xlabel="PI3_6",label=" "];
+	T_1 [shape=rect,fixedsize=true,height=0.12,width=0.5,style=filled,fillcolor=black,xlabel="T_1",label=""];
+	T_3 [shape=rect,fixedsize=true,height=0.12,width=0.5,style=filled,fillcolor=black,xlabel="T_3",label=""];
+	T_4 [shape=rect,fixedsize=true,height=0.12,width=0.5,style=filled,fillcolor=black,xlabel="T_4",label=""];
+	T_7 [shape=rect,fixedsize=true,height=0.12,width=0.5,style=filled,fillcolor=black,xlabel="T_7",label=""];
+	T_8 [shape=rect,fixedsize=true,height=0.12,width=0.5,style=filled,fillcolor=black,xlabel="T_8",label=""];
+	PSTA -> T_1;
+	VI_x -> T_1 [xlabel="VI_x"];
+	P1_0 -> T_3;
+	VI_x -> T_4 [xlabel="3"];
+	P1_0 -> T_4;
+	P2_2 -> T_7;
+	TV_5 -> T_7 [xlabel="TV_5"];
+	VI_x -> T_7 [xlabel="0"];
+	PI3_6 -> T_8;
+	TV_5 -> T_8 [xlabel="TV_5"];
+	VI_x -> T_8 [xlabel="VI_x"];
+	VI_x -> T_3 [arrowhead=odot,xlabel="  3  "];
+	T_1 -> P1_0;
+	T_3 -> P2_2;
+	T_4 -> VI_x [xlabel="3"];
+	T_4 -> PEND;
+	T_7 -> PI3_6;
+	T_7 -> TV_5 [xlabel="(VI_x+1)"];
+	T_8 -> P1_0;
+	T_8 -> VI_x [xlabel="TV_5"];
+}

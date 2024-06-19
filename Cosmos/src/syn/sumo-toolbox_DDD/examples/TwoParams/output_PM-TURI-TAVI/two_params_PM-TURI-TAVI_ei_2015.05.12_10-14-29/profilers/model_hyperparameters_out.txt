@@ -1,0 +1,15 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: model_hyperparameters_out
+%   * Description: Hyperparameter optimization process
+%   * Date: 12/05/2015 at 10:14
+% 
+%   * Column1: 	Model #: 	Model #
+%   * Column2: 	hyperparameters1: 	The Hyperparameters (1'st value)
+%   * Column3: 	hyperparameters2: 	The Hyperparameters (2'nd value)
+%
+% ----------------------------------------------------------------------------
+
+0.000000000E0	?	?	
+1.000000000E0	6.999841568246E-1	5.181998124897E-1	

@@ -1,0 +1,21 @@
+%Initial formula:(TRUE U P0=0)
+NbVariables = 3;
+NbLocations = 3;
+VariablesList = { DISC vc0, t,x};
+LocationsList = {l0,l1,l2};
+reaching0=PROB;
+ProbToReach0=AVG(Last(x));
+%meantime=AVG(Last(vc0));
+InitialLocations = { l2 };
+FinalLocations = {l1};
+Locations = {
+(l0,Stack>0,(t:1));
+(l1,Stack=0);
+(l2,Stack=0,(t:1));
+};
+Edges = {
+((l2,l0),ALL,#,{vc0=vc0+1});
+((l0,l0),ALL,#,{vc0=vc0+1});
+((l0,l1),ALL,#,{vc0=vc0+1,x=1});
+};
+

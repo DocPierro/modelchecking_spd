@@ -1,0 +1,78 @@
+#compdef prism
+
+local curcontext="$curcontext" state line
+typeset -A opt_args
+
+_arguments '-help[Display this help message]' \
+	'-version[Display PRISM version info]' \
+	'-test[Enable test mode]' \
+	'-testall[Enable test mode, but dont exit on error]' \
+	'-importpepa[Model description is in PEPA, not the PRISM language]' \
+	'-exportmatlab[When exporting matrices/vectors/labels/etc., use Matlab format]' \
+	'-exportmrmc[When exporting matrices/vectors/labels, use MRMC format]' \
+	'-exportrows[When exporting matrices, put a whole row on one line]' \
+	'-exportordered[When exporting matrices, order entries (by row)]' \
+	'-exportunordered[When exporting matrices, don t order entries]' \
+	'-sim[Use the PRISM simulator to approximate results of model checking]' \
+	'-simmanual[Do not use the automated way of deciding whether the variance is null or not]' \
+	'-nobuild[Skip model construction (just do parse/export)]' \
+	'-dtmc[Force imported/built model to be a DTMC]' \
+	'-ctmc[Force imported/built model to be a CTMC]' \
+	'-mdp[Force imported/built model to be an MDP]' \
+	'-steadystate[Compute steady-state probabilities (D/CTMCs only)]' \
+	'-ss[Compute steady-state probabilities (D/CTMCs only)]' \
+	'-settings:Load settings:->data' \
+	'-importmodel:Import the model directly from text file(s):->data' \
+	'-importtrans:Import the transition matrix directly from a text file:->data' \
+	'-importstates:Import the list of states directly from a text file:->data' \
+	'-importlabels:Import the list of labels directly from a text file:->data' \
+	'-importinitdist:Specify the initial probability distribution for transient analysis:->data' \
+	'-exporttrans:Export the transition matrix to a file:->data' \
+	'-exportstaterewards:Export the state rewards vector to a file:->data' \
+	'-exporttransrewards:Export the transition rewards matrix to a file:->data' \
+	'-exportstates:Export the list of reachable states to a file:->data' \
+	'-exportlabels:Export the list of labels and satisfying states to a file:->data' \
+	'-exporttransdot:Export the transition matrix graph to a dot file:->data' \
+	'-exporttransdotstates:Export the transition matrix graph to a dot file, with state info:->data' \
+	'-exportdot:Export the transition matrix MTBDD to a dot file:->data' \
+	'-exportsccs:Compute and export all SCCs of the model:->data' \
+	'-exportbsccs:Compute and export all BSCCs of the model:->data' \
+	'-exportmecs:Compute and export all maximal end components (MDPs only):->data' \
+	'-exportsteadystate:Export steady-state probabilities to a file:->data' \
+	'-exporttransient:Export transient probabilities to a file:->data' \
+	'-exportprism:Export final PRISM model to a file:->data' \
+	'-exportprismconst:Export final PRISM model with expanded constants to a file:->data' \
+	'-exportresults:Export the results of model checking to a file:->data' \
+	'-exportmodel:Export the built model to file(s):->data' \
+	'-simpath:Generate a random path with the simulator:->option' \
+	'-simmethod:Specify the method for approximate model checking:->simmethode' \
+	'-simsamples:Set the number of samples for the simulator (CI/ACI/APMC methods):->value' \
+	'-simconf:Set the confidence parameter for the simulator (CI/ACI/APMC methods):->value' \
+	'-simwidth:Set the interval width for the simulator (CI/ACI methods):->value' \
+	'-simapprox:Set the approximation parameter for the simulator (APMC method):->value' \
+	'-simvar:Set the minimum number of samples to know the variance is null or not:->value' \
+	'-simmaxrwd:Set the maximum reward - useful to display the CI/ACI methods progress:->value' \
+	'-simpathlen:Set the maximum path length for the simulator:->value' \
+	'-exportrewards:Export state/transition rewards to files 1/2:->data' \
+	'-pctl:Model check properties:->value' \
+	'-csl:Model check properties:->value' \
+	'-property:Only model check property with index/name:->value' \
+	'-pf:Model check properties:->value' \
+	'-prop:Only model check property with index/name :->value' \
+	'-const:Define constant values as (e.g. for experiments):->value' \
+	'-transient:Compute transient probabilities for time (or time range) (D/CTMCs only):->value' \
+	'-tr:Compute transient probabilities for time (or time range) (D/CTMCs only):->value' \
+	':PRISM model file:_files -g ".*.(prism|sm|pm|nm)(-.)"' \
+	&& return 0
+	   case $state in
+	   (data)
+		_files && return 0;;
+	   (simmethode)
+		compadd "$@" "ci" "aci" "apmc" "sprt" && return 0;;
+	   (status) 
+	   	compadd "$@" 0 1 2 3 && return 0;;
+	   (bounded)
+		compadd "$@" 1 2 3 && return 0;;
+	   (parameter)
+		compadd "$@" "level" "width" "nbrun" "update-time" && return 0;;
+	   esac

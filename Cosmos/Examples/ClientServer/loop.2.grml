@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model formalismUrl="http://formalisms.cosyverif.org/HASL-formula.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="declaration">
+    <attribute name="constants">
+      <attribute name="intConsts">
+        <attribute name="intConst">
+          <attribute name="name">
+            T
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              10
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="realConsts">
+      </attribute>
+    </attribute>
+    <attribute name="variables">
+      <attribute name="reals">
+        <attribute name="real">
+          <attribute name="name">
+            nbP
+          </attribute>
+        </attribute>
+        <attribute name="real">
+          <attribute name="name">
+            x
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="discretes">
+      </attribute>
+    </attribute>
+  </attribute>
+  <attribute name="HASLFormula">
+    <attribute name="AVG">
+      <attribute name="YHF">
+        <attribute name="last">
+          <attribute name="expr"><attribute name="name">
+            nbP
+          </attribute></attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="state" x="245" y="173">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      l0
+    </attribute>
+    <attribute name="flows">
+      <attribute name="flow">
+        <attribute name="name">
+          x
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+      <attribute name="flow">
+        <attribute name="name">
+          nbP
+        </attribute>
+        <attribute name="expr"><attribute name="name">
+          P1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="type">
+      Initial
+    </attribute>
+  </node>
+  <node id="4" nodeType="state" x="328" y="173">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      lf
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Final
+    </attribute>
+  </node>
+  <arc id="5" arcType="transition" source="3" target="3">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="lessEqual">
+        <attribute name="expr"><attribute name="name">
+          x
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          T
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="label">
+      ALL
+    </attribute>
+  </arc>
+  <arc id="6" arcType="transition" source="3" target="4">
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          nbP
+        </attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="/">
+          <attribute name="expr"><attribute name="name">
+            nbP
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="name">
+            T
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="greaterEqual">
+        <attribute name="expr"><attribute name="name">
+          x
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          T
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="label">
+      ALL
+    </attribute>
+  </arc>
+</model>

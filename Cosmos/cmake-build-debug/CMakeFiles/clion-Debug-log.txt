@@ -1,0 +1,36 @@
+/home/pierre/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/pierre/.local/share/JetBrains/Toolbox/apps/clion/bin/ninja/linux/x64/ninja -G Ninja -S /home/pierre/Documents/Travail/pm4pierro/Cosmos -B /home/pierre/Documents/Travail/pm4pierro/Cosmos/cmake-build-debug
+CMake Warning (dev) at CMakeLists.txt:1 (project):
+  cmake_minimum_required() should be called prior to this top-level project()
+  call.  Please see the cmake-commands(7) manual for usage documentation of
+  both commands.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Deprecation Warning at CMakeLists.txt:3 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- Found BISON: /usr/bin/bison (found version "3.5.1") 
+-- Found FLEX: /usr/bin/flex (found version "2.6.4") 
+-- Found EXPAT: /usr/lib/x86_64-linux-gnu/libexpat.so (found version "2.2.9") 
+-- Found Git: /usr/bin/git (found version "2.25.1") 
+-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found suitable version "1.71.0", minimum required is "1.55")  
+Compiler used: GNU
+-- Configuring done (0.5s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/pierre/Documents/Travail/pm4pierro/Cosmos/cmake-build-debug

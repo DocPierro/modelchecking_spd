@@ -1,0 +1,36 @@
+% > @file "SUMODriver.m"
+% > @authors SUMO Lab Team
+% > @version 2014a
+% > @date Copyright 2006-2014
+% >
+% > This file is part of the Surrogate Modeling Toolbox ("SUMO Toolbox")
+% > and you can redistribute it and/or modify it under the terms of the
+% > GNU Affero General Public License version 3 as published by the
+% > Free Software Foundation.  With the additional provision that a commercial
+% > license must be purchased if the SUMO Toolbox is used, modified, or extended
+% > in a commercial setting. For details see the included LICENSE.txt file.
+% > When referring to the SUMO Toolbox please make reference to the corresponding
+% > publication:
+% >   - A Surrogate Modeling and Adaptive Sampling Toolbox for Computer Based Design
+% >   D. Gorissen, K. Crombecq, I. Couckuyt, T. Dhaene, P. Demeester,
+% >   Journal of Machine Learning Research,
+% >   Vol. 11, pp. 2051-2055, July 2010.
+% >
+% > Contact : sumo@sumo.intec.ugent.be - http://sumo.intec.ugent.be
+% > Signature
+% >	[models, outputDirs, errorInfo] = SUMODriver(configFile, samples, values, options, runFilter)
+% 
+%  ======================================================================
+% > @brief The main entry point to call the SUMO Toolbox programmatically
+% >
+% >	Example:
+% >	"[surrogateModel outputDir] = SUMODriver('MyConfigFile.xml',xValues, yValues, options, runFilter)"
+% >
+% >	With options a cell array containing one or more of:
+% >	    "-merge" : merge MyConfigFile.xml with the default configuration
+% >
+% >	The runFilter parameter is a number or vector (with range [1 numRuns]) that specifies which runs to execute
+% >
+% >	NB: the default configuration file is /path/to/SUMO/config/default.xml
+%  ======================================================================
+%

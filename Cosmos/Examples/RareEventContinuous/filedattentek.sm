@@ -1,0 +1,33 @@
+ctmc
+
+const int n = 50;
+const int k = 2;
+const int r = n;
+
+
+const double mu = 0.25;
+const double rho = 0.375;
+
+module file1
+	buffer1 :  [0..n] init 1;
+	[lambda] buffer1<n -> mu: (buffer1'=buffer1+1) ;
+	[rho1] buffer1>0 -> rho: (buffer1'=buffer1-1) ;
+endmodule
+
+module file2
+	buffer2 : [0..r] init 0;
+	[rho1] buffer2<r -> 1: (buffer2'=buffer2+1) ;
+	[rho2] buffer2>0 -> rho: (buffer2'=buffer2-1) ;
+endmodule
+
+module file3 = file2[buffer2=buffer3, rho1=rho2, rho2=rho3] endmodule
+module file4 = file2[buffer2=buffer4, rho1=rho3, rho2=rho4] endmodule
+//module file5 = file2[buffer2=buffer5, rho1=rho4, rho2=rho5] endmodule
+
+
+formula win = buffer1 + buffer2+buffer3 +buffer4=n;
+formula notloose = buffer1 + buffer2 +buffer3 +buffer4>0;
+
+formula win = buffer1 + buffer2 +buffer3 +buffer4+buffer5 =n;
+formula notloose = buffer1 + buffer2 +buffer3+buffer4+buffer5 >0;
+

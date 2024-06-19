@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+<attribute name="declaration">
+<attribute name="constants">
+	<attribute name="intConsts">
+	</attribute>
+	<attribute name="realConsts">
+	</attribute>
+</attribute>
+</attribute>
+<node id="2" nodeType="place" x="70" y="50">
+	<attribute name="name">P0</attribute>
+	<attribute name="marking"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</node>
+<node id="3" nodeType="place" x="70" y="100">
+	<attribute name="name">P1</attribute>
+	<attribute name="marking"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</node>
+<node id="4" nodeType="place" x="70" y="150">
+	<attribute name="name">P2</attribute>
+	<attribute name="marking"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</node>
+<node id="5" nodeType="place" x="170" y="100">
+	<attribute name="name">P3</attribute>
+	<attribute name="marking"><attribute name="expr"><attribute name="intValue">0</attribute></attribute></attribute>
+</node>
+<node id="6" nodeType="transition" x="130" y="50">
+	<attribute name="name">D0</attribute>
+	<attribute name="distribution">
+		<attribute name="type">DETERMINISTIC</attribute>
+		<attribute name="param"><attribute name="expr"><attribute name="numValue">2.0</attribute></attribute></attribute>
+    </attribute><attribute name="weight"><attribute name="expr"><attribute name="numValue">1.0</attribute></attribute>
+    </attribute>
+</node>
+<node id="7" nodeType="transition" x="120" y="100">
+	<attribute name="name">D1</attribute>
+	<attribute name="distribution">
+		<attribute name="type">DETERMINISTIC</attribute>
+		<attribute name="param"><attribute name="expr"><attribute name="numValue">1.0</attribute></attribute></attribute>
+	</attribute>
+    <attribute name="weight"><attribute name="expr"><attribute name="numValue">0.1</attribute></attribute>
+    </attribute>
+</node>
+<node id="8" nodeType="transition" x="210" y="100">
+	<attribute name="name">D2</attribute>
+	<attribute name="distribution">
+		<attribute name="type">DETERMINISTIC</attribute>
+		<attribute name="param"><attribute name="expr"><attribute name="numValue">1.0</attribute></attribute></attribute>
+	</attribute>
+    <attribute name="weight"><attribute name="expr"><attribute name="numValue">10.0</attribute></attribute>
+    </attribute>
+</node>
+<node id="9" nodeType="transition" x="150" y="150">
+	<attribute name="name">T0</attribute>
+	<attribute name="distribution">
+		<attribute name="type">DETERMINISTIC</attribute>
+		<attribute name="param"><attribute name="expr"><attribute name="numValue">2.5</attribute></attribute></attribute>
+	</attribute>
+</node>
+<node id="10" nodeType="place" x="260" y="60">
+	<attribute name="name">P4</attribute>
+	<attribute name="marking"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</node>
+<arc id="11" arcType="arc" source="2" target="6">
+	<attribute name="valuation"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</arc>
+<arc id="12" arcType="arc" source="3" target="7">
+	<attribute name="valuation"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</arc>
+<arc id="13" arcType="arc" source="7" target="5">
+	<attribute name="valuation"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</arc>
+<arc id="14" arcType="arc" source="5" target="8">
+	<attribute name="valuation"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</arc>
+<arc id="15" arcType="arc" source="4" target="9">
+	<attribute name="valuation"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</arc>
+<arc id="16" arcType="arc" source="10" target="6">
+	<attribute name="valuation"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</arc>
+<arc id="17" arcType="arc" source="10" target="8">
+	<attribute name="valuation"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</arc>
+</model>

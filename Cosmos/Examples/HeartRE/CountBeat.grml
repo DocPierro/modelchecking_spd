@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/HASL-formula.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="declaration">
+    <attribute name="constants">
+      <attribute name="intConsts">
+      </attribute>
+      <attribute name="realConsts">
+        <attribute name="realConst">
+          <attribute name="name">
+            T
+          </attribute>
+          <attribute name="expr">
+            <attribute name="numValue">
+              600000
+            </attribute>
+          </attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+    <attribute name="variables">
+      <attribute name="reals">
+        <attribute name="real">
+          <attribute name="name">
+            t
+          </attribute>
+        </attribute>
+        <attribute name="real">
+          <attribute name="name">
+            countAS
+          </attribute>
+        </attribute>
+        <attribute name="real">
+          <attribute name="name">
+            countAP
+          </attribute>
+        </attribute>
+        <attribute name="real">
+          <attribute name="name">
+            countVS
+          </attribute>
+        </attribute>
+        <attribute name="real">
+          <attribute name="name">
+            countVP
+          </attribute>
+        </attribute>
+      </attribute>
+      <attribute name="discretes">
+      </attribute>
+      <attribute name="colors">
+      </attribute>
+    </attribute>
+  </attribute>
+  <attribute name="HASLFormula">
+    <attribute name="AVG">
+      <attribute name="YHF">
+        <attribute name="last">
+          <attribute name="expr"><attribute name="name">
+            countAP
+          </attribute></attribute>
+        </attribute>
+      </attribute>
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="state" x="267" y="219">
+    <attribute name="name">
+      s0
+    </attribute>
+    <attribute name="type">
+      Initial
+    </attribute>
+    <attribute name="flows">
+      <attribute name="flow">
+        <attribute name="name">
+          t
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          1
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="4" nodeType="state" x="267" y="371">
+    <attribute name="name">
+      s1
+    </attribute>
+    <attribute name="type">
+      Final
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <node id="5" nodeType="state" x="558" y="219">
+    <attribute name="name">
+      reset
+    </attribute>
+    <attribute name="type">
+      Normal
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+  </node>
+  <arc id="6" arcType="transition" source="3" target="4">
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="equal">
+        <attribute name="expr"><attribute name="name">
+          t
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          T
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="updates">
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+  <arc id="7" arcType="transition" source="3" target="3">
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="updates">
+    </attribute>
+    <attribute name="allExcept">
+      <attribute name="actionName">
+        S_AS
+      </attribute>
+      <attribute name="actionName">
+        S_AP
+      </attribute>
+      <attribute name="actionName">
+        S_VP
+      </attribute>
+      <attribute name="actionName">
+        S_VS
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="8" arcType="transition" source="3" target="5">
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          countVP
+        </attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="+">
+          <attribute name="expr"><attribute name="name">
+            countVP
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="numValue">
+            1
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        S_VP
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="9" arcType="transition" source="3" target="5">
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          countAP
+        </attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="+">
+          <attribute name="expr"><attribute name="name">
+            countAP
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="numValue">
+            1
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        S_AP
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="10" arcType="transition" source="3" target="5">
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          countAS
+        </attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="+">
+          <attribute name="expr"><attribute name="name">
+            countAS
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="numValue">
+            1
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        S_AS
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="11" arcType="transition" source="3" target="5">
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          countVS
+        </attribute>
+        <attribute name="expr"><attribute name="function"><attribute name="+">
+          <attribute name="expr"><attribute name="name">
+            countVS
+          </attribute></attribute>
+          <attribute name="expr"><attribute name="numValue">
+            1
+          </attribute></attribute>
+        </attribute></attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="action">
+      <attribute name="actionName">
+        S_VS
+      </attribute>
+    </attribute>
+  </arc>
+  <arc id="12" arcType="transition" source="5" target="3">
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="updates">
+      <attribute name="update">
+        <attribute name="name">
+          countAP
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+      <attribute name="update">
+        <attribute name="name">
+          countVP
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+      <attribute name="update">
+        <attribute name="name">
+          countAS
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+      <attribute name="update">
+        <attribute name="name">
+          countVS
+        </attribute>
+        <attribute name="expr"><attribute name="numValue">
+          0
+        </attribute></attribute>
+      </attribute>
+    </attribute>
+    <attribute name="action">
+      #
+    </attribute>
+  </arc>
+</model>

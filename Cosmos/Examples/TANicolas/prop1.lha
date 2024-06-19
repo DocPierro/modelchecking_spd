@@ -1,0 +1,23 @@
+
+const int bo = 100;
+
+VariablesList = {time, varx, vary, DISC countT } ;
+LocationsList = {l0,l1,l2};
+
+Overflow=PROB;
+
+InitialLocations={l0};
+FinalLocations={l2};
+Locations={
+(l0, TRUE, (time:1,varx:1,vary:1));
+(l1, TRUE, (time:1,vary:1,varx:1));
+(l2, TRUE);
+};
+Edges={
+((l0,l0),ALL\{t_a,t_b}, # , #);
+((l0,l1),{t_a}, countT<=bo-1 & vary <=1.0 ,{countT = countT+1, vary =0 });
+((l1,l1),ALL\{t_a,t_b}, # , #);
+((l1,l0),{t_b}, countT<=bo-1 & varx <=1.0 ,{countT = countT+1, varx =0 });
+((l0,l2),ALL, countT=bo ,{ countT = countT+1 });
+((l1,l2),ALL, countT=bo ,{ countT = countT+1 });
+};

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+const int c = 5;
+const int kappa =4;
+
+typedef int[0,c] queue;
+
+queue queue1=0;
+queue queue2=0;
+</declaration>
+	<template>
+		<name x="5" y="5">transit</name>
+		<declaration>// Place local declarations here.
+</declaration>
+		<location id="id0" x="40" y="-224">
+			<name x="64" y="-232">lastfail</name>
+			<label kind="exponentialrate" x="30" y="-209">2</label>
+		</location>
+		<location id="id1" x="-376" y="-224">
+			<name x="-386" y="-254">ok</name>
+			<label kind="exponentialrate" x="-386" y="-209">2</label>
+		</location>
+		<branchpoint id="id2" x="-88" y="-224">
+		</branchpoint>
+		<init ref="id1"/>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id1"/>
+			<label kind="assignment" x="-360" y="-152">queue1--,queue2++</label>
+			<label kind="probability" x="-304" y="-176">90</label>
+			<nail x="-88" y="-152"/>
+			<nail x="-480" y="-152"/>
+			<nail x="-480" y="-224"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id0"/>
+			<label kind="probability" x="-40" y="-216">10</label>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-280" y="-248">queue1&gt;0 and queue2&lt;c</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="guard" x="-296" y="-336">queue1&gt;0 and queue2&lt;c</label>
+			<label kind="assignment" x="-280" y="-312">queue1--, queue2++</label>
+			<nail x="40" y="-312"/>
+			<nail x="-376" y="-312"/>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">outcome</name>
+		<declaration>// Place local declarations here.
+</declaration>
+		<location id="id3" x="-376" y="-224">
+			<label kind="exponentialrate" x="-386" y="-209">kappa</label>
+		</location>
+		<init ref="id3"/>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-424" y="-176">queue2 &gt;0</label>
+			<label kind="assignment" x="-424" y="-160">queue2--</label>
+			<nail x="-456" y="-160"/>
+			<nail x="-304" y="-160"/>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">income</name>
+		<declaration>// Place local declarations here.
+</declaration>
+		<location id="id4" x="-376" y="-224">
+			<label kind="exponentialrate" x="-386" y="-209">4*c</label>
+		</location>
+		<init ref="id4"/>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id4"/>
+			<label kind="guard" x="-424" y="-176">queue1 &lt; c</label>
+			<label kind="assignment" x="-424" y="-160">queue1++</label>
+			<nail x="-456" y="-160"/>
+			<nail x="-304" y="-160"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+Process = income();
+Process2 = outcome();
+Process3 = transit();
+
+// List one or more processes to be composed into a system.
+system Process,Process2,Process3;</system>
+</nta>

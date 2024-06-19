@@ -1,0 +1,45 @@
+left '*' '/'
+left '+' '-'
+
+main file = expr_list EOF
+
+
+rule int_simple_expr =
+| Const: INT
+| Var: IDENT
+| Plus : int_simple_expr '+' int_simple_expr
+| Minus : int_simple_expr '-' int_simple_expr
+| Mult : int_simple_expr '*' int_simple_expr
+| Par : '(' int_simple_expr ')'
+
+rule bool_simple_expr =
+| True: "true"
+| False: "false"
+| Neg: '!' bool_simple_expr
+| BoolVar: IDENT 
+(*| BoolPar: '(' bool_simple_expr ')'*)
+| Eq: int_simple_expr '=' '='  int_simple_expr
+| Neq: int_simple_expr '!' '=' int_simple_expr
+| Leq: int_simple_expr '<' '=' int_simple_expr  
+| Geq: int_simple_expr '>' '=' int_simple_expr 
+| LL: int_simple_expr '<' int_simple_expr
+| GG: int_simple_expr '>' int_simple_expr
+
+rule gen_expr =
+| Int: int_simple_expr
+| Bool: bool_simple_expr
+
+rule expr =
+| VarAssign: IDENT '=' gen_expr ';'
+(*| VarAssignBool: IDENT '=' bool_simple_expr ';'*)
+| IntdefFull: "int" IDENT '=' int_simple_expr ';'
+| IntdefEmpty: "int" IDENT ';'
+| BooldefFull: "bool" IDENT '=' bool_simple_expr ';'
+| BooldefEmpty: "bool" IDENT ';'
+| If: "if" '(' bool_simple_expr ')' '{' expr_list '}'
+| IfElse: "if" '(' bool_simple_expr ')' '{' expr_list '}' "else" '{' expr_list '}'
+| While: "while" '(' bool_simple_expr ')' '{' expr_list '}'  
+
+main expr_list =
+  |  expr +   
+

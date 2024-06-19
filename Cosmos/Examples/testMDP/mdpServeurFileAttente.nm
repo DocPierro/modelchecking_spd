@@ -1,0 +1,24 @@
+mdp
+
+const int QMAX = 1;
+
+module Serveur
+
+	sr : [0..1] init 0;
+	
+	[attendre] 	sr=0 ->(sr'=0);
+	[servir] 	sr=0 ->(sr'=1);
+	[tick] 		sr=1 -> 0.5: (sr'=0) + 0.5: (sr'=1);
+
+endmodule
+
+module FileAttente
+
+	q : [0..QMAX] init 0;
+	
+	[tick] sr=1 & q= 0 -> (q' = 0);
+	[tick] sr=1 & q>0 -> (q' = q-1);
+	[tick] sr=0 -> (q'=q);
+	[tick] q<QMAX -> 0.5: (q'=q) + 0.5: (q'=q+1) ;
+endmodule
+

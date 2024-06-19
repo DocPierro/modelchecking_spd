@@ -1,0 +1,20 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: MemoryUse_out
+%   * Description: JVM Memory Usage
+%   * Date: 05/05/2015 at 15:32
+% 
+%   * Column1: 	sampleSize: 	Number of samples
+%   * Column2: 	usage: 	JVM memory usage (MB)
+%   * Column3: 	available: 	Available JVM memory (MB)
+%
+% ----------------------------------------------------------------------------
+
+4.000000000E0	4.790000000E2	2.000000000E1	
+5.000000000E0	4.540000000E2	4.500000000E1	
+6.000000000E0	4.810000000E2	1.800000000E1	
+7.000000000E0	4.740000000E2	2.500000000E1	
+8.000000000E0	4.870000000E2	1.200000000E1	
+9.000000000E0	4.800000000E2	1.900000000E1	
+1.000000000E1	4.910000000E2	8.000000000E0	

@@ -1,0 +1,49 @@
+################################################################################
+##########################           Cosmos           ##########################
+################################################################################
+Actions: Generate 
+Temporary directory set to:tmp
+Start Parsing testdeterministic.grml
+read model : formalism = http://formalisms.cosyverif.org/sptgd-net.fml
+place i(0){
+	marking:0 
+read model : formalism = http://formalisms.cosyverif.org/sptgd-net.fml
+transition ln{
+	id:	0
+	isTraced:	1
+	dist:	DETERMINISTIC( exp(0.693147 ) , )
+	priority:	1 
+	weight:	1 
+	varDomain:	{}
+	guard:	1 
+	update:	
+}
+#### Internal Memory Model of GSPN #######
+colClasses{
+}
+
+transitionStruct{
+transition ln{
+	id:	0
+	isTraced:	1
+	dist:	DETERMINISTIC( exp(0.693147 ) , )
+	priority:	1 
+	weight:	1 
+	varDomain:	{}
+	guard:	1 
+	update:	
+}
+}
+placeStruct{
+place i(0){
+	marking:0 
+}
+inArcs{
+}
+outArcs{
+(0)-- 1  --(0)
+}
+inhibArcs{
+}
+##########################################
+Start Parsing 

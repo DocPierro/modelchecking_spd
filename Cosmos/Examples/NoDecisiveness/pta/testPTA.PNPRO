@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="testPTA" version="121">
+  <gspn name="PetriNet">
+    <nodes>
+      <place domain="StackDom" name="Stack" x="11.0" y="14.0"/>
+      <place domain="Count" marking="c0" name="Head" x="20.0" y="14.0"/>
+      <color-class definition="{a,b,c}" name="Alphabet" x="0.4375" y="1.0"/>
+      <color-class definition="c{0..1000}" name="Count" x="0.6875" y="3.0"/>
+      <color-var domain="Alphabet" name="x" x="1.125" y="7.0"/>
+      <color-class definition="Alphabet * Count" name="StackDom" x="0.4375" y="5.0"/>
+      <color-var domain="Count" name="n" x="1.125" y="9.0"/>
+      <transition name="readA" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="8.55" y="22.0"/>
+      <transition guard="x==a || x==b " name="readC" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="11.55" y="9.0"/>
+      <transition name="ReadB" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="20.55" y="22.0"/>
+    </nodes>
+    <edges>
+      <arc head="readA" kind="INPUT" mult="&lt;n&gt;" mult-k="1.09853515625" tail="Head">
+        <point x="15.0" y="18.5"/>
+      </arc>
+      <arc head="Head" kind="OUTPUT" mult="&lt;n+1&gt;" mult-k="0.88251953125" tail="readA">
+        <point x="16.5" y="20.0"/>
+      </arc>
+      <arc head="Stack" kind="OUTPUT" mult="&lt;a,n+1&gt;" tail="readA"/>
+      <arc head="readC" kind="INPUT" mult="&lt;x,n&gt;" mult-k="1.26611328125" mult-x="-1.9870112006088654" mult-y="0.23376400076108084" tail="Stack">
+        <point x="14.0" y="12.5"/>
+      </arc>
+      <arc head="Stack" kind="OUTPUT" mult="&lt;x,n&gt;" tail="readC"/>
+      <arc head="ReadB" kind="INPUT" mult="&lt;x,n&gt;" mult-k="1.4235351562499998" mult-x="0.08922579921619089" mult-y="1.5237562659699435" tail="Stack">
+        <point x="16.5" y="19.0"/>
+      </arc>
+      <arc head="ReadB" kind="INPUT" mult="&lt;n--&gt;" mult-k="0.8918945312500001" tail="Head">
+        <point x="21.5" y="19.5"/>
+      </arc>
+      <arc head="Head" kind="OUTPUT" mult="&lt;n&gt;" mult-k="1.04873046875" tail="ReadB">
+        <point x="20.0" y="19.5"/>
+      </arc>
+    </edges>
+  </gspn>
+</project>

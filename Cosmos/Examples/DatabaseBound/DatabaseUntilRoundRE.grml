@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/HASL-formula.fml" xmlns="http://cosyverif.org/ns/model">
+  <attribute name="HASLFormula">
+    <attribute name="PROB">
+    </attribute>
+  </attribute>
+  <node id="3" nodeType="state" x="238" y="174">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="less">
+        <attribute name="expr"><attribute name="name">
+          RE_p6
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          N
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      i
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Initial
+    </attribute>
+  </node>
+  <node id="4" nodeType="state" x="387" y="174">
+    <attribute name="invariant">
+      <attribute name="boolExpr"><attribute name="greaterEqual">
+        <attribute name="expr"><attribute name="name">
+          RE_p6
+        </attribute></attribute>
+        <attribute name="expr"><attribute name="name">
+          N
+        </attribute></attribute>
+      </attribute></attribute>
+    </attribute>
+    <attribute name="name">
+      f
+    </attribute>
+    <attribute name="flows">
+    </attribute>
+    <attribute name="type">
+      Final
+    </attribute>
+  </node>
+  <arc id="5" arcType="transition" source="3" target="4">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+  <arc id="6" arcType="transition" source="3" target="3">
+    <attribute name="updates">
+    </attribute>
+    <attribute name="guard">
+      <attribute name="boolExpr"><attribute name="boolValue">
+        true
+      </attribute></attribute>
+    </attribute>
+    <attribute name="allExcept">
+    </attribute>
+  </arc>
+</model>

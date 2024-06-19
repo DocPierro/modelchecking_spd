@@ -1,0 +1,20 @@
+%Initial formula:(RafP=L U RafP>L)
+NbVariables = 1;
+NbLocations = 3;
+VariablesList = { vc0};
+LocationsList = {li, l0,l1};
+ProbabilitOfAcceptingPath=PROB;
+ResultProb=AVG(Last(vc0));
+InitialLocations = { li };
+FinalLocations = {l1};
+Locations = {
+(li,(RE_RafP<L));
+(l0,(RE_RafP=L));
+(l1,(RE_RafP>L));
+};
+Edges = {
+((li,li),ALL,#,#);
+((li,l0),ALL,#,#);
+((l0,l0),ALL,#,#);
+((l0,l1),ALL,#,#);
+};

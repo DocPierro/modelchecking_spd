@@ -1,0 +1,28 @@
+
+const double T = 200;
+
+const int N = 5;
+
+VariablesList = {x1} ;
+LocationsList = {l0, l1, l2};
+
+Overflow=HYPOTHESIS(0.981,0.001);
+
+
+InitialLocations = {l0};
+
+FinalLocations = {l1};
+
+Locations={
+(l0, !(Queue1 = N & Queue2 = N), (x1:1));
+(l1, (Queue1 = N & Queue2 = N), (x1:1));
+(l2, !(Queue1 = N & Queue2 = N), (x1:1));
+};
+
+Edges={
+((l0,l0),ALL,  x1 <= T,#);
+((l0,l1),ALL,    x1 <= T, #);
+((l0,l2),#,    x1 = T, #);
+};
+
+

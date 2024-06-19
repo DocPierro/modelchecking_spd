@@ -1,0 +1,28 @@
+pta
+
+const t1=5;
+const t2=3;
+const t3=10; 
+
+module controller
+	
+s : [0..3] init 0;
+// 0 => a1
+// 1 => b1
+// 2 -> a2
+// 3 -> b2
+
+x : clock;
+
+invariant
+ (x<=10)
+endinvariant
+
+[b] (s=1) & (x<=3) -> (s'=0);
+[b] (s=0) -> (x'=0) & (s'=1);
+[a] (s=0) -> (s'=2);
+[a] (s=2) -> (s'=0);
+[b] (s=2) -> (x'=0) & (s'=3);
+[b] (s=3) & (x<=3)-> (s'=2);
+
+endmodule

@@ -1,0 +1,22 @@
+spn [ tqn ] {
+constants:
+	int C=5;
+
+places:
+
+	N_Queue1 = C;
+	Queue1 = 0;
+	Phase1 =1;
+	Phase2 =0;
+	Queue2 =0;
+	N_Queue2 =C;
+
+transitions:
+stochastic:
+	Arrive : : [ N_Queue1 -1] & [ Queue1 +1 ] : 4*C;
+	ToPhase2:: [ Queue1 -1] & [ Phase1 -1] & [ Queue1 +1] & [ Phase2+1] : 0.2;
+	Route1 : : [ Queue1 -1] & [ N_Queue2 -1 ] & [ Phase1 -1 ] & [ Queue2 +1 ] & [ Phase1 +1 ] & [ N_Queue1 +1 ] : 1.8;
+	Route2 : : [ Phase2 -1 ] & [ Queue1 -1 ] & [ N_Queue2 -1 ] & [ Queue2 +1 ] & [ Phase1 +1 ] & [ N_Queue1 +1 ] : 2;
+	Leave  : : [ Queue2 -1 ] & [ N_Queue2 +1 ] : 4;
+
+}

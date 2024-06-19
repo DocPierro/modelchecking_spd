@@ -1,0 +1,16 @@
+%Initial formula:(TRUE U TRUE)
+NbVariables = 1;
+NbLocations = 2;
+VariablesList = { vc0};
+LocationsList = {l0,l1};
+Time=AVG(Last(vc0));
+InitialLocations = { l0 };
+FinalLocations = {l1};
+Locations = {
+(l0,TRUE);
+(l1,TRUE);
+};
+Edges = {
+((l0,l0),ALL\{STOP},#,#);
+((l0,l1),{STOP},#,#);
+};

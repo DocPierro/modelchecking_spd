@@ -1,0 +1,118 @@
+$accept: GSPN "end of file"
+
+GSPN: declarations definitions
+    | declarations definitions redifinitions
+
+declarations: Constants Sizes Lists
+            | Sizes Lists
+
+Constants: Constant
+         | Constant Constants
+
+Constant: 'const' 'int' str '=' IntStringFormula ';'
+        | 'const' 'double' str '=' RealStringFormula ';'
+
+IntStringFormula: ival
+                | str
+                | '(' IntStringFormula ')'
+                | IntStringFormula '+' IntStringFormula
+                | IntStringFormula '-' IntStringFormula
+                | IntStringFormula '*' IntStringFormula
+                | IntStringFormula '^' IntStringFormula
+                | FLOOR '(' IntStringFormula ')'
+                | FLOOR '(' IntStringFormula '/' IntStringFormula ')'
+                | MIN '(' IntStringFormula ',' IntStringFormula ')'
+                | MAX '(' IntStringFormula ',' IntStringFormula ')'
+
+RealStringFormula: rval
+                 | ival
+                 | str
+                 | '(' RealStringFormula ')'
+                 | RealStringFormula '/' RealStringFormula
+                 | RealStringFormula '+' RealStringFormula
+                 | RealStringFormula '-' RealStringFormula
+                 | RealStringFormula '*' RealStringFormula
+                 | RealStringFormula '^' RealStringFormula
+                 | FLOOR '(' RealStringFormula ')'
+                 | MIN '(' RealStringFormula ',' RealStringFormula ')'
+                 | MAX '(' RealStringFormula ',' RealStringFormula ')'
+
+Sizes: NbPlaces NbTransitions
+     | NbTransitions NbPlaces
+
+NbPlaces: 'NbPlaces' '=' ival ';'
+        | 'NbPlaces' '=' str ';'
+
+NbTransitions: 'NbTransitions' '=' ival ';'
+             | 'NbTransitions' '=' str ';'
+
+Lists: PlacesList TransitionsList
+     | TransitionsList PlacesList
+
+PlacesList: 'PlacesList' '=' '{' PLabels '}' ';'
+
+PLabels: str
+       | PLabels ',' str
+
+TransitionsList: 'TransitionList' '=' '{' TLabels '}' ';'
+
+TLabels: str
+       | TLabels ',' str
+
+definitions: PlacesDef TransitionsDef InArcs OutArcs
+           | PlacesDef TransitionsDef InArcs OutArcs Inhibitors
+
+PlacesDef: 'Marking' '=' '{' PLACES '}' ';'
+
+PLACES: PLACE
+      | PLACES PLACE
+
+PLACE: '(' str ',' IntStringFormula ')' ';'
+
+TransitionsDef: 'Transition' '=' '{' TRANSITIONS '}' ';'
+
+TRANSITIONS: TRANSITION
+           | TRANSITIONS TRANSITION
+
+TRANSITION: '(' str ',' dist ',' PRIORITY ',' WEIGHT ')' ';'
+          | '(' str ',' 'EXPONENTIAL' '(' RealStringFormula ')' ',' PRIORITY ',' 
+	    WEIGHT ',' SERVICE ')' ';'
+          | '(' str ',' IMDT ',' PRIORITY ',' WEIGHT ')' ';'
+
+dist: str '(' params ')'
+
+params: RealStringFormula
+      | params ',' RealStringFormula
+
+WEIGHT: RealStringFormula
+
+PRIORITY: RealStringFormula
+
+SERVICE: 'SINGLE'
+       | 'INFINITE'
+       | 'MULTIPLE' '(' ival ')'
+       | 'MULTIPLE' '(' str ')'
+
+InArcs: 'InArcs' '=' '{' incells '}' ';'
+
+incells: incell
+       | incells incell
+
+incell: '(' str ',' str ',' IntStringFormula ')' ';'
+      | '(' str ',' str ')' ';'
+
+OutArcs: 'OutArcs' '=' '{' outcells '}' ';'
+
+outcells: outcell
+        | outcells outcell
+
+outcell: '(' str ',' str ',' IntStringFormula ')' ';'
+       | '(' str ',' str ')' ';'
+
+Inhibitors: 'inhibitor' '=' '{' inhibcells '}' ';'
+
+inhibcells: inhibcell
+          | inhibcells inhibcell
+
+inhibcell: '(' str ',' str ',' IntStringFormula ')' ';'
+         | '(' str ',' str ')' ';'

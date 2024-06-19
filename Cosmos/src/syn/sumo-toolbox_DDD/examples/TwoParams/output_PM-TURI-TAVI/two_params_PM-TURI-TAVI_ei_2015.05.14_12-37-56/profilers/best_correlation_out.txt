@@ -1,0 +1,107 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: best_correlation_out
+%   * Description: Hyperparameter values for each new best model
+%   * Date: 14/05/2015 at 12:49
+% 
+%   * Column1: 	Number of samples: 	Number of samples
+%   * Column2: 	correlation: 	Correlation function
+%
+% ----------------------------------------------------------------------------
+
+6.0	corrgauss	
+7.0	corrgauss	
+8.0	corrgauss	
+9.0	corrgauss	
+10.0	corrgauss	
+11.0	corrgauss	
+12.0	corrgauss	
+13.0	corrgauss	
+14.0	corrgauss	
+15.0	corrgauss	
+16.0	corrgauss	
+17.0	corrgauss	
+18.0	corrgauss	
+19.0	corrgauss	
+20.0	corrgauss	
+21.0	corrgauss	
+22.0	corrgauss	
+23.0	corrgauss	
+24.0	corrgauss	
+25.0	corrgauss	
+26.0	corrgauss	
+27.0	corrgauss	
+28.0	corrgauss	
+29.0	corrgauss	
+30.0	corrgauss	
+31.0	corrgauss	
+32.0	corrgauss	
+33.0	corrgauss	
+34.0	corrgauss	
+35.0	corrgauss	
+36.0	corrgauss	
+37.0	corrgauss	
+38.0	corrgauss	
+39.0	corrgauss	
+40.0	corrgauss	
+41.0	corrgauss	
+42.0	corrgauss	
+43.0	corrgauss	
+44.0	corrgauss	
+45.0	corrgauss	
+46.0	corrgauss	
+47.0	corrgauss	
+48.0	corrgauss	
+49.0	corrgauss	
+50.0	corrgauss	
+51.0	corrgauss	
+52.0	corrgauss	
+53.0	corrgauss	
+54.0	corrgauss	
+55.0	corrgauss	
+56.0	corrgauss	
+57.0	corrgauss	
+58.0	corrgauss	
+59.0	corrgauss	
+60.0	corrgauss	
+61.0	corrgauss	
+62.0	corrgauss	
+63.0	corrgauss	
+64.0	corrgauss	
+65.0	corrgauss	
+66.0	corrgauss	
+67.0	corrgauss	
+68.0	corrgauss	
+69.0	corrgauss	
+70.0	corrgauss	
+71.0	corrgauss	
+72.0	corrgauss	
+73.0	corrgauss	
+74.0	corrgauss	
+75.0	corrgauss	
+76.0	corrgauss	
+77.0	corrgauss	
+78.0	corrgauss	
+79.0	corrgauss	
+80.0	corrgauss	
+81.0	corrgauss	
+82.0	corrgauss	
+83.0	corrgauss	
+84.0	corrgauss	
+85.0	corrgauss	
+86.0	corrgauss	
+87.0	corrgauss	
+88.0	corrgauss	
+89.0	corrgauss	
+90.0	corrgauss	
+91.0	corrgauss	
+92.0	corrgauss	
+93.0	corrgauss	
+94.0	corrgauss	
+95.0	corrgauss	
+96.0	corrgauss	
+97.0	corrgauss	
+98.0	corrgauss	
+99.0	corrgauss	
+100.0	corrgauss	

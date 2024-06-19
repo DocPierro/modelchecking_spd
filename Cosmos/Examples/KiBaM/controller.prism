@@ -1,0 +1,19 @@
+pta
+
+const t1=5;
+const t2=3;
+const t3=10; 
+
+module controller
+	
+o : [0..1] init 0;
+x : clock;
+y : clock;
+invariant
+  ((x<=t3) & (y<=t3+t1)) 
+endinvariant
+
+[a] (o=0) & (y>=t2)&(x<=t3) -> (x'=0) & (o'=1);
+[b] (o=1) & (x<=t1) -> (y'=0) & (o'=0);
+
+endmodule

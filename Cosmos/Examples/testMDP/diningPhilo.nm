@@ -1,0 +1,50 @@
+// randomized dining philosophers [LR81]
+// three philosophers
+
+mdp
+
+module phil1
+
+	p1: [0..11];
+
+	[t] p1=0 -> (p1'=1); // trying
+	[t] p1=1 -> 0.5 : (p1'=2) + 0.5 : (p1'=3); // draw randomly
+	[t] p1=2 &   (p2>=0 & p2<=4) | p2=6 | p2=10 -> (p1'=4); // pick up left
+	[t] p1=3 &  ((p3>=0 & p3<=3) | p3=5 | p3=7 | p3=11 )-> (p1'=5); // pick up right
+	[t] p1=4 &  ( (p3>=0 & p3<=3) | p3=5 | p3=7 | p3=11 )-> (p1'=8); // pick up right (got left)
+	[t] p1=4 & !((p3>=0 & p3<=3) | p3=5 | p3=7 | p3=11) -> (p1'=6); // right not free (got left)
+	[t] p1=5 &   (p2>=0 & p2<=4) | p2=6 | p2=10 -> (p1'=8); // pick up left (got right)
+	[t] p1=5 & !( (p2>=0 & p2<=4) | p2=6 | p2=10)-> (p1'=7); // left not free (got right)
+	[t] p1=6  -> (p1'=1); // put down left
+	[t] p1=7  -> (p1'=1); // put down right
+	[t] p1=8  -> (p1'=9); // move to eating (got forks)
+	[t] p1=9  -> (p1'=10); // finished eating and put down left 
+	[t] p1=9  -> (p1'=11); // finished eating and put down right
+	[t] p1=10 -> (p1'=0); // put down right and return to think
+	[t] p1=11 -> (p1'=0); // put down left and return to think
+
+endmodule
+
+// construct further modules through renaming
+module phil2 = phil1 [ p1=p2, p2=p3, p3=p1 ] endmodule
+module phil3 = phil1 [ p1=p3, p2=p1, p3=p2 ] endmodule
+
+// labels
+
+// a philosopher is hungry
+label "hungry" = ((p1>0)&(p1<8))|((p2>0)&(p2<8))|((p3>0)&(p3<8)); 
+ // a philosopher is eating
+label "eat" = ((p1>=8)&(p1<=9))|((p2>=8)&(p2<=9))|((p3>=8)&(p3<=9));
+// philosopher 1 is hungry
+label "hungry1" = (p1>0)&(p1<8);
+// philosopher 2 is hungry
+label "hungry2" = (p2>0)&(p2<8);
+// philosopher 3 is hungry
+label "hungry3" = (p3>0)&(p3<8);
+ // philosopher 1 is eating
+label "eat1" = (p1>=8)&(p1<=9);
+ // philosopher 2 is eating
+label "eat2" = (p2>=8)&(p2<=9);
+ // philosopher 3 is eating
+label "eat3" = (p3>=8)&(p3<=9);
+

@@ -1,0 +1,10 @@
+S ./
+B _build
+B _build/*
+S ClessParser
+S Prism
+S Semantics
+B _build/ClessParser/**
+B _build/Prism/**
+B _build/Semantics/**
+PKG xml-light zip

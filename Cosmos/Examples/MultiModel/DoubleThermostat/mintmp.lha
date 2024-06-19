@@ -1,0 +1,19 @@
+const double T=2000;
+const double invT=0.0005;
+const double Ttrans=0;
+VariablesList = {time,DISC countT} ;
+LocationsList = {l0, l1,l2};
+AVG(Min(Temp))
+InitialLocations={l0};
+FinalLocations={l2};
+Locations={
+(l0, TRUE, (time:1));
+(l1, TRUE, (time:1 ));
+(l2, TRUE);
+};
+Edges={
+((l0,l0),ALL,time<= Ttrans ,#);
+((l0,l1),#,time=Ttrans ,{time=0});
+((l1,l1),{SynchIN9,SynchIN1,Synch21O1,Casse1,Casse2,Repare1,Repare2,Termine1,Termine2,Synctrans},time<=T,{countT = countT+1 });
+((l1,l2),#,time=T ,#);
+};

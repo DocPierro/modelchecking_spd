@@ -1,0 +1,19 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: best_sigma2_out
+%   * Description: Hyperparameter values for each new best model
+%   * Date: 05/05/2015 at 15:32
+% 
+%   * Column1: 	Number of samples: 	Number of samples
+%   * Column2: 	sigma2: 	Process variance
+%
+% ----------------------------------------------------------------------------
+
+4.000000000E0	4.91061253201E4	
+5.000000000E0	3.947869070946E4	
+6.000000000E0	3.375681826301E4	
+7.000000000E0	2.92022090027E4	
+8.000000000E0	5.923281492073E4	
+9.000000000E0	7.923831185057E4	
+1.000000000E1	7.164157798414E4	

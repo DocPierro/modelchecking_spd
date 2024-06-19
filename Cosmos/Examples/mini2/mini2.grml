@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model id="1" formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+<attribute name="declaration">
+<attribute name="constants">
+	<attribute name="intConsts">
+	</attribute>
+	<attribute name="realConsts">
+	</attribute>
+</attribute>
+</attribute>
+<node id="2" nodeType="place" x="100" y="70">
+	<attribute name="name">P0</attribute>
+	<attribute name="marking"><attribute name="expr"><attribute name="intValue">2</attribute></attribute></attribute>
+</node>
+<node id="3" nodeType="transition" x="50" y="70">
+	<attribute name="name">D0</attribute>
+	<attribute name="distribution">
+		<attribute name="type">EXPONENTIAL</attribute>
+		<attribute name="param"><attribute name="expr"><attribute name="numValue">1.0</attribute></attribute></attribute>
+	</attribute>
+</node>
+<arc id="4" arcType="arc" source="3" target="2">
+	<attribute name="valuation"><attribute name="expr"><attribute name="intValue">1</attribute></attribute></attribute>
+</arc>
+</model>

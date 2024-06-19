@@ -1,0 +1,20 @@
+NbVariables = 1;
+NbLocations = 2;
+
+VariablesList = {x};
+LocationsList = {l0, l1};
+
+x=AVG(Last(x));
+%av = MEAN(P1);
+
+InitialLocations = {l0};
+FinalLocations = {l1};
+
+Locations = {
+(l0, TRUE);
+(l1, TRUE);
+};
+
+Edges = {
+((l0,l1), ALL, #, {x=RolledDices});
+};

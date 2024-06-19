@@ -1,0 +1,33 @@
+const double mu   = 0.230000;
+const double rho = 0.385000;
+const int r = 5;
+NbPlaces = 3;
+NbTransitions = 5;
+PlacesList = { RE_Queue1 ,RE_Queue2 , Puit } ;
+TransitionsList = { mu,rho1 ,rho2 , selfloop, Puittrans };
+
+Marking= {
+(RE_Queue1 ,1);
+(RE_Queue2 ,0);
+(Puit ,0);
+};
+
+Transitions={
+(mu , EXPONENTIAL(mu),1,1,SINGLE);
+(rho1 , EXPONENTIAL(rho),1,1,SINGLE);
+(rho2 , EXPONENTIAL(rho),1,1,SINGLE);
+(selfloop, EXPONENTIAL(0*RE_Queue1),1,1,SINGLE);
+(Puittrans, EXPONENTIAL(0*RE_Queue1),1,1,SINGLE);
+};
+
+InArcs={
+(RE_Queue1    ,rho1,1);
+(RE_Queue1,rho1,1);
+(RE_Queue2,rho2,1);
+};
+
+OutArcs={
+(mu ,RE_Queue1 ,1);
+(rho1, RE_Queue2,1);
+(Puittrans, Puit,1);
+};

@@ -1,0 +1,69 @@
+NOTDETERMINISTIC
+
+const double timeB = 10;
+const double Dline = 200;
+
+VariablesList = {time,DISC countT, x,y,z,t} ;
+LocationsList = {li1,li2, le1,le2,le3 , lo1,lo2,lo3, lf1,lf2, lff};
+
+PROB;
+
+InitialLocations={li1};
+FinalLocations={lff};
+Locations={
+(li1, TRUE, (time:1,x:1,y:1,z:1));
+(li2, TRUE, (time:1,x:1,y:1,z:1));
+(le1, TRUE, (time:1,x:1,y:1,z:1));
+(le2, TRUE, (time:1,x:1,y:1,z:1));
+(le3, TRUE, (time:1,x:1,y:1,z:1));
+(lo1, TRUE, (time:1,x:1,y:1,z:1));
+(lo2, TRUE, (time:1,x:1,y:1,z:1));
+(lo3, TRUE, (time:1,x:1,y:1,z:1));
+(lf1, TRUE, (time:1,x:1,y:1,z:1));
+(lf2, TRUE, (time:1,x:1,y:1,z:1));
+(lff, TRUE, (time:1,x:1,y:1,z:1));
+};
+
+
+Edges={
+((li1,li1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((li2,li2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((le1,le1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((le2,le2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((le3,le3),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lo1,lo1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lo2,lo2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lo3,lo3),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lf1,lf1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lf2,lf2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lf1,lff),ALL, countT=Dline+1 ,#);
+((lf2,lff),ALL, countT=Dline+1 ,#);
+
+((li1,li1),{t_a}, z<=timeB  ,{countT = countT+1,z'=0});
+((li1,li2),{t_b}, x<=timeB & z<=timeB ,{countT = countT+1,x'=0,z'=0});
+
+((li2,li2),{t_a}, z<=timeB  ,{countT = countT+1,z'=0});
+((li2,li1),{t_b}, y<=timeB & z<=timeB,{countT = countT+1,y'=0,z'=0});
+
+((li1,le1),{t_a}, z<=timeB  ,{countT = countT+1,z'=0});
+((li2,lo1),{t_a}, z<=timeB & z<=timeB ,{countT = countT+1,z'=0});
+
+((le1,le2),{t_b}, x<=timeB ,{countT = countT+1,x'=0,z'=0});
+((lo1,lo2),{t_b}, y<=timeB & z<=timeB,{countT = countT+1,y'=0,z'=0});
+((le1,le1),{t_a}, z<=timeB  ,{countT = countT+1,z'=0});
+((lo1,lo1),{t_a}, z<=timeB  ,{countT = countT+1,z'=0});
+
+((le2,le3),{t_b}, y<=timeB & z<=timeB,{countT = countT+1,y'=0,z'=0});
+((lo2,lo3),{t_b}, x<=timeB & z<=timeB,{countT = countT+1,x'=0,z'=0});
+
+((le3,lf1),{t_a}, z<=timeB  ,{countT = countT+1,z'=0});
+((lo3,lf2),{t_a}, z<=timeB  ,{countT = countT+1,z'=0});
+
+((lf1,lf1),{t_a}, z<=timeB  ,{countT = countT+1,z'=0});
+((lf1,lf2),{t_b}, x<=timeB & z<=timeB,{countT = countT+1,x'=0,z'=0});
+
+((lf2,lf2),{t_a}, z<=timeB  ,{countT = countT+1,z'=0});
+((lf2,lf1),{t_b}, y<=timeB & z<=timeB,{countT = countT+1,y'=0,z'=0});
+
+
+};

@@ -1,0 +1,26 @@
+NbVariables = 3;
+NbLocations = 2 ;
+
+const double T = 100;
+
+VariablesList = {x, t, cnt} ;
+LocationsList = {l0, l1};
+
+AVG(Last(x));
+AVG(Last(cnt));
+
+InitialLocations = {l0};
+
+FinalLocations = {l1};
+
+Locations={
+	(l0, TRUE , (x:Mutex[Color_file_f1]+Mutex[Color_file_f2] , t:1));
+	(l1, TRUE , (x:Mutex[Color_file_f1]+Mutex[Color_file_f2] , t:1));
+};
+
+Edges={
+	((l0,l0),ALL,  t <= T, {cnt=cnt+1});
+	((l0,l1), #,  t = T, {x=x/T} );
+};
+
+

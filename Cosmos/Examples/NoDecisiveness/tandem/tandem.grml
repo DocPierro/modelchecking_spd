@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model formalismUrl="http://formalisms.cosyverif.org/sptgd-net.fml" xmlns="http://cosyverif.org/ns/model">
+
+   <attribute name="declaration">
+     <attribute name="constants">  <attribute name="intConsts"> </attribute>
+       <attribute name="realConsts">
+         <attribute name="realConst"><attribute name="name">p</attribute>
+         <attribute name="expr"><attribute name="numValue">0.600000</attribute></attribute>
+        </attribute>
+         <attribute name="realConst"><attribute name="name">pm</attribute>
+         <attribute name="expr"><attribute name="numValue">0.300000</attribute></attribute>
+        </attribute>
+         <attribute name="realConst"><attribute name="name">pp</attribute>
+         <attribute name="expr"><attribute name="numValue">0.700000</attribute></attribute>
+        </attribute>
+         <attribute name="realConst"><attribute name="name">peq</attribute>
+         <attribute name="expr"><attribute name="numValue">0.300000</attribute></attribute>
+        </attribute> </attribute> </attribute> </attribute>
+  <node id="0" nodeType="place" x="135.000000" y="10.000000"> 
+                                                                <attribute name="name">P0</attribute>
+                                                                <attribute name="marking">
+                                                                  <attribute name="expr"><attribute name="numValue">
+                                                                 1</attribute></attribute>
+                                                                 </attribute> </node>
+  <node id="1" nodeType="place" x="220.000000" y="10.000000"> 
+                                                                <attribute name="name">P1</attribute>
+                                                                <attribute name="marking">
+                                                                  <attribute name="expr"><attribute name="numValue">
+                                                                 0</attribute></attribute>
+                                                                 </attribute> </node>
+  <node id="2" nodeType="transition" x="95.000000" y="10.000000"> 
+                                                                    <attribute name="name">T0</attribute>
+                                                                    <attribute name="isHorizontal">
+                                                                     <attribute name="expr"><attribute name="boolValue">
+                                                                    false</attribute></attribute>
+                                                                    </attribute>
+                                                                    <attribute name="distribution">      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="number">0</attribute>
+        <attribute name="expr"><attribute name="name">
+                                                                    pp</attribute></attribute>
+      </attribute></attribute>
+                                                                   </node>
+  <node id="3" nodeType="transition" x="180.000000" y="10.000000"> 
+                                                                     <attribute name="name">T1</attribute>
+                                                                     <attribute name="isHorizontal">
+                                                                     <attribute name="expr"><attribute name="boolValue">
+                                                                    false</attribute></attribute>
+                                                                    </attribute>
+                                                                     <attribute name="distribution">      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="number">0</attribute>
+        <attribute name="expr"><attribute name="name">
+                                                                    peq</attribute></attribute>
+      </attribute></attribute>
+                                                                    </node>
+  <node id="4" nodeType="transition" x="260.000000" y="10.000000"> 
+                                                                     <attribute name="name">T2</attribute>
+                                                                     <attribute name="isHorizontal">
+                                                                     <attribute name="expr"><attribute name="boolValue">
+                                                                    false</attribute></attribute>
+                                                                    </attribute>
+                                                                     <attribute name="distribution">      <attribute name="type">
+        EXPONENTIAL
+      </attribute>
+      <attribute name="param">
+        <attribute name="number">0</attribute>
+        <attribute name="expr"><attribute name="name">
+                                                                    pm</attribute></attribute>
+      </attribute></attribute>
+                                                                    </node>
+  <arc id="5" arcType="arc" source="0" target="3">
+    <attribute name="valuation"><attribute name="expr">
+      <attribute name="numValue">1</attribute></attribute></attribute> </arc>
+  <arc id="6" arcType="arc" source="1" target="4">
+    <attribute name="valuation"><attribute name="expr">
+      <attribute name="numValue">1</attribute></attribute></attribute> </arc>
+  <arc id="7" arcType="arc" source="2" target="0">
+    <attribute name="valuation"><attribute name="expr">
+      <attribute name="numValue">1</attribute></attribute></attribute> </arc>
+  <arc id="8" arcType="arc" source="3" target="1">
+    <attribute name="valuation"><attribute name="expr">
+      <attribute name="numValue">1</attribute></attribute></attribute> </arc> </model>

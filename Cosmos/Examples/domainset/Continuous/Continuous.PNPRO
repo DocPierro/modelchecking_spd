@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="Continuous" version="121">
+  <gspn name="PetriNet">
+    <nodes>
+      <place name="P0" x="6.0" y="8.0"/>
+      <transition name="T0" nservers-x="0.5" type="EXP" x="12.55" y="8.0"/>
+      <color-class definition="c{1..3}" name="C0" x="0.125" y="1.0"/>
+      <color-var domain="C0" name="x" x="0.25" y="2.0"/>
+    </nodes>
+    <edges>
+      <arc head="T0" kind="INPUT" mult-k="0.9225585937499999" tail="P0">
+        <point x="10.0" y="7.5"/>
+      </arc>
+      <arc head="P0" kind="OUTPUT" mult-k="1.0338867187500003" tail="T0">
+        <point x="10.0" y="10.0"/>
+      </arc>
+    </edges>
+  </gspn>
+</project>

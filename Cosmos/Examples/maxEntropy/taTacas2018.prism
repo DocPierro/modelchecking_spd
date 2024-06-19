@@ -1,0 +1,17 @@
+pta
+
+module controller
+
+s : [0..1] init 0;
+
+x : clock;
+
+invariant
+ (x<2)
+endinvariant
+
+[a] (s=0) -> (s'=1);
+[b] (s=1) -> (x'=0) & (s'=0);
+[c] (s=0) -> (x'=0) & (s'=0);
+
+endmodule

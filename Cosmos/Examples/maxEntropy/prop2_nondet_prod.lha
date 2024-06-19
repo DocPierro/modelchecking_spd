@@ -1,0 +1,119 @@
+NOTDETERMINISTIC
+
+const double timeB = 10;
+const double timeC = 5;
+const double Dline = 200;
+
+VariablesList = {time,DISC countT, x,y,t,t1,t2} ;
+LocationsList = {AutAli1,AutAli2, AutAle1,AutAle2,AutAle3 , AutAlo1,AutAlo2,AutAlo3, AutAlf1,AutAlf2, AutAlff, li1,li2, le1,le2,le3 , lo1,lo2,lo3, lf1,lf2, lff};
+
+ReachA=PROB;
+ReachBcA=PROB(lff);
+
+InitialLocations={AutAli1,li1};
+FinalLocations={AutAlff};
+Locations={
+(AutAli1, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(AutAli2, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(AutAle1, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(AutAle2, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(AutAle3, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(AutAlo1, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(AutAlo2, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(AutAlo3, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(AutAlf1, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(AutAlf2, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(AutAlff, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(li1, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(li2, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(le1, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(le2, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(le3, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(lo1, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(lo2, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(lo3, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(lf1, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(lf2, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+(lff, TRUE, (time:1,x:1,y:1,t:1,t1:1,t2:1));
+
+};
+
+
+Edges={
+((AutAli1,AutAli1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((AutAli2,AutAli2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((AutAle1,AutAle1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((AutAle2,AutAle2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((AutAle3,AutAle3),ALL\{t_a,t_b}, countT<=Dline ,#);
+((AutAlo1,AutAlo1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((AutAlo2,AutAlo2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((AutAlo3,AutAlo3),ALL\{t_a,t_b}, countT<=Dline ,#);
+((AutAlf1,AutAlf1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((AutAlf2,AutAlf2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((AutAlf1,AutAlff),ALL, countT=Dline+1 ,#);
+((AutAlf2,AutAlff),ALL, countT=Dline+1 ,#);
+
+((AutAli1,AutAli1),{t_a}, x<=timeB  ,{countT = countT+1});
+((AutAli1,AutAli2),{t_b}, x<=timeB  ,{countT = countT+1,x'=0});
+
+((AutAli2,AutAli2),{t_a}, y<=timeB  ,{countT = countT+1});
+((AutAli2,AutAli1),{t_b}, y<=timeB ,{countT = countT+1,y'=0});
+
+((AutAli1,AutAle1),{t_a}, x<=timeB  ,{countT = countT+1,t'=0});
+((AutAli2,AutAlo1),{t_a}, y<=timeB  ,{countT = countT+1,t'=0});
+
+((AutAle1,AutAle2),{t_b}, x<=timeB ,{countT = countT+1,x'=0});
+((AutAlo1,AutAlo2),{t_b}, y<=timeB ,{countT = countT+1,y'=0});
+((AutAle1,AutAle1),{t_a}, x<=timeB  ,{countT = countT+1});
+((AutAlo1,AutAlo1),{t_a}, y<=timeB  ,{countT = countT+1});
+
+((AutAle2,AutAle3),{t_b}, y<=timeB ,{countT = countT+1,y'=0});
+((AutAlo2,AutAlo3),{t_b}, x<=timeB ,{countT = countT+1,x'=0});
+
+((AutAle3,AutAlf1),{t_a}, x<=timeB & t<=2*timeC ,{countT = countT+1});
+((AutAlo3,AutAlf2),{t_a}, y<=timeB & t<=2*timeC ,{countT = countT+1});
+
+((AutAlf1,AutAlf1),{t_a}, x<=timeB  ,{countT = countT+1});
+((AutAlf1,AutAlf2),{t_b}, x<=timeB ,{countT = countT+1,x'=0});
+
+((AutAlf2,AutAlf2),{t_a}, y<=timeB  ,{countT = countT+1});
+((AutAlf2,AutAlf1),{t_b}, y<=timeB ,{countT = countT+1,y'=0});
+((li1,li1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((li2,li2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((le1,le1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((le2,le2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((le3,le3),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lo1,lo1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lo2,lo2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lo3,lo3),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lf1,lf1),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lf2,lf2),ALL\{t_a,t_b}, countT<=Dline ,#);
+((lf1,lff),ALL, countT=Dline+1 ,#);
+((lf2,lff),ALL, countT=Dline+1 ,#);
+
+((li1,li1),{t_a}, x<=timeB  ,{countT = countT+1});
+((li1,li2),{t_b}, x<=timeB  ,{countT = countT+1,x'=0});
+
+((li2,li2),{t_a}, y<=timeB  ,{countT = countT+1});
+((li2,li1),{t_b}, y<=timeB  ,{countT = countT+1,y'=0});
+
+((li1,le1),{t_a}, x<=timeB  ,{countT = countT+1,t1'=0});
+((li2,lo1),{t_a}, y<=timeB  ,{countT = countT+1,t1'=0});
+
+((le1,le2),{t_b}, x<=timeB  ,{countT = countT+1,x'=0,t2'=0});
+((lo1,lo2),{t_b}, y<=timeB  ,{countT = countT+1,y'=0,t2'=0});
+((le1,le1),{t_a}, x<=timeB  ,{countT = countT+1});
+((lo1,lo1),{t_a}, y<=timeB  ,{countT = countT+1});
+
+((le2,le3),{t_b}, y<=timeB & t1<=timeC ,{countT = countT+1,y'=0});
+((lo2,lo3),{t_b}, x<=timeB & t1<=timeC ,{countT = countT+1,x'=0});
+
+((le3,lf1),{t_a}, x<=timeB & t2<=timeC ,{countT = countT+1});
+((lo3,lf2),{t_a}, y<=timeB & t2<=timeC ,{countT = countT+1});
+
+((lf1,lf1),{t_a}, x<=timeB  ,{countT = countT+1});
+((lf1,lf2),{t_b}, x<=timeB ,{countT = countT+1,x'=0});
+
+((lf2,lf2),{t_a}, y<=timeB  ,{countT = countT+1});
+((lf2,lf1),{t_b}, y<=timeB ,{countT = countT+1,y'=0});
+};

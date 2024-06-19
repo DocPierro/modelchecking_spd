@@ -1,0 +1,29 @@
+% Single queue with single server
+
+const  double lambda=8;
+const double mu=10;
+
+NbPlaces = 1;
+NbTransitions = 2;
+
+
+PlacesList = { Queue} ;
+TransitionsList = { Arrive, Serve} ;
+
+Marking={
+(Queue , 0) ;
+};
+
+Transitions={
+(Arrive,EXPONENTIAL(lambda),1, 1, SINGLE);
+(Serve,EXPONENTIAL(mu), 1,1, SINGLE); 
+};
+
+InArcs={
+(Queue, Serve);
+};
+
+OutArcs={
+(Arrive,Queue);
+};
+

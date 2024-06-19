@@ -1,0 +1,34 @@
+
+NbPlaces = 3;
+NbTransitions = 3;
+
+
+PlacesList = { P1, P2, P3} ;
+TransitionsList = { Sampx , Sampy,fin} ;
+
+Marking={
+(P1 , 1) ; 
+(P2 , 0) ; 
+(P3 , 0) ;  
+};
+
+Transitions={
+(Sampx,UNIFORM(0,1),1,1); 
+
+(Sampy,UNIFORM(0,1),1,1);
+
+(fin,IMMEDIATE,1,1);
+};
+
+InArcs={
+(P1,Sampx,1);
+(P2,Sampy,1);
+(P3,fin,1);
+};
+
+OutArcs={
+(Sampx,P2,1);
+(Sampy,P3,1);
+(fin,P3,1);
+};
+

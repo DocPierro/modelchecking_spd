@@ -1,0 +1,5 @@
+<*.ml>:package(str)
+"modelConvert.native" or "modelConvert.byte" or "modelConvert.ml" or "simulinkreader.ml" or "simulinkreader.mli" or "simulinkparser.ml" or "simulinkparser.mli" or "CosmosSimulink.ml" or "CosmosSimulink.native" or "stateflowparser.ml" or "pnmlparser.ml" or "GrMLParser.ml" or "parserUnparseAttribute.ml" or "parserUnparseAttribute.native" : package(zip),package(xml-light),package(str)
+"CosmosSimulink.byte" or "parserUnparseAttribute.byte" : package(zip),package(xml-light),package(str)
+<*.native>:package(str)
+<*.byte>:package(str)

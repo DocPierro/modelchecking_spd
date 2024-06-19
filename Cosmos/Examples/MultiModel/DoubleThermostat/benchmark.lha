@@ -1,0 +1,28 @@
+const double EndTime=2000;
+
+VariablesList={t,tCold};
+LocationsList={l0,l1,l2};
+
+I1=AVG(Min(Temp));
+I2=AVG(Last(tCold));
+I3=AVG(Mean(Temp));
+I4=AVG(Mean(heatActive1+heatActive2));
+I5=AVG(Mean(Idle));
+
+InitialLocations= {l0};
+FinalLocations={l2};
+
+Locations={
+  (l0, Temp>=20, (t:1,tCold:0));
+  (l1, Temp<20, (t:1,tCold:1));
+  (l2, TRUE, (t:1,tCold:0));
+};
+
+Edges={
+  ((l0,l0), ALL, t<=EndTime, #);
+  ((l0,l1), ALL, t<=EndTime, #);
+  ((l1,l1), ALL, t<=EndTime, #);
+  ((l1,l0), ALL, t<=EndTime, #);
+  ((l1,l2), #, t=EndTime, #);
+  ((l0,l2), #, t=EndTime, #);
+};

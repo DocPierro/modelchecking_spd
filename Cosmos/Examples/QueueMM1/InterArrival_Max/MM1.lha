@@ -1,0 +1,30 @@
+% Evaluate the expected  maximum of inter arrival time in  MM1
+ 
+
+
+NbVariables = 2;
+NbLocations = 2;
+
+const double T=1000; % time bound
+
+VariablesList = {time, ti} ;
+LocationsList = {l0, l1};
+
+
+AVG(Max(ti));
+
+InitialLocations={l0};
+
+FinalLocations={l1};
+
+Locations={
+(l0, TRUE, (time:1, ti:1));
+(l1, TRUE);};
+
+Edges={
+((l0,l0),ALL\{Arrive}, time<=T,  #    );
+((l0,l0),{Arrive},     time<=T, {ti=0});
+((l0,l1),#,            time=T , #     );
+};
+
+

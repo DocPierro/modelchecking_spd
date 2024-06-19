@@ -1,0 +1,25 @@
+
+NbVariables = 1;
+NbLocations = 3;
+const int N=2;
+
+VariablesList = {x} ;
+
+LocationsList = {li, lp ,lm};
+AVG(Last(x));
+InitialLocations={li};
+
+FinalLocations={ lp };
+
+Locations={
+(li, TRUE );
+(lp, ( Place1 + Place4 = N) & (RE_Place1_4 <  RE_Place1_1) & (Puit = 0));
+(lm, (RE_Place1_1 + RE_Place1_4 = N) & (RE_Place1_4 >= RE_Place1_1) | (Puit > 0));
+
+}; 
+
+Edges={
+((li,li)  ,ALL ,  # , #);
+((li,lp)  ,# ,  # , {x=1});
+((li,lm)  ,# ,  # , #);
+};

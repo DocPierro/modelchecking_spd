@@ -1,0 +1,207 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 121,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 136,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 142,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 160,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 163,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 186,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"Cosmos"
+			],
+			"targetId" : "Cosmos::@6890427a1f51a3e7e1df",
+			"targetIndex" : 3,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"cxxModuleBmiTarget" : 
+			{
+				"id" : "Cosmos::@6890427a1f51a3e7e1df",
+				"index" : 3
+			},
+			"destination" : "bin",
+			"type" : "cxxModuleBmi"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libClientSimBase.a"
+			],
+			"targetId" : "ClientSimBase::@6890427a1f51a3e7e1df",
+			"targetIndex" : 1,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"cxxModuleBmiTarget" : 
+			{
+				"id" : "ClientSimBase::@6890427a1f51a3e7e1df",
+				"index" : 1
+			},
+			"destination" : "lib",
+			"type" : "cxxModuleBmi"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libClientSimMain.a"
+			],
+			"targetId" : "ClientSimMain::@6890427a1f51a3e7e1df",
+			"targetIndex" : 2,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"cxxModuleBmiTarget" : 
+			{
+				"id" : "ClientSimMain::@6890427a1f51a3e7e1df",
+				"index" : 2
+			},
+			"destination" : "lib",
+			"type" : "cxxModuleBmi"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libClientSim.a"
+			],
+			"targetId" : "ClientSim::@6890427a1f51a3e7e1df",
+			"targetIndex" : 0,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"cxxModuleBmiTarget" : 
+			{
+				"id" : "ClientSim::@6890427a1f51a3e7e1df",
+				"index" : 0
+			},
+			"destination" : "lib",
+			"type" : "cxxModuleBmi"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"src/Simulator/spn.hpp",
+				"src/Simulator/LHA.hpp",
+				"src/Simulator/marking.hpp",
+				"src/Simulator/Polynome.hpp",
+				"src/Simulator/markingTemplate.hpp",
+				"src/Simulator/DistributionDef.hpp",
+				"src/Simulator/timeGen.hpp",
+				"src/Simulator/timeGenBis.hpp",
+				"src/Simulator/Event.hpp",
+				"src/Simulator/EventsQueue.hpp",
+				"src/Simulator/BatchR.hpp",
+				"src/Simulator/EventsQueueSet.hpp",
+				"src/Simulator/Simulator.hpp",
+				"src/Simulator/stateSpace.hpp",
+				"src/Simulator/MarkovChain.hpp",
+				"src/Simulator/SPNBase.hpp",
+				"src/Simulator/LHA_orig.hpp",
+				"src/Simulator/NLHA.hpp",
+				"src/Simulator/clientsim.hpp",
+				"src/Simulator/Simulink/SKTime.hpp",
+				"src/ModelGenerator/expressionStruct.hpp",
+				"src/ModelGenerator/parameters.hpp",
+				"src/ModelGenerator/SimpleSerializer.hpp",
+				"src/ModelGenerator/HaslFormula.hpp"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "Unspecified",
+			"destination" : "include/RareEvents",
+			"paths" : 
+			[
+				"src/Simulator/spn.hpp",
+				"src/Simulator/LHA.hpp",
+				"src/Simulator/marking.hpp",
+				"src/Simulator/RareEvents/SimulatorRE.hpp",
+				"src/Simulator/RareEvents/SimulatorBoundedRE.hpp",
+				"src/Simulator/RareEvents/SimulatorContinuousBounded.hpp",
+				"src/Simulator/RareEvents/numericalSolver.hpp",
+				"src/Simulator/RareEvents/numSolverBB.hpp",
+				"src/Simulator/RareEvents/numSolverSH.hpp",
+				"src/Simulator/RareEvents/foxglynn.hpp"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	}
+}

@@ -1,0 +1,20 @@
+const double T=10;
+
+VariablesList={time};
+LocationsList={run,stop};
+
+I0=AVG(Min(P0));
+I1=AVG(Mean(P0));
+I2=AVG(Max(P0));
+
+InitialLocations={run};
+FinalLocations={stop};
+
+Locations={
+(run, TRUE, (time:1));
+(stop, TRUE, (time:0));
+};
+Edges={
+((run,run),ALL,time<=T,#);
+((run,stop),#,time=T,#);
+};

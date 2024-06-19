@@ -1,0 +1,30 @@
+% Evaluate the inter arrival average for MM1
+% Steady state InT=1/lambda
+
+
+NbVariables = 4;
+NbLocations = 2;
+
+const double T=1000; % time bound
+
+VariablesList = {time,InT, ti, ni} ;
+LocationsList = {l0, l1};
+
+
+AVG(Last(InT));
+
+InitialLocations={l0};
+
+FinalLocations={l1};
+
+Locations={
+(l0, TRUE, (time:1, ti:1));
+(l1, TRUE);};
+
+Edges={
+((l0,l0),ALL\{Arrive}, time<=T,  #                       );
+((l0,l0),{Arrive},     time<=T, {InT=InT+ti,ti=0,ni=ni+1});
+((l0,l1),#,            time=T , {InT=InT/ni}             );
+};
+
+

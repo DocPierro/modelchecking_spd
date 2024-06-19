@@ -1,0 +1,843 @@
+\documentclass{article}
+\usepackage{amsmath}
+%\usepackage{psfig}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amssymb} 
+\usepackage{amsthm}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{automata,shapes.multipart} %
+\usetikzlibrary{arrows,petri}
+\usepackage[utf8]{inputenc}
+%\usepackage[noend]{algorithmic}
+\usepackage{algorithm}
+%\usepackage{algo}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{syntax}
+
+
+\newcommand{\cosmos}{\mbox{\textup{C}\scalebox{0.75}{{\textsc{OSMOS}}}}}
+\newcommand{\cosyverif}{\mbox{\textup{C}\scalebox{0.75}{{\textsc{OSY}}}\textup{V}\scalebox{0.75}{{\textsc{ERIF}}}}}
+
+\title{\cosmos{} User Manual}
+\author{Beno\^it Barbot}
+
+\begin{document}
+\maketitle
+
+
+This is the user manual for the tool \cosmos{} version 1.5
+
+\section{Tool Usage}
+
+\subsection{Basic Usage}
+The primary usage of the tool \cosmos{} is as follows:
+\begin{verbatim}
+Cosmos model property
+\end{verbatim}
+Where the model is specified in the GRML file format or in the
+\verb|.gspn| file format and the property is expressed either in GRML
+or in the \verb|.lha| file format. Various options change the behaviours 
+of the simulator and are listed below.
+
+Cosmos is shipped with several examples in the \verb|Examples| directory.
+
+Cosmos can also be called thought the CosyVerif platform.
+
+
+
+
+\subsection{Architecture of the Tool}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{overviewcosmos}
+  \caption{Overview of the architecture of Cosmos}
+  \label{fig:overviewCosmos}
+\end{figure}
+
+\cosmos{} is based on the generation of C++ code to produce an efficient
+simulator from the input model and specification. 
+
+From the Petri net given as input the tool produces functions for
+firing transitions, checking whether a transition is enabled and
+computing parameters of probability distributions. Tables are also
+generated that contains for any transitions $t$ the set of transitions
+that might become enabled or disabled due to the firing of $t$. This
+table is computed by an analysis of the structure of the Petri net
+and increase the speed of the simulation by testing only small subset of
+transitions after each firing.
+
+HASL formulas are also transformed into the code. More specifically
+transitions of the automaton that synchronise with the Petri net use
+tables to compute the synchronisation. Autonomous transitions of the
+automaton are implemented by precomputing a system of linear equations
+and generating function to finish the computation at run time this is
+possible due to constraints on the expression of the automaton. This
+also compute exact computation of time for the firing of
+transitions. Tools dealing with more general hybrid automaton must
+solve this problem with numerical integration which introduces
+numerical errors. Computations of integral over the trajectory of the
+system are also resolved exactly and efficiently thanks to linear
+constraints.
+
+The generated code is linked with a library containing other parts
+of the simulator that is not dependent on the model or specification.
+This library contains: an event heaps to efficiently between the next event
+in the system, the main synchronisation loop that uses the generated code
+and a pseudo-random generator to produce new events that are put in the heap.
+
+\subsubsection{Model}
+Models taken by \cosmos{} as input are variants of Petri nets.  The main
+models supported by \cosmos{} are stochastic Petri nets with inhibitor
+arcs and general distributions. The file format of \cosyverif{} (GRML) 
+allows to specify different variants of Petri nets which are also 
+recognised by \cosmos{}:
+\begin{itemize}
+\item Plain Petri nets can be read: in this case, an exponential
+  distribution of rate $1$ is assigned to each transition.
+\item Stochastic Petri nets with inhibitor arcs and general distributions.
+\item Symmetric nets: like for plain Petri nets, exponential
+  distributions of rates $1$ are assumed.
+\item Stochastic Symmetric Nets. 
+\end{itemize}
+The specification of file formats are reported in Section~\ref{sec:fileformat}.
+The \verb|.gspn| file format is the legacy file format of \cosmos{}. As \verb|.grml|
+is more standard and easier to extend, it is advised to use \verb|.grml| for new
+models.
+
+\subsubsection{Property}
+Properties are specified in the Hybrid Linear Automaton Logic~(HASL)
+which, as its name suggests, relies on Linear Hybrid Automaton~(LHA) to
+select paths and on several HASL expressions to specify various
+performance values.
+
+
+\subsection{Statistical Options}
+Several options can be used to control the behaviour of the statistical engine.
+The default behaviour is to simulate trajectories until either
+\begin{itemize}
+\item The maximum number of trajectories is reached.
+\item The specified width for the confidence interval is reached.
+\end{itemize}
+
+\subsubsection{\texttt{--width arg}  option}
+This option specifies \texttt{arg} as the goal width for the
+confidence interval. If it is set to $0$, trajectories are simulated
+until the maximum number of trajectories is reached.  The default
+value is $0.001$.
+
+\subsubsection{\texttt{--max-run arg}  option}
+This option specifies \texttt{arg} as the maximal number of runs.
+The default value is $2,000,000$.
+
+\subsubsection{\texttt{--level arg}  option}
+This option sets the confidence level to \texttt{arg}.
+The default value is $0.99$.
+
+\subsubsection{\texttt{--batch arg}  option}
+This option sets the number of simulations to perform between each
+statistical test.  The default value is $1000$. When this value is 
+set to $0$, the tool will perform a test at constant time period.
+
+\subsubsection{\texttt{--njob arg}  option}
+This option sets the number of parallel computations to \texttt{arg}.
+The default value is $1$.
+
+\subsubsection{\texttt{--relative}  option}
+This option allows \cosmos{} to use a relative confidence interval
+instead of an absolute one.
+
+\subsubsection{\texttt{--chernoff arg}  option}
+This option uses Chernoff-Hoeffding bound to compute statistical
+parameters.  \texttt{arg} contains one of \texttt{width,level,nbrun}
+which is computed using Chernoff-Hoeffding bound.
+
+\subsection{Input Options}
+
+\subsubsection{\texttt{--const X1=c1,X2=c2,\dots,Xn=cn}  option}
+This option overrides the values of the constants of the model or the
+property. If the constant was already defined, the value is
+overwritten, if not, the constant is defined.
+
+\subsubsection{\texttt{-g, --grml-input}  option}
+This option forces the tool to use the GRML parser for the model and
+the LHA. This is mostly deprecated as the correct parser is inferred
+from the extension.
+
+\subsubsection{\texttt{--HASL-expression arg}  option}
+This allows one to specify additional HASL{} expressions to the automaton.
+The syntax of \texttt{arg} is the one of HASL{} expressions in the
+\texttt{.lha} file format and should end with ``\texttt{;}''.
+
+\subsubsection{\texttt{--loop arg [--transient arg2]}  option}
+This produces a set of HASL formulas evaluating the mean number of 
+tokens in each place and the mean throughput of each transition until time
+\texttt{arg}. The optional additional argument allows one to specify a transient
+time where the mean number of tokens and throughput are not recorded.
+See options \texttt{--trace-place} to specify which places and transitions 
+to monitor.
+
+\subsubsection{\texttt{--sampling t1 t2} option}
+This produces an automaton which samples, each \texttt{t2} time unit, the
+mean number of tokens in each place for this period, until time
+\texttt{t1} is reached.  See options \texttt{--output-graph} to format
+the output in a more manageable way.
+
+\subsubsection{\texttt{--count-transition} option}
+This produces a set of HASL formulas counting the number of firing of each
+transition.
+
+\subsubsection{\texttt{--formula arg} option}
+Sends the expression \texttt{arg} to the \emph{AutomataGen} tool to produce
+the LHA used for the simulation. The tool AutomataGen is a work in progress.
+
+\subsection{Output formatting Options}
+The default behaviour \cosmos{} for displaying results is as follows:
+During the simulation a synthetic overview is displayed:
+\begin{scriptsize}
+\begin{verbatim}
+Total paths: 28570000  Accepted paths: 22442000  Wall-clock time: 21s  Remaining(approx): 32s  Trajectory per second: 1.4e+06
+r:      |< 2.639128431e-08 --[ 0.4999066088    < 0.5000635601    > 0.5002205154    ]-- 0.9999999687 >| width=0.0003139 level=0.99
+pi:     |< 0               --[ 3.141245613     < 3.142037101     > 3.142828210     ]-- 4            >| width=0.0015825 level=0.99
+pi2:    |< 0               --[ 0.7853114033    < 0.7855092754    > 0.7857070525    ]-- 1            >| width=0.0003956 level=0.99
+% of Err: [||||||||||||||||||||||||||||||||||||||||                                                       ] 39%	
+% of run: [||||||||||||||||||||||||||||                                                                   ] 28%	
+\end{verbatim}
+\end{scriptsize}
+The first line provides information on the speed of simulation. The
+remaining time is computed differently depending of the statistical
+procedure used. For fixed-sample-size algorithms, the estimation of
+the computation time is straightforward. For the Chow-Robbins’s method,
+the size of the confidence interval is assumed to decrease in
+$1/\sqrt{N}$ with $N$ the number of trajectories, which is quite
+reliable. For the SPRT, a heuristic is used and the estimation is a lot
+less reliable.  The second to fourth lines present three HASL
+expressions. The first number is the minimal value observed for this
+expression, then the lower bound of the confidence interval is
+displayed, then the estimated value, then the upper bound and then the
+maximal observed value. The width of the confidence interval is
+displayed at the end.  The last two lines show progress bars indicating
+the progress of the simulation. The first one indicates the progress to
+reach the specified confidence interval width limit. This progress is
+corrected assuming that the width progress in $1/\sqrt{N}$ thus this
+bar progress at constant speed. The last bar is the number of
+simulated trajectories compared to the maximal number of trajectories.
+
+When the simulation finishes, results are returned in a key-value
+format which is easier to parse for tools:
+\begin{scriptsize}
+\begin{verbatim}
+Model path:	pi.gspn
+LHA path:	pi.lha
+r:
+Estimated value:	0.500031454383448
+Confidence interval:	[0.499932270760877 , 0.50013063800602]
+Minimal and maximal value:	[1.93365088646926e-08 , 0.999999971987635]
+Width:	0.000198367245143327
+pi:
+Estimated value:	3.14176752504576
+Confidence interval:	[3.14126745104347 , 3.1422674472686]
+Minimal and maximal value:	[0 , 4]
+Width:	0.000999996225129696
+pi2:
+Estimated value:	0.78544188126144
+Confidence interval:	[0.785316862760866 , 0.785566861817149]
+Minimal and maximal value:	[0 , 1]
+Width:	0.000249999056282424
+Method:	Confidence interval computed sequentially using Chows-Robbin algorithm or SPRT.
+Confidence level:	0.99
+Total paths:	71569000
+Accepted paths:	56213290
+Batch size:	1000
+Time for simulation:	55.245259s
+Total CPU time:	60.068667
+Total Memory used:	44.87 MB
+Number of jobs:	1
+Results are saved in 'Result_pi.res'
+Results are saved in 'Result.res'
+\end{verbatim}
+\end{scriptsize}
+All the simulation parameters are recalled. The additional information
+is the \texttt{Time for simulation} which is the wall clock time used
+by the simulation.  It decreases when the number of parallel processes
+increases on multiprocessor machine.  The \texttt{Total CPU time} is
+the CPU time consumed by the whole computation, it slightly increases
+when the number of parallel processes increases. The \texttt{Total
+  Memory used} line reports the memory used by the whole
+computation. In most cases, the maximum memory consumption is reached
+during the compilation of the simulator and highly depends of the
+compiler used. This output is also stored in a file called
+\texttt{Result.res}.
+
+Several options allow to output additional data from the simulation:
+
+\subsubsection{\texttt{-v, --verbose arg} option}
+Sets the verbose level of the tool. The default is $2$, with $0$ the tool
+does not write anything on the standard output. The maximum is $6$ which 
+generates debug information at each step of the simulation.
+
+\subsubsection{\texttt{-i,--interactive} option}
+This option allows one to debug a model by stopping the simulation after
+each step.  This option should not be used together with
+\texttt{--njob n} with $n>1$.  When the simulation is stopped the user
+is asked either to type \texttt{step} to fire the following transition
+or \texttt{fire tr} where \texttt{tr} is the name of an enabled
+transition. This mode is not fully compatible with stochastic
+symmetric nets as the command \texttt{fire} does not allow to specify
+a binding.
+
+\subsubsection{\texttt{--output-graph arg} option}
+Allows one to output results of HASL formula in a blank separated file
+format. The argument \texttt{arg} specifies the name of the file.  This
+is well suited for HASL expressions specifying a graph like
+\texttt{PDF, CDF} or the expression generated by the
+\texttt{--sampling} option.  Figure~\ref{fig:sampling} shows a graph
+generated by the \texttt{--sampling 2 0.001} option on the shared
+memory example. The \texttt{--output-graph} option generates a file
+starting as files:
+\begin{scriptsize}
+\begin{verbatim}
+abscissa MeanToken_Access1_low MeanToken_Access1_mean MeanToken_Access1_up           ... 
+0.005 7.6218e-05 0.000144057 0.000211896 0.00920415 0.00986402 0.0105239 0.000103712 ...
+0.015 0.000803674 0.00103768 0.00127168 0.0279092 0.0292027 0.0304962 0.000759281    ...
+...
+\end{verbatim}
+\end{scriptsize}
+Which can easily be plotted as the figure using \texttt{gnuplot}.
+{\color{red}This can also be used for the user defined HASL formulas by using names ending by
+\verb|$GRAPH$x1$x2$| for HASL expressions where $(x1+x2)/2$ is the
+abscissa of the point computed by the expression.}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1.01\textwidth]{figures/sampling.png}
+  \caption{Sampling the trajectories of the shared memory example}
+  \label{fig:sampling}
+\end{figure}
+
+\subsubsection{\texttt{-d, --output-data arg} option}
+This option generates a file showing the evolution of the confidence
+interval along the time. This allows one to observe the speed of
+convergence. Figure~\ref{fig:convergence} shows a graph plotted from
+this data.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1.01\textwidth]{figures/convergence.png}
+  \caption{Convergence of the estimation for the shared memory example}
+  \label{fig:convergence}
+\end{figure}
+
+\subsubsection{\texttt{--output-raw arg} option}
+This option allows one to output the final value of the HASL
+expressions at the end of each trajectory. This option was introduced for debug purposes and should not be used in normal use. This option
+is not compatible with \texttt{--njob n} when $n>1$
+
+\subsubsection{\texttt{--output-trace arg arg2} option}
+This option stores the traces of the trajectories in file
+\texttt{arg}.  Each line contains the global state of the simulator
+(Petri net + LHA) after a transition.  Each trajectory is separated by
+a line containing \texttt{New Path}.  Figure~\ref{fig:trace} contains
+a trace of one trajectory of the shared memory example.  The second
+argument \texttt{arg2} specifies a minimum sampling time. If
+\texttt{arg2} $>0$, no consecutive lines in the output file are
+separated by less than \texttt{arg2} time units. This is useful when
+the trace becomes too big to reduce the size of the generated file.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1.01\textwidth]{figures/trace.png}
+  \caption{Trace of one simulation for the shared memory example}
+  \label{fig:trace}
+\end{figure}
+
+\subsubsection{\texttt{--trace-pt arg} option}
+Specifies which place and transition should be traced in the various
+output files.  \texttt{arg} is a list of places and transition
+names. There are two keywords, \texttt{ALL} which is the default, and
+\texttt{COLOR}. The first one allows one to trace all places and transitions,
+the second, allows one to trace all colour tokens and all bindings of
+transition for stochastic symmetric nets.
+
+\subsubsection{\texttt{--gnuplot-driver} option}
+This option makes \cosmos{} call \texttt{gnuplot} interactively and
+displays the graph of all outputs specified by a \texttt{--output-*}
+option.  All the graphs of this manual have been created using this
+option.
+
+\subsubsection{\texttt{--alligator-mode} option}
+This option removes the output of the progress of the simulation 
+and outputs the progress as a line containing key-value. This mode
+is useful for interfacing \cosmos{} with other tools in particular 
+with \texttt{alligator}, the server part of \cosyverif. This 
+mode also makes the \texttt{--gnuplot-driver} option to write
+the graph in files instead than on the screen.
+
+\subsubsection{\texttt{--update-time arg} option}
+This option sets the time between two updates of the progress of the simulation
+to be no less than \texttt{arg}.
+
+\subsection{Miscellaneous Options}
+\subsubsection{\texttt{--version} option}
+Displays the current version of \cosmos{}.
+
+\subsubsection{\texttt{-h, --help} option}
+Displays a help message containing the list of options and quits.
+
+\subsubsection{\texttt{--seed arg} option}
+Sets the seed of the simulator to \texttt{arg}. 
+
+\subsubsection{\texttt{--local-test} option}
+This option changes the way enabled transitions are computed.  This can
+improve performance for nets containing transitions with a lot of input
+arcs.
+
+
+\subsubsection{\texttt{--unfold arg} option}
+This option outputs the model as a place transition net in the GrML
+file format. This allows ont to unfold symmetric nets but also to convert
+\texttt{.gspn} file to GrML. This option is a work in progress, some
+expressions on arcs may not be well exported.
+
+
+\subsubsection{\texttt{-s, --state-space} option}
+Does not run the simulator, instead generates the state space and 
+the transition probability matrix. The output format is the one
+used by \texttt{Prism} to import models. 
+
+\subsubsection{\texttt{--prism} option}
+Exports the state space then run \texttt{Prism} on it.
+At the end of the computation, the vector of probability to reach the
+accepting state is read and exported.
+
+\subsubsection{\texttt{--gppcmd arg} option}
+Sets the C++ compiler to be \texttt{arg}.
+
+\subsubsection{\texttt{--gppflags arg} option}
+Appends \texttt{arg} to the command line calling the C++ compiler.
+
+\subsection{Debugging Options}
+The following options are implemented only for debugging purposes and
+should not be used in general.
+
+\subsubsection{\texttt{--tmp-status arg} option}
+Changes the way \cosmos{} handle temporary files. The argument \texttt{arg}
+can take four values: 
+\begin{itemize}
+\item $0$ is the default. A temporary directory is asked to the system and
+  all temporary files are generated in it. The directory is destroyed
+  at the end of the computation.
+\item $2$. The directory name \texttt{tmp} in the current
+  \texttt{PATH} is used, it is not destroyed at the end. This option
+  is useful to examine generated code.
+\item $1$. \cosmos{} assumes that the directory \texttt{tmp} exists
+  and contains a fully build version of the model and property. The
+  simulator is launched without being rebuilt. At the end of computation,
+  the directory is destroyed.
+\item $3$. Same as $1$ but does not destroy the \texttt{tmp} directory
+  at the end.
+\end{itemize}
+These options allow one to build only once a model and reuse it for
+several simulations. Only statistical parameters can be changed between simulations
+as the model is not rebuilding. Use with caution!
+
+\subsubsection{\texttt{--tmp-path arg} option}
+Specifies where to put the temporary directory. This option is useless
+if the \texttt{--tmp-status arg} with \texttt{arg}$>0$ is not specified.
+
+\subsubsection{\texttt{--bin-path arg} option}
+Overrides the path to the installation of \cosmos{}. This path is used
+by \cosmos{} to find headers and libraries required to build the model.
+
+\subsubsection{\texttt{--debug-string} option}
+Adds debugging information to the generated code. This option is activated
+and required by a verbose mode greater than $4$.
+
+\subsection{Rare Events Options}
+\subsubsection{\texttt{-r} option}
+Use importance sampling during the simulation. This option estimates
+time-unbounded teachability probability. This requires a file name
+\texttt{lumpingfun.cpp} to be in the current directory containing a
+function mapping marking of the net to marking of the reduce model. A
+file name \texttt{muFile} containing the vector of probability in a
+reduce model is also required. This file can be produced with the
+\texttt{--prism} option.
+
+\subsubsection{\texttt{-b arg1 --set-horizon arg2} option}
+Use time-bounded importance sampling assuming a discrete semantic of
+the model. \texttt{arg1} specify which algorithms to use between $1$,$2$
+and $3$. $1$ is the fastest while $3$ consume the least memory. $2$ is
+a trade-off. \texttt{arg2} specify the integer time horizon. This
+option requires the file \texttt{lumpingfun.cpp} and
+\texttt{matrixFile} to be in the same directory. This last file can 
+be produced with the option \texttt{--state-space} on the reduce model.
+
+\subsubsection{\texttt{-c -b arg1 --set-horizon arg2} option}
+This option use time-bounded importance sampling assuming a continuous
+semantics for the model. In this context \texttt{arg2} is a positive real
+number.
+
+\subsubsection{\texttt{--epsilon} option}
+When using continuous importance sampling this option specify the
+precision of numerical computations.
+
+\subsubsection{\texttt{--step-continuous} option}
+When using continuous importance sampling this option specify the width
+of steps.
+
+
+\section{File Format}
+\label{sec:fileformat}
+
+\subsection{GrML file format}
+GrML for Graph Markup Language is the graph base language to define
+models in the \cosyverif platform. This language is based on XML.
+
+
+\subsection{Generalised Stochastic Petri Net (.gspn)}
+This file format is used to describe GSPN.
+First we describe an example:\\
+\begin{figure}[h]
+  \centering
+  \input{figures/spn}
+  \caption{Infinite-state GSPN  model of a shared memory system.}
+  \label{fig:sharedmem}
+  % \vspace*{-.3cm}
+\end{figure}
+This GSPN is described by the following text:
+
+\begin{scriptsize}
+\begin{verbatim}
+const double lambda1 = 1;
+const double lambda2 = 2;
+const double alpha1 = 1;
+const double alpha2 = 1;
+const double beta1 = 5;
+const double beta2 = 5;
+
+NbPlaces = 5;
+NbTransitions = 6;
+
+PlacesList = { 
+   Request_1, Request_2,
+   Access_1, Access_2,
+   Free
+} ;
+
+TransitionsList = { 
+   Arrive_1,Arrive_2,
+   Start_1 ,Start_2,
+   End_1   ,End_2
+} ;
+
+Marking={
+   (Request_1 , 0); (Request_2 , 0) ; 
+   (Access_1 , 0) ; (Access_2 , 0) ;
+   (Free, 1);
+};
+
+Transitions={
+   (Arrive_1,EXPONENTIAL(lambda1),1,1, SINGLE); 
+   (Arrive_2,EXPONENTIAL(lambda2),1,1, SINGLE);
+   (Start_1,DETERMINISTIC(0),1,1); 
+   (Start_2,DETERMINISTIC(0),1,1);
+   (End_1,UNIFORM(alpha1,beta1),1,1); 
+   (End_2,UNIFORM(alpha2,beta2),1,1);
+};
+
+InArcs={
+   (Request_1,Start_1,1); (Free,Start_1,1);
+   (Request_2,Start_2,1); (Free,Start_2,1);
+   (Access_1,End_1,1);
+   (Access_2,End_2,1);
+};
+
+OutArcs={
+   (Arrive_1,Request_1,1); 
+   (Arrive_2,Request_2,1);
+   (End_1,Free,1);
+   (End_2,Free,1);
+};
+\end{verbatim}
+\end{scriptsize}
+
+{\bf Description:}
+The first block is a list of constant definitions, constants can be
+either \verb|double| or \verb|int|.\\
+Then the number of places and transitions is specified with:
+\verb|NbPlaces = 5; NbTransitions = 6;|\\
+The list of place names and transition names is given in the
+\verb|PlacesList| and \verb|TransitionsList| statement.\\
+The initial marking of the net is given as a set of pairs
+in the \verb|Marking| statement.\\
+The transition distribution is given as a set of tuples like
+this one:\\ \verb|(Arrive_1,EXPONENTIAL(lambda1),1,1, SINGLE)|
+Each tuple contains first the name of the transition then
+the probability distribution with some parameters, then two positive
+reals defining the priority and weight of the event generated.
+For an exponential distribution,  the policy of service can be specified
+by \verb|SINGLE,INFINITE,MULTIPLE(n)|.\\
+Finally comes the description of the arcs of the net with the 
+\verb|InArcs|,\verb|OutArcs| and \verb|InhibitorsArcs| statements.
+
+
+\subsubsection{Grammar}
+The complete grammar is:
+
+\begin{scriptsize}
+\begin{grammar}
+<accept> ::= <GSPN> 'end of file'
+
+<GSPN> ::= <declarations> <definitions>
+ 
+<declarations> ::= <Constants> <Sizes> <Lists>
+            | <Sizes> <Lists>
+
+<Constants> ::= <Constant>
+         | <Constant> <Constants>
+
+<Constant> ::= 'const' 'int' <str> '=' IntStringFormula ';'
+        | 'const' 'double' <str> '=' RealStringFormula ';'
+
+<IntStringFormula> ::= <ival> | <str>
+                \alt '(' <IntStringFormula> ')'
+                \alt <IntStringFormula> '+' <IntStringFormula>
+                \alt <IntStringFormula> '-' <IntStringFormula>
+                \alt <IntStringFormula> '*' <IntStringFormula>
+                \alt <IntStringFormula> '\^' <IntStringFormula>
+                \alt FLOOR '(' <IntStringFormula> ')'
+                \alt FLOOR '(' <IntStringFormula> '/' <IntStringFormula> ')'
+                \alt MIN '(' <IntStringFormula> ',' <IntStringFormula> ')'
+                \alt MAX '(' <IntStringFormula> ',' <IntStringFormula> ')'
+
+<RealStringFormula> ::= <rval> | <ival> | <str>
+                 \alt '(' <RealStringFormula> ')'
+                 \alt <RealStringFormula> '/' <RealStringFormula>
+                 \alt <RealStringFormula> '+' <RealStringFormula>
+                 \alt <RealStringFormula> '-' <RealStringFormula>
+                 \alt <RealStringFormula> '*' <RealStringFormula>
+                 \alt <RealStringFormula> '\^' <RealStringFormula>
+                 \alt FLOOR '(' <RealStringFormula> ')'
+                 \alt MIN '(' <RealStringFormula> ',' <RealStringFormula> ')'
+                 \alt MAX '(' <RealStringFormula> ',' <RealStringFormula> ')'
+
+<Sizes> ::= <NbPlaces> <NbTransitions>
+     | <NbTransitions> <NbPlaces>
+
+<NbPlaces> ::= 'NbPlaces' '=' <ival> ';'
+        | 'NbPlaces' '=' <str> ';'
+
+<NbTransitions> ::= 'NbTransitions' '=' <ival> ';'
+             | 'NbTransitions' '=' <str> ';'
+
+<Lists> ::= <PlacesList> <TransitionsList>
+     | <TransitionsList> <PlacesList>
+
+<PlacesList> ::= 'PlacesList' '=' '{' <PLabels> '}' ';'
+
+<PLabels> ::= <str>
+       | <PLabels> ',' <str>
+
+<TransitionsList> ::= 'TransitionList' '=' '{' <TLabels> '}' ';'
+
+<TLabels> ::= <str>
+       | <TLabels> ',' <str>
+
+<definitions> ::= <PlacesDef> <TransitionsDef> <InArcs> <OutArcs>
+           \alt <PlacesDef> <TransitionsDef> <InArcs> <OutArcs> <Inhibitors>
+
+<PlacesDef> ::= 'Marking' '=' '{' <PLACES> '}' ';'
+
+<PLACES> ::= <PLACE>
+      | <PLACES> <PLACE>
+
+<PLACE> ::= '(' <str> ',' <IntStringFormula> ')' ';'
+
+<TransitionsDef> ::= 'Transition' '=' '{' <TRANSITIONS> '}' ';'
+
+<Transitions> ::= <Transition>
+           | <Transitions> <Transition>
+
+<Transition> ::= '(' <str> ',' <dist> ',' <Priority> ',' <Weight> ')' ';'
+          \alt '(' <str> ',' 'EXPONENTIAL' '(' <RealStringFormula> ')' ',' <Priority> ',' 
+            <Weight> ',' <Service> ')' ';'
+          \alt '(' <str> ',' 'IMDT' ',' <Priority> ',' <Weight> ')' ';'
+
+<dist> ::= <str> '(' <params> ')'
+
+<params> ::= <RealStringFormula>
+      | <params> ',' <RealStringFormula>
+
+<Weight> ::= <RealStringFormula>
+
+<Priority> ::= <RealStringFormula>
+
+<Service> ::= 'SINGLE'
+       | 'INFINITE'
+       | 'MULTIPLE' '(' <ival> ')'
+       | 'MULTIPLE' '(' <str> ')'
+
+<InArcs> ::= 'InArcs' '=' '{' <incells> '}' ';'
+
+<incells> ::= <incell>
+       | <incells> <incell>
+
+<incell> ::= '(' <str> ',' <str> ',' <IntStringFormula> ')' ';'
+      | '(' <str> ',' <str> ')' ';'
+
+<OutArcs> ::= 'OutArcs' '=' '{' <outcells> '}' ';'
+
+<outcells> ::= <outcell>
+        | <outcells> <outcell>
+
+<outcell> ::= '(' <str> ',' <str> ',' <IntStringFormula> ')' ';'
+       | '(' <str> ',' <str> ')' ';'
+
+<Inhibitors> ::= 'inhibitor' '=' '{' <inhibcells> '}' ';'
+
+<inhibcells> ::= <inhibcell>
+          | <inhibcells> <inhibcell>
+
+<inhibcell> ::= '(' <str> ',' <str> ',' <IntStringFormula> ')' ';'
+         | '(' <str> ',' <str> ')' ';'
+\end{grammar}
+\end{scriptsize}
+
+\subsection{Linar Hybrid Automaton(.lha)}
+
+\subsubsection{General Expression}
+
+\begin{scriptsize}
+\begin{grammar}
+  <MarkingDepExpr> ::= <ConstIdentifier> | <DiscreteVarIdentifier> | <PlaceIdentifier>
+  \alt  <MarkingDepExpr> `+'  <MarkingDepExpr> | <MarkingDepExpr> `-'  <MarkingDepExpr>
+  \alt  <MarkingDepExpr> `*'  <MarkingDepExpr>
+  \alt `Card' <MarkingDepExpr>
+  \alt <MarkingDepExpr> `[' <ColorList> `]'
+  \alt <DomainMarking>
+
+ <Expr> ::= <ConstIdentifier> | <DiscreteVarIdentifier>  | <VarIdentifier> | <PlaceIdentifier>
+  \alt  <Expr> `+'  <Expr> | <Expr> `-'  <Expr>
+  \alt  <Expr> `*'  <Expr>
+  \alt `Card' <Expr>
+  \alt <Expr> `[' <ColorList> `]'
+  \alt <DomainMarking>
+
+  <ColorList> ::= <ColorExpr> `,' <ColorList>
+  \alt <ColorExpr>
+
+  <ColorExpr> ::= <ColorIdentifier> | <ColorVarIdentifier>
+  \alt <ColorExpr> `++' | <ColorExpr> `--'
+
+  <LinearExpr> ::= <LinearExpr> `+'  <LinearExpr> | <LinearExpr> `-'  <LinearExpr>
+  \alt <MarkingDepExpr> `*' <VarExpr>
+
+  <VarExpr> ::= <VarIdentifier> | <VarIdentifier> `[' <ColorList> `]'
+
+  <DiscreteVarExpr> ::= <DiscreteVarExpr> \alt <DiscreteVarExpr> `[' <ColorList> `]'
+
+<MarkingDepProp> ::= `true' | `false' | `not' <MarkingDepProp>
+  \alt <MarkingDepProp> `\&\&' <MarkingDepProp> |  <MarkingDepProp> `||' <MarkingDepProp>
+  \alt <MarkingDepExpr> `|\!\!>\!<\!\!|' <MarkingDepExpr>  
+  \alt <ColorExpr> `=' <ColorExpr> | <ColorExpr> `!=' <ColorExpr>
+
+\end{grammar}
+\end{scriptsize}
+
+All the expressions are typed with a domain. An expression of a domain
+$D$ is a function that map to each colour of the domain $D$ an integer
+or real expression. 
+
+Values of the domain ``Uncoloured'' act as scalar.  The construction
+``Card'' takes an expression over a domain and return an expression of
+the uncoloured domain by taking the sum of the expression over all
+colors. The construction ``Expr[c1,c2]'' returns a value in the
+uncoloured domain equal to the valuation of ``Expr'' for the colour
+``c1,c2''.
+
+
+There are two types of expression. The one described
+by ``Expr'' can depend on any quantities defined in the Net or in the
+automaton whereas ``MarkingDepExpr'' cannot depend on quantities
+which are continuous variables. The difference is that
+``MarkingDepExpr'' is constant between two transitions of the
+automaton whereas ``Expr'' evolves linearly between two
+transitions. Both of them can be discontinuous when a transition of the
+automaton occurs.
+
+
+\subsubsection{Declarative Part and General Expression}
+
+\begin{scriptsize}
+\begin{grammar}
+  <Declaration> ::= <VarDeclaration> `;' | <ConstDeclaration> `;'
+
+  <ConstDeclaration> ::= 
+  `const' `int' <IDENTIFIER> `=' <INTEGER>
+  \alt `const' `double' <IDENTIFIER> `=' <FLOAT>
+
+  <VarDeclaration> ::= 
+   `var' <IDENTIFIER> (`in' <DomainIdentifier>) ?
+   \alt `discvar' <IDENTIFIER> (`in' <DomainIdentifier>) ?
+   \alt `colorvar' <IDENTIFIER> `in' <DomainIdentifier>
+\end{grammar}
+\end{scriptsize}
+
+This section defines the identifiers for the different types of variables
+as well as their domain.
+
+\subsubsection{Location Invariant Proposition}
+
+\begin{scriptsize}
+\begin{grammar}
+  <LocInvProp> ::= <MarkingDepProp>
+\end{grammar}
+\end{scriptsize}
+
+Location invariants do not depend on continuous variable value.
+It ensures that location invariants are constant between two transitions
+of the automaton.
+
+\subsubsection{Flow Expression}
+
+\begin{scriptsize}
+\begin{grammar}
+  <FlowDef> ::= <VarExpr> `\'' `=' <MarkingDepExpr> 
+\end{grammar}
+\end{scriptsize}
+As location invariants, flow rates are constant between two transitions
+of the automaton to ensure that continuous variables are piecewise
+linear.
+
+
+\subsubsection{Guard Proposition}
+\begin{scriptsize}
+\begin{grammar}
+  <GuardProp> ::= `true' | <GuardProp> `\&\&' <GuardProp>
+  \alt <LinearExp> `=' <MarkingDepExpr> \alt <LinExp> `<=' <MarkingDepExpr>
+  \alt <LinearExp> `>=' <MarkingDepExpr>
+  \alt <MarkingDepProp>
+
+  <ColorExpr> ::= \dots\! | <BindingVarIdentifier>
+\end{grammar}
+\end{scriptsize}
+
+\subsubsection{Update Expression}
+
+\begin{scriptsize}
+\begin{grammar}
+  <UpdateExpr> ::= <VarExpr> `:=' <Expr> | <DiscreteVarExpr> `:=' <Expr>
+  \alt <ColorVarIdentifier> `:=' <ColorExpr>
+
+   <ColorExpr> ::= \dots\! | <BindingVarIdentifier>
+\end{grammar}
+\end{scriptsize}
+
+
+\end{document}

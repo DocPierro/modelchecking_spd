@@ -1,0 +1,14 @@
+% ----------------------------------------------------------------------------
+% This file contains profiled data created with the SUMO Toolbox profiler v2014a
+% 
+%   * Name: best_regression_out
+%   * Description: Hyperparameter values for each new best model
+%   * Date: 12/05/2015 at 10:17
+% 
+%   * Column1: 	Number of samples: 	Number of samples
+%   * Column2: 	regression: 	Regression function
+%
+% ----------------------------------------------------------------------------
+
+6.0	1	
+7.0	1	

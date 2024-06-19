@@ -1,0 +1,20 @@
+gspn [generated_cosmos] {
+constants:
+places:
+	PSTA = 1;
+	PEND = 0;
+	P1_0 = 0;
+	VI_x = 0;
+	P2_2 = 0;
+	TV_5 = 0;
+	PI3_6 = 0;
+
+transitions:
+	stochastic:
+	immediate:
+	T_1 :  : [P1_0 + 1] & [PSTA - 1] & [VI_x - VI_x] : 0 ;
+	T_3 : [VI_x < 3] : [P2_2 + 1] & [P1_0 - 1] : 0 ;
+	T_4 :  : [VI_x + 3] & [PEND + 1] & [VI_x - 3] & [P1_0 - 1] : 0 ;
+	T_7 :  : [PI3_6 + 1] & [TV_5 + (VI_x+1)] & [P2_2 - 1] & [TV_5 - TV_5] & [VI_x - 0] : 0 ;
+	T_8 :  : [P1_0 + 1] & [VI_x + TV_5] & [PI3_6 - 1] & [TV_5 - TV_5] & [VI_x - VI_x] : 0 ;
+}

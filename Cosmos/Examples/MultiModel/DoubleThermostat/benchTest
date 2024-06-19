@@ -1,0 +1,3 @@
+#!/bin/bash
+CosmosSimulink --epsv 0.01  DoubleThermostat_monitfonc_sinlongue.slx
+Cosmos SKModel_edite_monit.grml partial_benchmark2.lha --njob 6

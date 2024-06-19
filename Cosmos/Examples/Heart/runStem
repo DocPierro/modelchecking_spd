@@ -1,0 +1,16 @@
+cp distrBrach.cpp distr.cpp
+Cosmos HeartModelWithDistr.slx --loop 10000 --trace-place "SIG_APOut,SIG_AgetOut,SIG_VPOut,SIG_VgetOut" --output-trace test.dat 0.0 --gnuplot-driver svg  --tmp-status 2 --gppflags -O0 --batch 1 --max-run 1 --const "PM_TAVI=1500,PM_TLRI=5000,PM_TURI=5000"
+gnuplot gnuplotscript3.gp
+pdflatex test.tex
+cp test.pdf Bradycardia.pdf
+
+cp distrNormal.cpp distr.cpp
+Cosmos HeartModelWithDistr.slx --loop 10000 --trace-place "SIG_APOut,SIG_AgetOut,SIG_VPOut,SIG_VgetOut" --output-trace test.dat 0.0 --gnuplot-driver svg  --tmp-status 2 --gppflags -O0 --batch 1 --max-run 1 --const "PM_TAVI=1500,PM_TLRI=5000,PM_TURI=5000"
+gnuplot gnuplotscript3.gp
+pdflatex test.tex
+cp test.pdf Normal.pdf 
+
+Cosmos HeartModelWithDistr.slx --loop 10000 --trace-place "SIG_APOut,SIG_AgetOut,SIG_VPOut,SIG_VgetOut" --output-trace test.dat 0.0 --gnuplot-driver svg  --tmp-status 2 --gppflags -O0 --batch 1 --max-run 1 --const "PM_TAVI=1500,PM_TLRI=5000,PM_TURI=5000,AV_Vt=-10,SA_ectopD=1000000000000000000"
+gnuplot gnuplotscript3.gp
+pdflatex test.tex
+cp test.pdf AVBlock.pdf 
